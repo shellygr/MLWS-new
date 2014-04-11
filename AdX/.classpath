@@ -22,6 +22,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="adx-agnet"/>
 	<classpathentry kind="con" path="org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
 		<attributes>
@@ -33,5 +34,14 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="adx-agnet/lib/adx-1.1.1.jar"/>
+	<classpathentry kind="lib" path="adx-agnet/lib/ajt-2.9.jar"/>
+	<classpathentry kind="lib" path="adx-agnet/lib/commons-lang3-3.1.jar"/>
+	<classpathentry kind="lib" path="adx-agnet/lib/commons-math-1.2.jar"/>
+	<classpathentry kind="lib" path="adx-agnet/lib/Jama-1.0.2.jar"/>
+	<classpathentry kind="lib" path="adx-agnet/lib/javaml-0.1.7.jar"/>
+	<classpathentry kind="lib" path="adx-agnet/lib/libsvm.jar"/>
+	<classpathentry kind="lib" path="adx-agnet/lib/oosagent.jar"/>
+	<classpathentry kind="lib" path="adx-agnet/lib/weka.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

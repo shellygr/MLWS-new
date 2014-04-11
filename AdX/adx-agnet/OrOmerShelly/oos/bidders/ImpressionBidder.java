@@ -126,6 +126,7 @@ public class ImpressionBidder {
 		double budget = currentCampaign.getBudget();
 		double priority = getCampaignPriority(currentCampaign);
 
+		int countInstances = (dataset == null ? 0 : dataset.numInstances());
 		// Video / Mobile - are worth more according to mobileCoeff, videoCoeff. So take them into account.
 		for (PublisherCatalogEntry publisherCatalogEntry : publisherCatalog.getPublishers()) {
 			String publisherName = publisherCatalogEntry.getPublisherName();
@@ -176,7 +177,8 @@ public class ImpressionBidder {
 					
 					Instance defaultInstance = new SparseInstance(1, attributes, indicesToFill, 1); 
 					defaultInstances.add(defaultInstance);
-					lastInstancesIndicesMap.put(new InstanceIndexKey(publisherName, currentCampaign.getTargetSegment(), device, adType, priority), dataset.numInstances()-1); // -1 or no -1?
+					lastInstancesIndicesMap.put(new InstanceIndexKey(publisherName, currentCampaign.getTargetSegment(), device, adType, priority), countInstances); // -1 or no -1?
+					++countInstances;
 				}
 			}
 		}
@@ -280,7 +282,7 @@ public class ImpressionBidder {
 			log.info(rname + ": Filling bid bundle for " + publisherName);
 			
 			List<ImpressionParamtersDistributionKey> impressionDistribution = userAnalyzer.calcImpressionDistribution(publisherName);
-			log.info(rname + ": marketSegmentDistribution for publisher is: " + impressionDistribution);
+		//	log.info(rname + ": marketSegmentDistribution for publisher is: " + impressionDistribution);
 			
 			Collections.sort(impressionDistribution, 
 					new Comparator<ImpressionParamtersDistributionKey>() {
@@ -291,7 +293,7 @@ public class ImpressionBidder {
 				}
 			});
 
-			log.info(rname + ": Sorted marketSegmentDistribution for publisher is: " + impressionDistribution);
+			//log.info(rname + ": Sorted marketSegmentDistribution for publisher is: " + impressionDistribution);
 
 			Map<Integer,Integer> campaignWeightVector = new HashMap<Integer,Integer>();
 			double bid = 0.0;
@@ -545,14 +547,14 @@ public class ImpressionBidder {
 			// Step2: does the campaign fit the impressions characteristics and market segment?
 			Set<MarketSegment> marketSegments = campaign.getTargetSegment();
 			AdxQuery[] relevantQueries = campaign.getCampaignQueries();
-			log.info(rname + ": RelevantQueries = " + printQueries(relevantQueries));
+			
 			for (AdxQuery query : relevantQueries) {
 				AdType relevantAd = query.getAdType();
 				Device relevantDevice = query.getDevice();
 				
 				if (relevantAd == impressionAdType && relevantDevice == impressionDevice) { // TODO sanity on that... could be probability!!
 					// Campaign should contain a common market segment with the impression
-					log.info(rname + ": Campaign market segment is " + campaign.getTargetSegment() + " and impression is " + impressionMarketSegments);
+			
 					if (marketSegments.containsAll(impressionMarketSegments)) { 
 						log.info(rname + ": equal! Adding campaign");
 						filteredCampaigns.add(campaign);
