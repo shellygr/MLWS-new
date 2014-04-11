@@ -7,12 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.lang3.tuple.Pair;
-import org.apache.commons.math.analysis.NewtonSolver;
-
 import tau.tac.adx.ads.properties.AdType;
 import tau.tac.adx.devices.Device;
-import tau.tac.adx.props.PublisherCatalog;
 import tau.tac.adx.report.adn.MarketSegment;
 
 public class UserAnalyzer {
@@ -39,15 +35,12 @@ public class UserAnalyzer {
 	private final static String CNET = "cnet";
 	private final static String WEATHER = "weather";
 	
-	
-	
 	private Map<String, PublisherStats> publishersStats;
 		
 	// Private static member - Map publisher name + audience orientation to probabilities
 	private static HashMap<AudienceOrientationKey, Double> audienceOrientationMap = getAudienceOrientation();
 	private static HashMap<DeviceOrientationKey, Double> deviceOrientationMap = getDeviceOrientation();
 	private static HashMap<String, Double> popularityMap = getPopularity();
-	
 	
 	private static HashMap<DeviceOrientationKey, Double> getDeviceOrientation() {
 		HashMap<DeviceOrientationKey, Double> map = new HashMap<DeviceOrientationKey, Double>();

@@ -294,12 +294,10 @@ public class ImpressionBidder {
 			double bid = 0.0;
 			for (ImpressionParamtersDistributionKey impressionWithWeight : impressionDistribution) {
 				ImpressionParameters impParams = impressionWithWeight.getImpParams();
-				log.info(rname + ": Working on impParams = " + impParams);
 				
 				// Initial bid calculates what does the impression worth
 				try {
 					bid = initialBid(impParams, publisherName, impressionWithWeight.getWeight());
-					log.info(rname + ": Initial bid is: " + bid);
 				} catch (Exception e) {
 					log.warning("Failed to get initial bid: " + e + " Stack: " + Arrays.asList(e.getStackTrace()));
 					try {
@@ -313,7 +311,6 @@ public class ImpressionBidder {
 				
 				// Now we will calculate what does the impression worth *for us*.
 				List<CampaignData> relevantCampaigns = filterCampaigns(impParams);
-				log.info(rname + ": Relevant campaigns found are = " + relevantCampaigns);
 				
 				if (exists(relevantCampaigns)) {
 					log.info(rname + ": Prioritizing over relevant campaigns...");
@@ -324,6 +321,7 @@ public class ImpressionBidder {
 					updateCampaignVector(campaignWeightVector, relevantCampaigns);
 					log.info(rname + ": Updated campaign vector is = " + campaignWeightVector);
 					
+					log.info(rname + ": Initial bid is: " + bid);
 					bid = calcBid(bid, relevantCampaigns, publisherName, impParams.getMarketSegments());
 					log.info(rname + ": New bid is = " + bid);
 				} else {
