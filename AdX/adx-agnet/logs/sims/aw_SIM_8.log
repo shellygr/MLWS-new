@@ -1,0 +1,603 @@
+04/04 12:29:00 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: edu.umich.eecs.tac.props.AdvertiserInfo@bc76a1c1
+04/04 12:29:00 INFO OrOmerShelly.Coordinator|Day 0 :BankStatus[0.000000]
+04/04 12:29:00 INFO OrOmerShelly.Coordinator|tau.tac.adx.report.demand.InitialCampaignMessage[25818759,1250,1,5,[OLD, MALE],2.0,1.5,demand,[]]
+04/04 12:29:00 INFO OrOmerShelly.Coordinator|Day 0: Allocated campaign - Campaign ID 25818759: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5)
+04/04 12:29:00 INFO OrOmerShelly.Coordinator|Day 0: Campaign opportunity - Campaign ID 12155358: day 2 to 11 [FEMALE, OLD], reach: 6250 coefs: (v=2.0, m=1.5)
+04/04 12:29:00 INFO OrOmerShelly.Coordinator|Day 0: Campaign total budget bid: 490.2543379498153
+04/04 12:29:00 INFO OrOmerShelly.Coordinator|Day 0: Adjusting ucs bid: was 0.10395962533250364 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.14779972161005892
+04/04 12:29:00 INFO OrOmerShelly.Coordinator|Day 0 : Simulation Status Received
+04/04 12:29:00 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:29:00 INFO OrOmerShelly.Coordinator|Day 0 ended. Starting next day
+04/04 12:29:11 INFO OrOmerShelly.Coordinator|Day 1 :BankStatus[0.000000]
+04/04 12:29:11 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2304.0, effectiveBid=2304.0] CampaignAuctionReportEntry [actualBid=2407.0, effectiveBid=2407.0] CampaignAuctionReportEntry [actualBid=2632.0, effectiveBid=2632.0] CampaignAuctionReportEntry [actualBid=2803.0, effectiveBid=2803.0] CampaignAuctionReportEntry [actualBid=3261.0, effectiveBid=3261.0] CampaignAuctionReportEntry [actualBid=3281.0, effectiveBid=3281.0] CampaignAuctionReportEntry [actualBid=3282.0, effectiveBid=3282.0])
+04/04 12:29:11 INFO OrOmerShelly.Coordinator|Day 1: Daily notification for campaign 12155358
+04/04 12:29:11 INFO OrOmerShelly.Coordinator|Day 1:  allocated to DummyAdnetwork-4. UCS Level set to 0.47829690000000014 at price 0.0 Quality Score is: 1.0
+04/04 12:29:11 INFO OrOmerShelly.Coordinator|Day 1: Campaign opportunity - Campaign ID 6909786: day 3 to 7 [OLD, MALE], reach: 6250 coefs: (v=2.0, m=1.5)
+04/04 12:29:11 INFO OrOmerShelly.Coordinator|Day 1: Campaign total budget bid: 1010.2865542271022
+04/04 12:29:11 INFO OrOmerShelly.Coordinator|Day 1: Adjusting ucs bid: was 0.14779972161005892 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.11794554052248421
+04/04 12:29:11 INFO OrOmerShelly.Coordinator|Publishers Report: 
+04/04 12:29:11 INFO OrOmerShelly.Coordinator|(publisher: cnn popularity: 6808 video: 1926 text: 4883)
+04/04 12:29:11 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 3362 video: 1281 text: 2082)
+04/04 12:29:11 INFO OrOmerShelly.Coordinator|(publisher: msn popularity: 42246 video: 16018 text: 26229)
+04/04 12:29:11 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 32718 video: 10747 text: 21972)
+04/04 12:29:11 INFO OrOmerShelly.Coordinator|(publisher: target popularity: 5259 video: 2586 text: 2674)
+04/04 12:29:11 INFO OrOmerShelly.Coordinator|(publisher: bestbuy popularity: 3528 video: 1159 text: 2370)
+04/04 12:29:12 INFO OrOmerShelly.Coordinator|Day 1 : Simulation Status Received
+04/04 12:29:12 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:29:12 INFO OrOmerShelly.Coordinator|Day 1 ended. Starting next day
+04/04 12:29:21 INFO OrOmerShelly.Coordinator|Day 2 :BankStatus[-0.145800]
+04/04 12:29:21 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=1010.0, effectiveBid=1010.0] CampaignAuctionReportEntry [actualBid=2088.0, effectiveBid=2088.0] CampaignAuctionReportEntry [actualBid=2179.0, effectiveBid=2179.0] CampaignAuctionReportEntry [actualBid=2391.0, effectiveBid=2391.0] CampaignAuctionReportEntry [actualBid=2391.0, effectiveBid=2391.0] CampaignAuctionReportEntry [actualBid=2455.0, effectiveBid=2455.0] CampaignAuctionReportEntry [actualBid=2905.0, effectiveBid=2905.0] CampaignAuctionReportEntry [actualBid=3162.0, effectiveBid=3162.0])
+04/04 12:29:21 INFO OrOmerShelly.Coordinator|Day 2: Updating campaign 25818759 stats: 0.0 tgtImps 0.0 nonTgtImps. Cost of imps is 0.0
+04/04 12:29:21 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:29:21 INFO OrOmerShelly.Coordinator|Day 2: Campaign opportunity - Campaign ID 9058653: day 4 to 6 [HIGH_INCOME, MALE], reach: 12500 coefs: (v=2.0, m=1.5)
+04/04 12:29:21 INFO OrOmerShelly.Coordinator|Day 2: Campaign total budget bid: 3378.1017127611044
+04/04 12:29:21 INFO OrOmerShelly.Coordinator|Day 2: Adjusting ucs bid: was 0.11794554052248421 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.1676835405919914
+04/04 12:29:21 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:29:21 INFO OrOmerShelly.Coordinator|Day 2 : Simulation Status Received
+04/04 12:29:21 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:29:21 INFO OrOmerShelly.Coordinator|Day 2 ended. Starting next day
+04/04 12:29:32 INFO OrOmerShelly.Coordinator|Day 3 :BankStatus[-0.291600]
+04/04 12:29:32 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2518.0, effectiveBid=2518.0] CampaignAuctionReportEntry [actualBid=2731.0, effectiveBid=2731.0] CampaignAuctionReportEntry [actualBid=3188.0, effectiveBid=3188.0] CampaignAuctionReportEntry [actualBid=3198.0, effectiveBid=3198.0] CampaignAuctionReportEntry [actualBid=3378.0, effectiveBid=3378.0])
+04/04 12:29:32 INFO OrOmerShelly.Coordinator|Day 3: Updating campaign 25818759 stats: 0.0 tgtImps 0.0 nonTgtImps. Cost of imps is 0.0
+04/04 12:29:32 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:29:32 INFO OrOmerShelly.Coordinator|Day 3: Campaign opportunity - Campaign ID 20231371: day 5 to 9 [LOW_INCOME, MALE], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:29:32 INFO OrOmerShelly.Coordinator|Day 3: Campaign total budget bid: 598.9835431363972
+04/04 12:29:32 INFO OrOmerShelly.Coordinator|Day 3: Adjusting ucs bid: was 0.1676835405919914 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.11562019437145211
+04/04 12:29:32 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:29:33 INFO OrOmerShelly.Coordinator|Day 3 : Simulation Status Received
+04/04 12:29:33 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:29:33 INFO OrOmerShelly.Coordinator|Day 3 ended. Starting next day
+04/04 12:29:42 INFO OrOmerShelly.Coordinator|Day 4 :BankStatus[-0.437400]
+04/04 12:29:42 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=598.0, effectiveBid=598.0] CampaignAuctionReportEntry [actualBid=2317.0, effectiveBid=2317.0] CampaignAuctionReportEntry [actualBid=2491.0, effectiveBid=2491.0] CampaignAuctionReportEntry [actualBid=2730.0, effectiveBid=2730.0] CampaignAuctionReportEntry [actualBid=3191.0, effectiveBid=3191.0])
+04/04 12:29:42 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:29:42 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:29:42 INFO OrOmerShelly.Coordinator|Day 4: Campaign opportunity - Campaign ID 20438464: day 6 to 15 [FEMALE, HIGH_INCOME], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:29:42 INFO OrOmerShelly.Coordinator|Day 4: Campaign total budget bid: 298.5524728732715
+04/04 12:29:42 INFO OrOmerShelly.Coordinator|Day 4: Adjusting ucs bid: was 0.11562019437145211 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.164377588760496
+04/04 12:29:42 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:29:42 INFO OrOmerShelly.Coordinator|Day 4 : Simulation Status Received
+04/04 12:29:42 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:29:42 INFO OrOmerShelly.Coordinator|Day 4 ended. Starting next day
+04/04 12:29:52 INFO OrOmerShelly.Coordinator|Day 5 :BankStatus[-0.583200]
+04/04 12:29:52 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2377.0, effectiveBid=2377.0])
+04/04 12:29:52 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:29:52 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:29:52 INFO OrOmerShelly.Coordinator|Day 5: Campaign opportunity - Campaign ID 21624023: day 7 to 9 [LOW_INCOME, YOUNG], reach: 12500 coefs: (v=2.0, m=1.5)
+04/04 12:29:52 INFO OrOmerShelly.Coordinator|Day 5: Campaign total budget bid: 3314.8505302961707
+04/04 12:29:52 INFO OrOmerShelly.Coordinator|Day 5: Adjusting ucs bid: was 0.164377588760496 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.14479866049195422
+04/04 12:29:52 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:29:52 INFO OrOmerShelly.Coordinator|Day 5 : Simulation Status Received
+04/04 12:29:52 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:29:52 INFO OrOmerShelly.Coordinator|Day 5 ended. Starting next day
+04/04 12:30:02 INFO OrOmerShelly.Coordinator|Day 6 :BankStatus[-0.729000]
+04/04 12:30:02 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2672.0, effectiveBid=2672.0] CampaignAuctionReportEntry [actualBid=3314.0, effectiveBid=3314.0])
+04/04 12:30:02 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:30:02 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:30:02 INFO OrOmerShelly.Coordinator|Day 6: Campaign opportunity - Campaign ID 10086467: day 8 to 17 [LOW_INCOME, YOUNG], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:30:02 INFO OrOmerShelly.Coordinator|Day 6: Campaign total budget bid: 298.33654772665534
+04/04 12:30:02 INFO OrOmerShelly.Coordinator|Day 6: Adjusting ucs bid: was 0.14479866049195422 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.15476855978878887
+04/04 12:30:02 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:30:03 INFO OrOmerShelly.Coordinator|Day 6 : Simulation Status Received
+04/04 12:30:03 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:30:03 INFO OrOmerShelly.Coordinator|Day 6 ended. Starting next day
+04/04 12:30:12 INFO OrOmerShelly.Coordinator|Day 7 :BankStatus[-0.874800]
+04/04 12:30:12 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:30:12 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:30:12 INFO OrOmerShelly.Coordinator|Day 7: Campaign opportunity - Campaign ID 2368193: day 9 to 13 [YOUNG, MALE], reach: 6250 coefs: (v=2.0, m=1.5)
+04/04 12:30:12 INFO OrOmerShelly.Coordinator|Day 7: Campaign total budget bid: 1001.3756273510156
+04/04 12:30:12 INFO OrOmerShelly.Coordinator|Day 7: Adjusting ucs bid: was 0.15476855978878887 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.10007463457552218
+04/04 12:30:12 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:30:13 INFO OrOmerShelly.Coordinator|Day 7 : Simulation Status Received
+04/04 12:30:13 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:30:13 INFO OrOmerShelly.Coordinator|Day 7 ended. Starting next day
+04/04 12:30:23 INFO OrOmerShelly.Coordinator|Day 8 :BankStatus[-1.020600]
+04/04 12:30:23 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=3077.0, effectiveBid=2431.8546441361086])
+04/04 12:30:23 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:30:23 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:30:23 INFO OrOmerShelly.Coordinator|Day 8: Campaign opportunity - Campaign ID 20082706: day 10 to 14 [FEMALE, LOW_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)
+04/04 12:30:23 INFO OrOmerShelly.Coordinator|Day 8: Campaign total budget bid: 993.3376146873242
+04/04 12:30:23 INFO OrOmerShelly.Coordinator|Day 8: Adjusting ucs bid: was 0.10007463457552218 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.14227641820738704
+04/04 12:30:23 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:30:23 INFO OrOmerShelly.Coordinator|Day 8 : Simulation Status Received
+04/04 12:30:23 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:30:23 INFO OrOmerShelly.Coordinator|Day 8 ended. Starting next day
+04/04 12:30:34 INFO OrOmerShelly.Coordinator|Day 9 :BankStatus[-1.166400]
+04/04 12:30:34 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=3054.0, effectiveBid=2413.676985112667])
+04/04 12:30:34 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:30:34 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:30:34 INFO OrOmerShelly.Coordinator|Day 9: Campaign opportunity - Campaign ID 13507630: day 11 to 20 [FEMALE, OLD], reach: 12500 coefs: (v=2.0, m=1.5)
+04/04 12:30:34 INFO OrOmerShelly.Coordinator|Day 9: Campaign total budget bid: 980.5086758996306
+04/04 12:30:34 INFO OrOmerShelly.Coordinator|Day 9: Adjusting ucs bid: was 0.14227641820738704 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.12300078594078216
+04/04 12:30:34 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:30:35 INFO OrOmerShelly.Coordinator|Day 9 : Simulation Status Received
+04/04 12:30:35 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:30:35 INFO OrOmerShelly.Coordinator|Day 9 ended. Starting next day
+04/04 12:30:44 INFO OrOmerShelly.Coordinator|Day 10 :BankStatus[-1.312200]
+04/04 12:30:44 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2562.0, effectiveBid=2024.8331486112158])
+04/04 12:30:44 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:30:44 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:30:44 INFO OrOmerShelly.Coordinator|Day 10: Campaign opportunity - Campaign ID 10330858: day 12 to 16 [LOW_INCOME, MALE], reach: 6250 coefs: (v=2.0, m=1.5)
+04/04 12:30:44 INFO OrOmerShelly.Coordinator|Day 10: Campaign total budget bid: 998.3059052273287
+04/04 12:30:44 INFO OrOmerShelly.Coordinator|Day 10: Adjusting ucs bid: was 0.12300078594078216 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.12397513896305129
+04/04 12:30:44 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:30:44 INFO OrOmerShelly.Coordinator|Day 10 : Simulation Status Received
+04/04 12:30:44 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:30:44 INFO OrOmerShelly.Coordinator|Day 10 ended. Starting next day
+04/04 12:30:55 INFO OrOmerShelly.Coordinator|Day 11 :BankStatus[-1.458000]
+04/04 12:30:55 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=3145.0, effectiveBid=2886.5682688483857])
+04/04 12:30:55 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:30:55 INFO OrOmerShelly.Coordinator|Day 11: Campaign opportunity - Campaign ID 32984717: day 13 to 15 [HIGH_INCOME, OLD], reach: 12500 coefs: (v=2.0, m=1.5)
+04/04 12:30:55 INFO OrOmerShelly.Coordinator|Day 11: Campaign total budget bid: 3310.59389939218
+04/04 12:30:55 INFO OrOmerShelly.Coordinator|Day 11: Adjusting ucs bid: was 0.12397513896305129 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.17625583938670078
+04/04 12:30:55 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:30:56 INFO OrOmerShelly.Coordinator|Day 11 : Simulation Status Received
+04/04 12:30:56 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:30:56 INFO OrOmerShelly.Coordinator|Day 11 ended. Starting next day
+04/04 12:31:04 INFO OrOmerShelly.Coordinator|Day 12 :BankStatus[-1.603800]
+04/04 12:31:04 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2596.0, effectiveBid=2382.680834954025])
+04/04 12:31:04 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:31:04 INFO OrOmerShelly.Coordinator|Day 12: Campaign opportunity - Campaign ID 30524916: day 14 to 18 [HIGH_INCOME, MALE], reach: 12500 coefs: (v=2.0, m=1.5)
+04/04 12:31:04 INFO OrOmerShelly.Coordinator|Day 12: Campaign total budget bid: 2026.8610276566624
+04/04 12:31:04 INFO OrOmerShelly.Coordinator|Day 12: Adjusting ucs bid: was 0.17625583938670078 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.13593680071746256
+04/04 12:31:04 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:31:04 INFO OrOmerShelly.Coordinator|Day 12 : Simulation Status Received
+04/04 12:31:04 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:31:04 INFO OrOmerShelly.Coordinator|Day 12 ended. Starting next day
+04/04 12:31:16 INFO OrOmerShelly.Coordinator|Day 13 :BankStatus[-1.749600]
+04/04 12:31:16 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2618.0, effectiveBid=2402.873045419737])
+04/04 12:31:16 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:31:16 INFO OrOmerShelly.Coordinator|Day 13: Campaign opportunity - Campaign ID 11148709: day 15 to 24 [LOW_INCOME, MALE], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:31:16 INFO OrOmerShelly.Coordinator|Day 13: Campaign total budget bid: 299.4917715681986
+04/04 12:31:16 INFO OrOmerShelly.Coordinator|Day 13: Adjusting ucs bid: was 0.13593680071746256 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.13154493264165545
+04/04 12:31:16 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:31:17 INFO OrOmerShelly.Coordinator|Day 13 : Simulation Status Received
+04/04 12:31:17 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:31:17 INFO OrOmerShelly.Coordinator|Day 13 ended. Starting next day
+04/04 12:31:23 INFO OrOmerShelly.Coordinator|Day 14 :BankStatus[-1.895400]
+04/04 12:31:23 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2830.0, effectiveBid=2597.4525280893263])
+04/04 12:31:23 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:31:23 INFO OrOmerShelly.Coordinator|Day 14: Campaign opportunity - Campaign ID 33267854: day 16 to 20 [LOW_INCOME, YOUNG], reach: 6250 coefs: (v=2.0, m=1.5)
+04/04 12:31:23 INFO OrOmerShelly.Coordinator|Day 14: Campaign total budget bid: 994.4551590888511
+04/04 12:31:23 INFO OrOmerShelly.Coordinator|Day 14: Adjusting ucs bid: was 0.13154493264165545 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.1578832525747153
+04/04 12:31:23 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:31:23 INFO OrOmerShelly.Coordinator|Day 14 : Simulation Status Received
+04/04 12:31:23 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:31:23 INFO OrOmerShelly.Coordinator|Day 14 ended. Starting next day
+04/04 12:31:34 INFO OrOmerShelly.Coordinator|Day 15 :BankStatus[-2.041200]
+04/04 12:31:34 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2095.0, effectiveBid=2031.2757196197697])
+04/04 12:31:34 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:31:34 INFO OrOmerShelly.Coordinator|Day 15: Campaign opportunity - Campaign ID 4264640: day 17 to 19 [LOW_INCOME, YOUNG], reach: 6250 coefs: (v=2.0, m=1.5)
+04/04 12:31:34 INFO OrOmerShelly.Coordinator|Day 15: Campaign total budget bid: 1657.4252651480854
+04/04 12:31:34 INFO OrOmerShelly.Coordinator|Day 15: Adjusting ucs bid: was 0.1578832525747153 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.19753154007121648
+04/04 12:31:34 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:31:35 INFO OrOmerShelly.Coordinator|Day 15 : Simulation Status Received
+04/04 12:31:35 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:31:35 INFO OrOmerShelly.Coordinator|Day 15 ended. Starting next day
+04/04 12:31:43 INFO OrOmerShelly.Coordinator|Day 16 :BankStatus[-2.187000]
+04/04 12:31:43 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:31:43 INFO OrOmerShelly.Coordinator|Day 16: Campaign opportunity - Campaign ID 22835530: day 18 to 27 [HIGH_INCOME, OLD], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:31:43 INFO OrOmerShelly.Coordinator|Day 16: Campaign total budget bid: 297.9534509452962
+04/04 12:31:43 INFO OrOmerShelly.Coordinator|Day 16: Adjusting ucs bid: was 0.19753154007121648 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.183555358087742
+04/04 12:31:43 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:31:43 INFO OrOmerShelly.Coordinator|Day 16 : Simulation Status Received
+04/04 12:31:43 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:31:43 INFO OrOmerShelly.Coordinator|Day 16 ended. Starting next day
+04/04 12:31:54 INFO OrOmerShelly.Coordinator|Day 17 :BankStatus[-2.332800]
+04/04 12:31:54 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:31:54 INFO OrOmerShelly.Coordinator|Day 17: Campaign opportunity - Campaign ID 12263083: day 19 to 28 [OLD, MALE], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:31:54 INFO OrOmerShelly.Coordinator|Day 17: Campaign total budget bid: 303.0859662681307
+04/04 12:31:54 INFO OrOmerShelly.Coordinator|Day 17: Adjusting ucs bid: was 0.183555358087742 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.10019196678131195
+04/04 12:31:54 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:31:54 INFO OrOmerShelly.Coordinator|Day 17 : Simulation Status Received
+04/04 12:31:54 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:31:54 INFO OrOmerShelly.Coordinator|Day 17 ended. Starting next day
+04/04 12:32:03 INFO OrOmerShelly.Coordinator|Day 18 :BankStatus[-2.478600]
+04/04 12:32:03 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:32:03 INFO OrOmerShelly.Coordinator|Day 18: Campaign opportunity - Campaign ID 5472470: day 20 to 29 [OLD, MALE], reach: 6250 coefs: (v=2.0, m=1.5)
+04/04 12:32:03 INFO OrOmerShelly.Coordinator|Day 18: Campaign total budget bid: 505.1432771135511
+04/04 12:32:03 INFO OrOmerShelly.Coordinator|Day 18: Adjusting ucs bid: was 0.10019196678131195 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.1424432297680882
+04/04 12:32:03 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:32:04 INFO OrOmerShelly.Coordinator|Day 18 : Simulation Status Received
+04/04 12:32:04 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:32:04 INFO OrOmerShelly.Coordinator|Day 18 ended. Starting next day
+04/04 12:32:13 INFO OrOmerShelly.Coordinator|Day 19 :BankStatus[-2.624400]
+04/04 12:32:13 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:32:13 INFO OrOmerShelly.Coordinator|Day 19: Campaign opportunity - Campaign ID 2967130: day 21 to 25 [HIGH_INCOME, MALE], reach: 12500 coefs: (v=2.0, m=1.5)
+04/04 12:32:13 INFO OrOmerShelly.Coordinator|Day 19: Campaign total budget bid: 2026.8610276566624
+04/04 12:32:13 INFO OrOmerShelly.Coordinator|Day 19: Adjusting ucs bid: was 0.1424432297680882 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.17569289592818357
+04/04 12:32:13 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:32:13 INFO OrOmerShelly.Coordinator|Day 19 : Simulation Status Received
+04/04 12:32:13 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:32:13 INFO OrOmerShelly.Coordinator|Day 19 ended. Starting next day
+04/04 12:32:23 INFO OrOmerShelly.Coordinator|Day 20 :BankStatus[-2.770200]
+04/04 12:32:23 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:32:23 INFO OrOmerShelly.Coordinator|Day 20: Campaign opportunity - Campaign ID 3242770: day 22 to 24 [FEMALE, LOW_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)
+04/04 12:32:23 INFO OrOmerShelly.Coordinator|Day 20: Campaign total budget bid: 1655.5626911455404
+04/04 12:32:23 INFO OrOmerShelly.Coordinator|Day 20: Adjusting ucs bid: was 0.17569289592818357 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.12165667057309075
+04/04 12:32:23 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:32:24 INFO OrOmerShelly.Coordinator|Day 20 : Simulation Status Received
+04/04 12:32:24 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:32:24 INFO OrOmerShelly.Coordinator|Day 20 ended. Starting next day
+04/04 12:32:33 INFO OrOmerShelly.Coordinator|Day 21 :BankStatus[-2.916000]
+04/04 12:32:33 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:32:33 INFO OrOmerShelly.Coordinator|Day 21: Campaign opportunity - Campaign ID 28294612: day 23 to 25 [LOW_INCOME, MALE], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:32:33 INFO OrOmerShelly.Coordinator|Day 21: Campaign total budget bid: 998.3059052273287
+04/04 12:32:33 INFO OrOmerShelly.Coordinator|Day 21: Adjusting ucs bid: was 0.12165667057309075 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.15734901873021045
+04/04 12:32:33 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:32:33 INFO OrOmerShelly.Coordinator|Day 21 : Simulation Status Received
+04/04 12:32:33 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:32:33 INFO OrOmerShelly.Coordinator|Day 21 ended. Starting next day
+04/04 12:32:43 INFO OrOmerShelly.Coordinator|Day 22 :BankStatus[-3.061800]
+04/04 12:32:43 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2829.0, effectiveBid=2427.8703042668826])
+04/04 12:32:43 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:32:43 INFO OrOmerShelly.Coordinator|Day 22: Campaign opportunity - Campaign ID 7698449: day 24 to 28 [OLD, MALE], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:32:43 INFO OrOmerShelly.Coordinator|Day 22: Campaign total budget bid: 606.1719325362614
+04/04 12:32:43 INFO OrOmerShelly.Coordinator|Day 22: Adjusting ucs bid: was 0.15734901873021045 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.12141007282251336
+04/04 12:32:43 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:32:43 INFO OrOmerShelly.Coordinator|Day 22 : Simulation Status Received
+04/04 12:32:43 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:32:43 INFO OrOmerShelly.Coordinator|Day 22 ended. Starting next day
+04/04 12:32:54 INFO OrOmerShelly.Coordinator|Day 23 :BankStatus[-3.207600]
+04/04 12:32:54 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2157.0, effectiveBid=1851.1545586085774])
+04/04 12:32:54 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:32:54 INFO OrOmerShelly.Coordinator|Day 23: Campaign opportunity - Campaign ID 22170901: day 25 to 34 [HIGH_INCOME, YOUNG], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:32:54 INFO OrOmerShelly.Coordinator|Day 23: Campaign total budget bid: 304.65288033200494
+04/04 12:32:54 INFO OrOmerShelly.Coordinator|Day 23: Adjusting ucs bid: was 0.12141007282251336 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.17260907690299296
+04/04 12:32:54 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:32:54 INFO OrOmerShelly.Coordinator|Day 23 : Simulation Status Received
+04/04 12:32:54 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:32:54 INFO OrOmerShelly.Coordinator|Day 23 ended. Starting next day
+04/04 12:33:04 INFO OrOmerShelly.Coordinator|Day 24 :BankStatus[-3.353400]
+04/04 12:33:04 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2486.0, effectiveBid=2133.5049757537895])
+04/04 12:33:04 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:33:04 INFO OrOmerShelly.Coordinator|Day 24: Campaign opportunity - Campaign ID 9554484: day 26 to 35 [LOW_INCOME, YOUNG], reach: 6250 coefs: (v=2.0, m=1.5)
+04/04 12:33:04 INFO OrOmerShelly.Coordinator|Day 24: Campaign total budget bid: 497.22757954442557
+04/04 12:33:04 INFO OrOmerShelly.Coordinator|Day 24: Adjusting ucs bid: was 0.17260907690299296 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.15143577847008205
+04/04 12:33:04 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:33:05 INFO OrOmerShelly.Coordinator|Day 24 : Simulation Status Received
+04/04 12:33:05 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:33:05 INFO OrOmerShelly.Coordinator|Day 24 ended. Starting next day
+04/04 12:33:14 INFO OrOmerShelly.Coordinator|Day 25 :BankStatus[-3.499200]
+04/04 12:33:14 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2795.0, effectiveBid=2398.691233802028])
+04/04 12:33:14 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:33:14 INFO OrOmerShelly.Coordinator|Day 25: Campaign opportunity - Campaign ID 19098187: day 27 to 31 [FEMALE, LOW_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)
+04/04 12:33:14 INFO OrOmerShelly.Coordinator|Day 25: Campaign total budget bid: 993.3376146873242
+04/04 12:33:14 INFO OrOmerShelly.Coordinator|Day 25: Adjusting ucs bid: was 0.15143577847008205 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.10701673960291537
+04/04 12:33:14 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:33:14 INFO OrOmerShelly.Coordinator|Day 25 : Simulation Status Received
+04/04 12:33:14 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:33:14 INFO OrOmerShelly.Coordinator|Day 25 ended. Starting next day
+04/04 12:33:23 INFO OrOmerShelly.Coordinator|Day 26 :BankStatus[-3.645000]
+04/04 12:33:23 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2279.0, effectiveBid=2157.6159176754936])
+04/04 12:33:23 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:33:23 INFO OrOmerShelly.Coordinator|Day 26: Campaign opportunity - Campaign ID 2191786: day 28 to 32 [LOW_INCOME, OLD], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:33:23 INFO OrOmerShelly.Coordinator|Day 26: Campaign total budget bid: 598.3078160554218
+04/04 12:33:23 INFO OrOmerShelly.Coordinator|Day 26: Adjusting ucs bid: was 0.10701673960291537 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.13050160335717165
+04/04 12:33:23 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:33:24 INFO OrOmerShelly.Coordinator|Day 26 : Simulation Status Received
+04/04 12:33:24 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:33:24 INFO OrOmerShelly.Coordinator|Day 26 ended. Starting next day
+04/04 12:33:37 INFO OrOmerShelly.Coordinator|Day 27 :BankStatus[-3.790800]
+04/04 12:33:37 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2902.0, effectiveBid=2846.5569432227176])
+04/04 12:33:37 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:33:37 INFO OrOmerShelly.Coordinator|Day 27: Campaign opportunity - Campaign ID 18541031: day 29 to 33 [HIGH_INCOME, YOUNG], reach: 6250 coefs: (v=2.0, m=1.5)
+04/04 12:33:37 INFO OrOmerShelly.Coordinator|Day 27: Campaign total budget bid: 1015.5096011066831
+04/04 12:33:37 INFO OrOmerShelly.Coordinator|Day 27: Adjusting ucs bid: was 0.13050160335717165 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.1270845085975567
+04/04 12:33:37 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:33:38 INFO OrOmerShelly.Coordinator|Day 27 : Simulation Status Received
+04/04 12:33:38 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:33:38 INFO OrOmerShelly.Coordinator|Day 27 ended. Starting next day
+04/04 12:33:43 INFO OrOmerShelly.Coordinator|Day 28 :BankStatus[-3.936600]
+04/04 12:33:43 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2184.0, effectiveBid=2142.274419020818])
+04/04 12:33:43 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:33:43 INFO OrOmerShelly.Coordinator|Day 28: Campaign opportunity - Campaign ID 26797559: day 30 to 32 [LOW_INCOME, YOUNG], reach: 12500 coefs: (v=2.0, m=1.5)
+04/04 12:33:43 INFO OrOmerShelly.Coordinator|Day 28: Campaign total budget bid: 3314.8505302961707
+04/04 12:33:43 INFO OrOmerShelly.Coordinator|Day 28: Adjusting ucs bid: was 0.1270845085975567 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.16694481441477577
+04/04 12:33:43 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:33:43 INFO OrOmerShelly.Coordinator|Day 28 : Simulation Status Received
+04/04 12:33:43 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:33:43 INFO OrOmerShelly.Coordinator|Day 28 ended. Starting next day
+04/04 12:33:53 INFO OrOmerShelly.Coordinator|Day 29 :BankStatus[-4.082400]
+04/04 12:33:53 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2082.0, effectiveBid=2042.2231412094065])
+04/04 12:33:53 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:33:53 INFO OrOmerShelly.Coordinator|Day 29: Campaign opportunity - Campaign ID 5517685: day 31 to 35 [LOW_INCOME, OLD], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:33:53 INFO OrOmerShelly.Coordinator|Day 29: Campaign total budget bid: 598.3078160554218
+04/04 12:33:53 INFO OrOmerShelly.Coordinator|Day 29: Adjusting ucs bid: was 0.16694481441477577 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.1647889479076753
+04/04 12:33:53 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:33:53 INFO OrOmerShelly.Coordinator|Day 29 : Simulation Status Received
+04/04 12:33:53 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:33:53 INFO OrOmerShelly.Coordinator|Day 29 ended. Starting next day
+04/04 12:34:05 INFO OrOmerShelly.Coordinator|Day 30 :BankStatus[-4.228200]
+04/04 12:34:05 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:34:05 INFO OrOmerShelly.Coordinator|Day 30: Campaign opportunity - Campaign ID 19382808: day 32 to 41 [HIGH_INCOME, YOUNG], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:34:05 INFO OrOmerShelly.Coordinator|Day 30: Campaign total budget bid: 304.65288033200494
+04/04 12:34:05 INFO OrOmerShelly.Coordinator|Day 30: Adjusting ucs bid: was 0.1647889479076753 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.10422280907737523
+04/04 12:34:05 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:34:05 INFO OrOmerShelly.Coordinator|Day 30 : Simulation Status Received
+04/04 12:34:05 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:34:05 INFO OrOmerShelly.Coordinator|Day 30 ended. Starting next day
+04/04 12:34:15 INFO OrOmerShelly.Coordinator|Day 31 :BankStatus[-4.374000]
+04/04 12:34:15 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:34:15 INFO OrOmerShelly.Coordinator|Day 31: Campaign opportunity - Campaign ID 18996396: day 33 to 42 [OLD, MALE], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:34:15 INFO OrOmerShelly.Coordinator|Day 31: Campaign total budget bid: 303.0859662681307
+04/04 12:34:15 INFO OrOmerShelly.Coordinator|Day 31: Adjusting ucs bid: was 0.10422280907737523 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.14817389075601248
+04/04 12:34:15 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:34:15 INFO OrOmerShelly.Coordinator|Day 31 : Simulation Status Received
+04/04 12:34:15 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:34:15 INFO OrOmerShelly.Coordinator|Day 31 ended. Starting next day
+04/04 12:34:23 INFO OrOmerShelly.Coordinator|Day 32 :BankStatus[-4.519800]
+04/04 12:34:23 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:34:23 INFO OrOmerShelly.Coordinator|Day 32: Campaign opportunity - Campaign ID 6127316: day 34 to 43 [YOUNG, MALE], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:34:23 INFO OrOmerShelly.Coordinator|Day 32: Campaign total budget bid: 300.4126882053047
+04/04 12:34:23 INFO OrOmerShelly.Coordinator|Day 32: Adjusting ucs bid: was 0.14817389075601248 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.1865245032997598
+04/04 12:34:23 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:34:24 INFO OrOmerShelly.Coordinator|Day 32 : Simulation Status Received
+04/04 12:34:24 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:34:24 INFO OrOmerShelly.Coordinator|Day 32 ended. Starting next day
+04/04 12:34:33 INFO OrOmerShelly.Coordinator|Day 33 :BankStatus[-4.665600]
+04/04 12:34:33 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:34:33 INFO OrOmerShelly.Coordinator|Day 33: Campaign opportunity - Campaign ID 9058608: day 35 to 44 [FEMALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)
+04/04 12:34:33 INFO OrOmerShelly.Coordinator|Day 33: Campaign total budget bid: 497.5874547887858
+04/04 12:34:33 INFO OrOmerShelly.Coordinator|Day 33: Adjusting ucs bid: was 0.1865245032997598 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.19157954379846265
+04/04 12:34:33 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:34:33 INFO OrOmerShelly.Coordinator|Day 33 : Simulation Status Received
+04/04 12:34:33 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:34:33 INFO OrOmerShelly.Coordinator|Day 33 ended. Starting next day
+04/04 12:34:43 INFO OrOmerShelly.Coordinator|Day 34 :BankStatus[-4.811400]
+04/04 12:34:43 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2783.0, effectiveBid=2010.3959079169063])
+04/04 12:34:43 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:34:43 INFO OrOmerShelly.Coordinator|Day 34: Campaign opportunity - Campaign ID 4801672: day 36 to 38 [HIGH_INCOME, YOUNG], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:34:43 INFO OrOmerShelly.Coordinator|Day 34: Campaign total budget bid: 1015.5096011066831
+04/04 12:34:43 INFO OrOmerShelly.Coordinator|Day 34: Adjusting ucs bid: was 0.19157954379846265 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.15237015911677537
+04/04 12:34:43 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:34:43 INFO OrOmerShelly.Coordinator|Day 34 : Simulation Status Received
+04/04 12:34:43 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:34:43 INFO OrOmerShelly.Coordinator|Day 34 ended. Starting next day
+04/04 12:34:55 INFO OrOmerShelly.Coordinator|Day 35 :BankStatus[-4.957200]
+04/04 12:34:55 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2109.0, effectiveBid=1876.7723609710654])
+04/04 12:34:55 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:34:55 INFO OrOmerShelly.Coordinator|Day 35: Campaign opportunity - Campaign ID 10839939: day 37 to 39 [FEMALE, HIGH_INCOME], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:34:55 INFO OrOmerShelly.Coordinator|Day 35: Campaign total budget bid: 995.1749095775716
+04/04 12:34:55 INFO OrOmerShelly.Coordinator|Day 35: Adjusting ucs bid: was 0.15237015911677537 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.15244408579870414
+04/04 12:34:55 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:34:55 INFO OrOmerShelly.Coordinator|Day 35 : Simulation Status Received
+04/04 12:34:55 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:34:55 INFO OrOmerShelly.Coordinator|Day 35 ended. Starting next day
+04/04 12:35:05 INFO OrOmerShelly.Coordinator|Day 36 :BankStatus[-5.103000]
+04/04 12:35:05 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2473.0, effectiveBid=2377.2258702031972])
+04/04 12:35:05 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:35:05 INFO OrOmerShelly.Coordinator|Day 36: Campaign opportunity - Campaign ID 10274193: day 38 to 42 [LOW_INCOME, YOUNG], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:35:05 INFO OrOmerShelly.Coordinator|Day 36: Campaign total budget bid: 596.6730954533107
+04/04 12:35:05 INFO OrOmerShelly.Coordinator|Day 36: Adjusting ucs bid: was 0.15244408579870414 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.1620586510329731
+04/04 12:35:05 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:35:05 INFO OrOmerShelly.Coordinator|Day 36 : Simulation Status Received
+04/04 12:35:05 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:35:05 INFO OrOmerShelly.Coordinator|Day 36 ended. Starting next day
+04/04 12:35:13 INFO OrOmerShelly.Coordinator|Day 37 :BankStatus[-5.248800]
+04/04 12:35:13 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:35:13 INFO OrOmerShelly.Coordinator|Day 37: Campaign opportunity - Campaign ID 12378075: day 39 to 41 [FEMALE, HIGH_INCOME], reach: 12500 coefs: (v=2.0, m=1.5)
+04/04 12:35:13 INFO OrOmerShelly.Coordinator|Day 37: Campaign total budget bid: 3317.2496985919056
+04/04 12:35:13 INFO OrOmerShelly.Coordinator|Day 37: Adjusting ucs bid: was 0.1620586510329731 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.1255680952131591
+04/04 12:35:13 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:35:14 INFO OrOmerShelly.Coordinator|Day 37 : Simulation Status Received
+04/04 12:35:14 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:35:14 INFO OrOmerShelly.Coordinator|Day 37 ended. Starting next day
+04/04 12:35:23 INFO OrOmerShelly.Coordinator|Day 38 :BankStatus[-5.394600]
+04/04 12:35:23 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:35:23 INFO OrOmerShelly.Coordinator|Day 38: Campaign opportunity - Campaign ID 7446207: day 40 to 42 [FEMALE, YOUNG], reach: 12500 coefs: (v=2.0, m=1.5)
+04/04 12:35:23 INFO OrOmerShelly.Coordinator|Day 38: Campaign total budget bid: 3361.3102987740194
+04/04 12:35:23 INFO OrOmerShelly.Coordinator|Day 38: Adjusting ucs bid: was 0.1255680952131591 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.1186179896432058
+04/04 12:35:23 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:35:24 INFO OrOmerShelly.Coordinator|Day 38 : Simulation Status Received
+04/04 12:35:24 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:35:24 INFO OrOmerShelly.Coordinator|Day 38 ended. Starting next day
+04/04 12:35:33 INFO OrOmerShelly.Coordinator|Day 39 :BankStatus[-5.540400]
+04/04 12:35:33 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:35:33 INFO OrOmerShelly.Coordinator|Day 39: Campaign opportunity - Campaign ID 24890242: day 41 to 45 [LOW_INCOME, OLD], reach: 12500 coefs: (v=2.0, m=1.5)
+04/04 12:35:33 INFO OrOmerShelly.Coordinator|Day 39: Campaign total budget bid: 1994.3593868514058
+04/04 12:35:33 INFO OrOmerShelly.Coordinator|Day 39: Adjusting ucs bid: was 0.1186179896432058 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.12691416038356917
+04/04 12:35:33 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:35:33 INFO OrOmerShelly.Coordinator|Day 39 : Simulation Status Received
+04/04 12:35:33 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:35:33 INFO OrOmerShelly.Coordinator|Day 39 ended. Starting next day
+04/04 12:35:43 INFO OrOmerShelly.Coordinator|Day 40 :BankStatus[-5.686200]
+04/04 12:35:43 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:35:43 INFO OrOmerShelly.Coordinator|Day 40: Campaign opportunity - Campaign ID 14608793: day 42 to 44 [FEMALE, LOW_INCOME], reach: 12500 coefs: (v=2.0, m=1.5)
+04/04 12:35:43 INFO OrOmerShelly.Coordinator|Day 40: Campaign total budget bid: 3311.1253822910808
+04/04 12:35:43 INFO OrOmerShelly.Coordinator|Day 40: Adjusting ucs bid: was 0.12691416038356917 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.18043425525121745
+04/04 12:35:43 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:35:44 INFO OrOmerShelly.Coordinator|Day 40 : Simulation Status Received
+04/04 12:35:44 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:35:44 INFO OrOmerShelly.Coordinator|Day 40 ended. Starting next day
+04/04 12:35:53 INFO OrOmerShelly.Coordinator|Day 41 :BankStatus[-5.832000]
+04/04 12:35:53 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2802.0, effectiveBid=1861.508790108325])
+04/04 12:35:53 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:35:53 INFO OrOmerShelly.Coordinator|Day 41: Campaign opportunity - Campaign ID 2958089: day 43 to 52 [YOUNG, MALE], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:35:53 INFO OrOmerShelly.Coordinator|Day 41: Campaign total budget bid: 300.4126882053047
+04/04 12:35:53 INFO OrOmerShelly.Coordinator|Day 41: Adjusting ucs bid: was 0.18043425525121745 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.1277967600815041
+04/04 12:35:53 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:35:54 INFO OrOmerShelly.Coordinator|Day 41 : Simulation Status Received
+04/04 12:35:54 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:35:54 INFO OrOmerShelly.Coordinator|Day 41 ended. Starting next day
+04/04 12:36:04 INFO OrOmerShelly.Coordinator|Day 42 :BankStatus[-5.977800]
+04/04 12:36:04 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2366.0, effectiveBid=1571.8521760871868])
+04/04 12:36:04 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:36:04 INFO OrOmerShelly.Coordinator|Day 42: Campaign opportunity - Campaign ID 16263139: day 44 to 48 [OLD, MALE], reach: 6250 coefs: (v=2.0, m=1.5)
+04/04 12:36:04 INFO OrOmerShelly.Coordinator|Day 42: Campaign total budget bid: 1010.2865542271022
+04/04 12:36:04 INFO OrOmerShelly.Coordinator|Day 42: Adjusting ucs bid: was 0.1277967600815041 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.11510386926028846
+04/04 12:36:04 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:36:05 INFO OrOmerShelly.Coordinator|Day 42 : Simulation Status Received
+04/04 12:36:05 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:36:05 INFO OrOmerShelly.Coordinator|Day 42 ended. Starting next day
+04/04 12:36:14 INFO OrOmerShelly.Coordinator|Day 43 :BankStatus[-6.123600]
+04/04 12:36:14 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2758.0, effectiveBid=1832.2773886933478])
+04/04 12:36:14 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:36:14 INFO OrOmerShelly.Coordinator|Day 43: Campaign opportunity - Campaign ID 15001567: day 45 to 54 [FEMALE, HIGH_INCOME], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:36:14 INFO OrOmerShelly.Coordinator|Day 43: Campaign total budget bid: 298.5524728732715
+04/04 12:36:14 INFO OrOmerShelly.Coordinator|Day 43: Adjusting ucs bid: was 0.11510386926028846 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.13111500013152302
+04/04 12:36:14 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:36:14 INFO OrOmerShelly.Coordinator|Day 43 : Simulation Status Received
+04/04 12:36:14 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:36:14 INFO OrOmerShelly.Coordinator|Day 43 ended. Starting next day
+04/04 12:36:23 INFO OrOmerShelly.Coordinator|Day 44 :BankStatus[-6.269400]
+04/04 12:36:23 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2387.0, effectiveBid=1585.8035267625166])
+04/04 12:36:23 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:36:23 INFO OrOmerShelly.Coordinator|Day 44: Campaign opportunity - Campaign ID 31409087: day 46 to 55 [YOUNG, MALE], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:36:23 INFO OrOmerShelly.Coordinator|Day 44: Campaign total budget bid: 300.4126882053047
+04/04 12:36:23 INFO OrOmerShelly.Coordinator|Day 44: Adjusting ucs bid: was 0.13111500013152302 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.1744241298039915
+04/04 12:36:23 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:36:23 INFO OrOmerShelly.Coordinator|Day 44 : Simulation Status Received
+04/04 12:36:23 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:36:23 INFO OrOmerShelly.Coordinator|Day 44 ended. Starting next day
+04/04 12:36:33 INFO OrOmerShelly.Coordinator|Day 45 :BankStatus[-6.415200]
+04/04 12:36:33 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2253.0, effectiveBid=1496.7806224532678])
+04/04 12:36:33 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:36:33 INFO OrOmerShelly.Coordinator|Day 45: Campaign opportunity - Campaign ID 14987127: day 47 to 49 [HIGH_INCOME, MALE], reach: 12500 coefs: (v=2.0, m=1.5)
+04/04 12:36:33 INFO OrOmerShelly.Coordinator|Day 45: Campaign total budget bid: 3378.1017127611044
+04/04 12:36:33 INFO OrOmerShelly.Coordinator|Day 45: Adjusting ucs bid: was 0.1744241298039915 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.12491774421814207
+04/04 12:36:33 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:36:34 INFO OrOmerShelly.Coordinator|Day 45 : Simulation Status Received
+04/04 12:36:34 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:36:34 INFO OrOmerShelly.Coordinator|Day 45 ended. Starting next day
+04/04 12:36:42 INFO OrOmerShelly.Coordinator|Day 46 :BankStatus[-6.561000]
+04/04 12:36:42 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:36:42 INFO OrOmerShelly.Coordinator|Day 46: Campaign opportunity - Campaign ID 8385550: day 48 to 52 [HIGH_INCOME, MALE], reach: 6250 coefs: (v=2.0, m=1.5)
+04/04 12:36:42 INFO OrOmerShelly.Coordinator|Day 46: Campaign total budget bid: 1013.4305138283312
+04/04 12:36:42 INFO OrOmerShelly.Coordinator|Day 46: Adjusting ucs bid: was 0.12491774421814207 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.16314044676254574
+04/04 12:36:42 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:36:43 INFO OrOmerShelly.Coordinator|Day 46 : Simulation Status Received
+04/04 12:36:43 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:36:43 INFO OrOmerShelly.Coordinator|Day 46 ended. Starting next day
+04/04 12:36:53 INFO OrOmerShelly.Coordinator|Day 47 :BankStatus[-6.706800]
+04/04 12:36:53 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:36:53 INFO OrOmerShelly.Coordinator|Day 47: Campaign opportunity - Campaign ID 33284251: day 49 to 58 [LOW_INCOME, YOUNG], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:36:53 INFO OrOmerShelly.Coordinator|Day 47: Campaign total budget bid: 298.33654772665534
+04/04 12:36:53 INFO OrOmerShelly.Coordinator|Day 47: Adjusting ucs bid: was 0.16314044676254574 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.19428660706916087
+04/04 12:36:53 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:36:53 INFO OrOmerShelly.Coordinator|Day 47 : Simulation Status Received
+04/04 12:36:53 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:36:53 INFO OrOmerShelly.Coordinator|Day 47 ended. Starting next day
+04/04 12:37:03 INFO OrOmerShelly.Coordinator|Day 48 :BankStatus[-6.852600]
+04/04 12:37:03 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:37:03 INFO OrOmerShelly.Coordinator|Day 48: Campaign opportunity - Campaign ID 23765443: day 50 to 52 [OLD, MALE], reach: 12500 coefs: (v=2.0, m=1.5)
+04/04 12:37:03 INFO OrOmerShelly.Coordinator|Day 48: Campaign total budget bid: 3367.6218474236744
+04/04 12:37:03 INFO OrOmerShelly.Coordinator|Day 48: Adjusting ucs bid: was 0.19428660706916087 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.10775987687066439
+04/04 12:37:03 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:37:04 INFO OrOmerShelly.Coordinator|Day 48 : Simulation Status Received
+04/04 12:37:04 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:37:04 INFO OrOmerShelly.Coordinator|Day 48 ended. Starting next day
+04/04 12:37:13 INFO OrOmerShelly.Coordinator|Day 49 :BankStatus[-6.998400]
+04/04 12:37:13 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:37:13 INFO OrOmerShelly.Coordinator|Day 49: Campaign opportunity - Campaign ID 9060793: day 51 to 55 [HIGH_INCOME, OLD], reach: 12500 coefs: (v=2.0, m=1.5)
+04/04 12:37:13 INFO OrOmerShelly.Coordinator|Day 49: Campaign total budget bid: 1986.356339635308
+04/04 12:37:13 INFO OrOmerShelly.Coordinator|Day 49: Adjusting ucs bid: was 0.10775987687066439 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.15320255100264185
+04/04 12:37:13 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:37:14 INFO OrOmerShelly.Coordinator|Day 49 : Simulation Status Received
+04/04 12:37:14 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:37:14 INFO OrOmerShelly.Coordinator|Day 49 ended. Starting next day
+04/04 12:37:23 INFO OrOmerShelly.Coordinator|Day 50 :BankStatus[-7.144200]
+04/04 12:37:23 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:37:23 INFO OrOmerShelly.Coordinator|Day 50: Campaign opportunity - Campaign ID 948638: day 52 to 56 [OLD, MALE], reach: 12500 coefs: (v=2.0, m=1.5)
+04/04 12:37:23 INFO OrOmerShelly.Coordinator|Day 50: Campaign total budget bid: 2020.5731084542044
+04/04 12:37:23 INFO OrOmerShelly.Coordinator|Day 50: Adjusting ucs bid: was 0.15320255100264185 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.1403742545888657
+04/04 12:37:23 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:37:23 INFO OrOmerShelly.Coordinator|Day 50 : Simulation Status Received
+04/04 12:37:23 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:37:23 INFO OrOmerShelly.Coordinator|Day 50 ended. Starting next day
+04/04 12:37:35 INFO OrOmerShelly.Coordinator|Day 51 :BankStatus[-7.290000]
+04/04 12:37:35 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:37:35 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:37:35 INFO OrOmerShelly.Coordinator|Day 51 : Simulation Status Received
+04/04 12:37:35 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:37:35 INFO OrOmerShelly.Coordinator|Day 51 ended. Starting next day
+04/04 12:37:43 INFO OrOmerShelly.Coordinator|Day 52 :BankStatus[-7.435800]
+04/04 12:37:43 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:37:43 INFO OrOmerShelly.Coordinator|Day 52: Campaign opportunity - Campaign ID 23281417: day 54 to 58 [YOUNG, MALE], reach: 12500 coefs: (v=2.0, m=1.5)
+04/04 12:37:43 INFO OrOmerShelly.Coordinator|Day 52: Campaign total budget bid: 2002.7512547020312
+04/04 12:37:43 INFO OrOmerShelly.Coordinator|Day 52: Adjusting ucs bid: was 0.1403742545888657 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.176041731317992
+04/04 12:37:43 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:37:44 INFO OrOmerShelly.Coordinator|Day 52 : Simulation Status Received
+04/04 12:37:44 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:37:44 INFO OrOmerShelly.Coordinator|Day 52 ended. Starting next day
+04/04 12:37:53 INFO OrOmerShelly.Coordinator|Day 53 :BankStatus[-7.581600]
+04/04 12:37:53 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:37:53 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:37:54 INFO OrOmerShelly.Coordinator|Day 53 : Simulation Status Received
+04/04 12:37:54 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:37:54 INFO OrOmerShelly.Coordinator|Day 53 ended. Starting next day
+04/04 12:38:06 INFO OrOmerShelly.Coordinator|Day 54 :BankStatus[-7.727400]
+04/04 12:38:06 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:38:06 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:38:06 INFO OrOmerShelly.Coordinator|Day 54 : Simulation Status Received
+04/04 12:38:06 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:38:06 INFO OrOmerShelly.Coordinator|Day 54 ended. Starting next day
+04/04 12:38:13 INFO OrOmerShelly.Coordinator|Day 55 :BankStatus[-7.873200]
+04/04 12:38:13 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:38:13 INFO OrOmerShelly.Coordinator|Day 55: Campaign opportunity - Campaign ID 29290316: day 57 to 59 [HIGH_INCOME, YOUNG], reach: 3750 coefs: (v=2.0, m=1.5)
+04/04 12:38:13 INFO OrOmerShelly.Coordinator|Day 55: Campaign total budget bid: 1015.5096011066831
+04/04 12:38:13 INFO OrOmerShelly.Coordinator|Day 55: Adjusting ucs bid: was 0.176041731317992 level reported: 0.47829690000000014 target: 0.9 adjusted: 0.10279156728787449
+04/04 12:38:13 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:38:13 INFO OrOmerShelly.Coordinator|Day 55 : Simulation Status Received
+04/04 12:38:13 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:38:13 INFO OrOmerShelly.Coordinator|Day 55 ended. Starting next day
+04/04 12:38:24 INFO OrOmerShelly.Coordinator|Day 56 :BankStatus[-8.019000]
+04/04 12:38:24 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: (CampaignAuctionReport CampaignAuctionReportEntry [actualBid=2196.0, effectiveBid=1903.8232734509754])
+04/04 12:38:24 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:38:24 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:38:24 INFO OrOmerShelly.Coordinator|Day 56 : Simulation Status Received
+04/04 12:38:24 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:38:24 INFO OrOmerShelly.Coordinator|Day 56 ended. Starting next day
+04/04 12:38:35 INFO OrOmerShelly.Coordinator|Day 57 :BankStatus[-8.164800]
+04/04 12:38:35 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:38:35 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:38:35 INFO OrOmerShelly.Coordinator|Day 57 : Simulation Status Received
+04/04 12:38:35 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:38:35 INFO OrOmerShelly.Coordinator|Day 57 ended. Starting next day
+04/04 12:38:42 INFO OrOmerShelly.Coordinator|Day 58 :BankStatus[-8.310600]
+04/04 12:38:42 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:38:42 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:38:43 INFO OrOmerShelly.Coordinator|Day 58 : Simulation Status Received
+04/04 12:38:43 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:38:43 INFO OrOmerShelly.Coordinator|Day 58 ended. Starting next day
+04/04 12:38:54 INFO OrOmerShelly.Coordinator|Day 59 :BankStatus[-8.456400]
+04/04 12:38:54 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:38:54 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:38:55 INFO OrOmerShelly.Coordinator|Day 59 : Simulation Status Received
+04/04 12:38:55 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:38:55 INFO OrOmerShelly.Coordinator|Day 59 ended. Starting next day
+04/04 12:39:00 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:39:00 INFO OrOmerShelly.Coordinator|Day 60 :BankStatus[-8.748000]
+04/04 12:39:00 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message.java.lang.NullPointerException
+04/04 12:39:00 INFO OrOmerShelly.Coordinator|Day 60 : Simulation Status Received
+04/04 12:39:00 WARNING OrOmerShelly.Coordinator|BidBundle is null!
+04/04 12:39:00 INFO OrOmerShelly.Coordinator|Day 60 ended. Starting next day
+08/04 18:34:00 INFO OrOmerShelly.Coordinator|Got publisherCatalog: (PublisherCatalog tau.tac.adx.props.PublisherCatalogEntry@1ac28 tau.tac.adx.props.PublisherCatalogEntry@18182 tau.tac.adx.props.PublisherCatalogEntry@cb7e71b0 tau.tac.adx.props.PublisherCatalogEntry@6d6c85f tau.tac.adx.props.PublisherCatalogEntry@18cee tau.tac.adx.props.PublisherCatalogEntry@1358a3bf)
+08/04 18:34:00 INFO OrOmerShelly.Coordinator|Available queries: [Ltau.tac.adx.props.AdxQuery;@c3e967
+08/04 18:34:00 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: edu.umich.eecs.tac.props.AdvertiserInfo@bc76a1c1
+08/04 18:34:00 INFO OrOmerShelly.Coordinator|Day 0 :BankStatus[0.000000]
+08/04 18:34:00 INFO OrOmerShelly.Coordinator|tau.tac.adx.report.demand.InitialCampaignMessage[23678694,1250,1,5,[FEMALE, YOUNG],2.0,1.5,demand,[]]
+08/04 18:34:00 INFO OrOmerShelly.Coordinator|Day 0: Allocated campaign - Campaign ID 23678694: day 1 to 5 [FEMALE, YOUNG], reach: 1250 coefs: (v=2.0, m=1.5)
+08/04 18:34:01 INFO OrOmerShelly.Coordinator|Day 0: Campaign opportunity - Campaign ID 5812905: day 2 to 4 [YOUNG, MALE], reach: 12500 coefs: (v=2.0, m=1.5)
+08/04 18:34:01 INFO OrOmerShelly.Coordinator|Day 0: Campaign total budget bid: 3337.918757836719
+08/04 18:34:01 INFO OrOmerShelly.Coordinator|Day 0: Initial ucs bid is 0.17566336005003833
+08/04 18:34:01 INFO OrOmerShelly.Coordinator|Day 0 : Simulation Status Received
+08/04 18:34:01 SEVERE OrOmerShelly.Coordinator|Exception in initializing classifier: weka.core.UnassignedDatasetException: Instance doesn't have access to a dataset! - [weka.core.Instance.classIndex(Instance.java:203), weka.core.Instance.setClassValue(Instance.java:564), OrOmerShelly.oos.bidders.ImpressionBidder.getDefaultDataset(ImpressionBidder.java:92), OrOmerShelly.oos.bidders.ImpressionBidder.init(ImpressionBidder.java:70), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:361), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:347), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 18:34:01 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 18:34:01 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message: java.lang.NullPointerException : [OrOmerShelly.oos.bidders.ImpressionBidder.getDefaultBidBundle(ImpressionBidder.java:118), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:394), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:347), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+09/04 15:22:00 INFO OrOmerShelly.Coordinator|Got publisherCatalog: nyt ; target ; fox ; msn ; wallmart ; ebay ; 
+09/04 15:22:00 INFO OrOmerShelly.Coordinator|Available queries: [Ltau.tac.adx.props.AdxQuery;@18706f6
+09/04 15:22:00 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: edu.umich.eecs.tac.props.AdvertiserInfo@bc76a1c1
+09/04 15:22:00 INFO OrOmerShelly.Coordinator|Day 0 :BankStatus[0.000000]
+09/04 15:22:00 INFO OrOmerShelly.Coordinator|tau.tac.adx.report.demand.InitialCampaignMessage[22668173,1250,1,5,[OLD, MALE],2.0,1.5,demand,[]]
+09/04 15:22:00 INFO OrOmerShelly.Coordinator|Day 0: Allocated campaign - Campaign ID 22668173: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5) budget: 1.25
+09/04 15:22:00 INFO OrOmerShelly.Coordinator|Day 0: Campaign opportunity - Campaign ID 14004513: day 2 to 4 [OLD, MALE], reach: 12500 coefs: (v=2.0, m=1.5) budget: 0.0
+09/04 15:22:00 INFO OrOmerShelly.Coordinator|Day 0: Campaign total budget bid: 3367.6218474236744
+09/04 15:22:00 INFO OrOmerShelly.Coordinator|Day 0: Initial ucs bid is 0.16168512469312482
+09/04 15:22:00 INFO OrOmerShelly.Coordinator|Day 0 : Simulation Status Received
+09/04 15:22:00 INFO bidders.ImpressionBidder|getDefaultDataset: Generating default instances for publisher - nyt
+09/04 15:22:00 SEVERE OrOmerShelly.Coordinator|Exception in initializing classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMedianOfMarketSegmentsWeights(UserAnalyzer.java:357), OrOmerShelly.oos.bidders.ImpressionBidder.getDefaultDataset(ImpressionBidder.java:119), OrOmerShelly.oos.bidders.ImpressionBidder.init(ImpressionBidder.java:77), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:378), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:363), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+09/04 15:22:00 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 22668173: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5) budget: 1.25]
+09/04 15:22:00 INFO OrOmerShelly.Coordinator|campaign Campaign ID 22668173: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5) budget: 1.25 is active
+09/04 15:22:00 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+09/04 15:22:00 INFO bidders.ImpressionBidder|Default bid bundle bid for Campaign ID 22668173: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5) budget: 1.25 will be 0.8036477410013925 where our rnd was 0.8036477410013925
+09/04 15:22:00 INFO OrOmerShelly.Coordinator|Day 0 ended. Starting next day

@@ -1,0 +1,60 @@
+08/04 21:15:00 FINE sim.Admin|Log for simulation 25 started
+************************************************************
+* Log for simulation 25 started
+************************************************************
+
+
+08/04 21:15:00 FINE sim.ExternalAgent|sample setup with address adv1
+08/04 21:15:00 INFO sim.Simulation|***** START OF TIME 0 *****
+08/04 21:15:00 INFO sim.Simulation|***** START OF TIME 0 COMPLETE *****
+08/04 21:15:06 SEVERE tact.TACTConnection|sample@tact-1: reading error 
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.io.DataInputStream.readInt(Unknown Source)
+	at se.sics.isl.tact.TACTConnection$TACTReader.run(TACTConnection.java:405)
+08/04 21:15:10 INFO sim.Simulation|***** START OF TIME 1 *****
+08/04 21:15:11 INFO sim.Simulation|***** START OF TIME 1 COMPLETE *****
+08/04 21:15:20 INFO sim.Simulation|***** START OF TIME 2 *****
+08/04 21:15:21 INFO sim.Simulation|***** START OF TIME 2 COMPLETE *****
+08/04 21:15:30 INFO sim.Simulation|***** START OF TIME 3 *****
+08/04 21:15:30 INFO sim.Simulation|***** START OF TIME 3 COMPLETE *****
+08/04 21:15:40 INFO sim.Simulation|***** START OF TIME 4 *****
+08/04 21:15:40 INFO sim.Simulation|***** START OF TIME 4 COMPLETE *****
+08/04 21:15:50 INFO sim.Simulation|***** START OF TIME 5 *****
+08/04 21:15:51 INFO sim.Simulation|***** START OF TIME 5 COMPLETE *****
+08/04 21:16:00 INFO sim.Simulation|***** START OF TIME 6 *****
+08/04 21:16:01 INFO sim.Simulation|***** START OF TIME 6 COMPLETE *****
+08/04 21:16:10 INFO sim.Simulation|***** START OF TIME 7 *****
+08/04 21:16:11 INFO sim.Simulation|***** START OF TIME 7 COMPLETE *****
+09/04 17:15:00 FINE sim.Admin|Log for simulation 25 started
+************************************************************
+* Log for simulation 25 started
+************************************************************
+
+
+09/04 17:15:00 FINE sim.ExternalAgent|sample setup with address adv1
+09/04 17:15:00 INFO sim.Simulation|***** START OF TIME 0 *****
+09/04 17:15:00 INFO sim.Simulation|***** START OF TIME 0 COMPLETE *****
+09/04 17:15:02 SEVERE tact.TACTConnection|sample@tact-1: reading error 
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.io.DataInputStream.readInt(Unknown Source)
+	at se.sics.isl.tact.TACTConnection$TACTReader.run(TACTConnection.java:405)
+09/04 17:15:10 INFO sim.Simulation|***** START OF TIME 1 *****
+09/04 17:15:10 INFO sim.Simulation|***** START OF TIME 1 COMPLETE *****
+09/04 17:15:20 INFO sim.Simulation|***** START OF TIME 2 *****
+09/04 17:15:20 INFO sim.Simulation|***** START OF TIME 2 COMPLETE *****
+09/04 17:15:30 INFO sim.Simulation|***** START OF TIME 3 *****
+09/04 17:15:31 INFO sim.Simulation|***** START OF TIME 3 COMPLETE *****
+09/04 17:15:40 INFO sim.Simulation|***** START OF TIME 4 *****
+09/04 17:15:41 INFO sim.Simulation|***** START OF TIME 4 COMPLETE *****
+09/04 17:15:50 INFO sim.Simulation|***** START OF TIME 5 *****
+09/04 17:15:51 INFO sim.Simulation|***** START OF TIME 5 COMPLETE *****
+09/04 17:16:00 INFO sim.Simulation|***** START OF TIME 6 *****
+09/04 17:16:00 INFO sim.Simulation|***** START OF TIME 6 COMPLETE *****
+09/04 17:16:10 INFO sim.Simulation|***** START OF TIME 7 *****
+09/04 17:16:10 INFO sim.Simulation|***** START OF TIME 7 COMPLETE *****

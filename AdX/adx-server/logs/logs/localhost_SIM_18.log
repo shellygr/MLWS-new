@@ -1,0 +1,184 @@
+08/04 19:53:00 FINE sim.Admin|Log for simulation 18 started
+************************************************************
+* Log for simulation 18 started
+************************************************************
+
+
+08/04 19:53:00 FINE sim.ExternalAgent|sample setup with address adv1
+08/04 19:53:00 INFO sim.Simulation|***** START OF TIME 0 *****
+08/04 19:53:00 INFO sim.Simulation|***** START OF TIME 0 COMPLETE *****
+08/04 19:53:10 INFO sim.Simulation|***** START OF TIME 1 *****
+08/04 19:53:11 INFO sim.Simulation|***** START OF TIME 1 COMPLETE *****
+08/04 19:53:20 INFO sim.Simulation|***** START OF TIME 2 *****
+08/04 19:53:20 INFO sim.Simulation|***** START OF TIME 2 COMPLETE *****
+08/04 19:53:30 INFO sim.Simulation|***** START OF TIME 3 *****
+08/04 19:53:30 INFO sim.Simulation|***** START OF TIME 3 COMPLETE *****
+08/04 19:53:40 INFO sim.Simulation|***** START OF TIME 4 *****
+08/04 19:53:40 INFO sim.Simulation|***** START OF TIME 4 COMPLETE *****
+08/04 19:53:50 INFO sim.Simulation|***** START OF TIME 5 *****
+08/04 19:53:51 INFO sim.Simulation|***** START OF TIME 5 COMPLETE *****
+08/04 19:54:00 INFO sim.Simulation|***** START OF TIME 6 *****
+08/04 19:54:01 INFO sim.Simulation|***** START OF TIME 6 COMPLETE *****
+08/04 19:54:10 INFO sim.Simulation|***** START OF TIME 7 *****
+08/04 19:54:11 INFO sim.Simulation|***** START OF TIME 7 COMPLETE *****
+08/04 19:54:20 INFO sim.Simulation|***** START OF TIME 8 *****
+08/04 19:54:20 INFO sim.Simulation|***** START OF TIME 8 COMPLETE *****
+08/04 19:54:30 INFO sim.Simulation|***** START OF TIME 9 *****
+08/04 19:54:31 INFO sim.Simulation|***** START OF TIME 9 COMPLETE *****
+08/04 19:54:40 INFO sim.Simulation|***** START OF TIME 10 *****
+08/04 19:54:40 INFO sim.Simulation|***** START OF TIME 10 COMPLETE *****
+08/04 19:54:50 INFO sim.Simulation|***** START OF TIME 11 *****
+08/04 19:54:51 INFO sim.Simulation|***** START OF TIME 11 COMPLETE *****
+08/04 19:55:00 INFO sim.Simulation|***** START OF TIME 12 *****
+08/04 19:55:00 INFO sim.Simulation|***** START OF TIME 12 COMPLETE *****
+08/04 19:55:10 INFO sim.Simulation|***** START OF TIME 13 *****
+08/04 19:55:11 INFO sim.Simulation|***** START OF TIME 13 COMPLETE *****
+08/04 19:55:20 INFO sim.Simulation|***** START OF TIME 14 *****
+08/04 19:55:21 INFO sim.Simulation|***** START OF TIME 14 COMPLETE *****
+08/04 19:55:30 INFO sim.Simulation|***** START OF TIME 15 *****
+08/04 19:55:31 INFO sim.Simulation|***** START OF TIME 15 COMPLETE *****
+08/04 19:55:40 INFO sim.Simulation|***** START OF TIME 16 *****
+08/04 19:55:40 INFO sim.Simulation|***** START OF TIME 16 COMPLETE *****
+08/04 19:55:50 INFO sim.Simulation|***** START OF TIME 17 *****
+08/04 19:55:51 INFO sim.Simulation|***** START OF TIME 17 COMPLETE *****
+08/04 19:56:00 INFO sim.Simulation|***** START OF TIME 18 *****
+08/04 19:56:00 INFO sim.Simulation|***** START OF TIME 18 COMPLETE *****
+08/04 19:56:10 INFO sim.Simulation|***** START OF TIME 19 *****
+08/04 19:56:11 INFO sim.Simulation|***** START OF TIME 19 COMPLETE *****
+08/04 19:56:20 INFO sim.Simulation|***** START OF TIME 20 *****
+08/04 19:56:21 INFO sim.Simulation|***** START OF TIME 20 COMPLETE *****
+08/04 19:56:30 INFO sim.Simulation|***** START OF TIME 21 *****
+08/04 19:56:31 INFO sim.Simulation|***** START OF TIME 21 COMPLETE *****
+08/04 19:56:40 INFO sim.Simulation|***** START OF TIME 22 *****
+08/04 19:56:41 INFO sim.Simulation|***** START OF TIME 22 COMPLETE *****
+08/04 19:56:50 INFO sim.Simulation|***** START OF TIME 23 *****
+08/04 19:56:51 INFO sim.Simulation|***** START OF TIME 23 COMPLETE *****
+08/04 19:57:00 INFO sim.Simulation|***** START OF TIME 24 *****
+08/04 19:57:00 INFO sim.Simulation|***** START OF TIME 24 COMPLETE *****
+08/04 19:57:10 INFO sim.Simulation|***** START OF TIME 25 *****
+08/04 19:57:11 INFO sim.Simulation|***** START OF TIME 25 COMPLETE *****
+08/04 19:57:20 INFO sim.Simulation|***** START OF TIME 26 *****
+08/04 19:57:20 INFO sim.Simulation|***** START OF TIME 26 COMPLETE *****
+08/04 19:57:30 INFO sim.Simulation|***** START OF TIME 27 *****
+08/04 19:57:31 INFO sim.Simulation|***** START OF TIME 27 COMPLETE *****
+08/04 19:57:40 INFO sim.Simulation|***** START OF TIME 28 *****
+08/04 19:57:40 INFO sim.Simulation|***** START OF TIME 28 COMPLETE *****
+08/04 19:57:50 INFO sim.Simulation|***** START OF TIME 29 *****
+08/04 19:57:51 INFO sim.Simulation|***** START OF TIME 29 COMPLETE *****
+08/04 19:58:00 INFO sim.Simulation|***** START OF TIME 30 *****
+08/04 19:58:00 INFO sim.Simulation|***** START OF TIME 30 COMPLETE *****
+08/04 19:58:10 INFO sim.Simulation|***** START OF TIME 31 *****
+08/04 19:58:11 INFO sim.Simulation|***** START OF TIME 31 COMPLETE *****
+08/04 19:58:20 INFO sim.Simulation|***** START OF TIME 32 *****
+08/04 19:58:21 INFO sim.Simulation|***** START OF TIME 32 COMPLETE *****
+08/04 19:58:30 INFO sim.Simulation|***** START OF TIME 33 *****
+08/04 19:58:30 INFO sim.Simulation|***** START OF TIME 33 COMPLETE *****
+08/04 19:58:40 INFO sim.Simulation|***** START OF TIME 34 *****
+08/04 19:58:40 INFO sim.Simulation|***** START OF TIME 34 COMPLETE *****
+08/04 19:58:50 INFO sim.Simulation|***** START OF TIME 35 *****
+08/04 19:58:51 INFO sim.Simulation|***** START OF TIME 35 COMPLETE *****
+08/04 19:59:00 INFO sim.Simulation|***** START OF TIME 36 *****
+08/04 19:59:00 INFO sim.Simulation|***** START OF TIME 36 COMPLETE *****
+08/04 19:59:10 INFO sim.Simulation|***** START OF TIME 37 *****
+08/04 19:59:11 INFO sim.Simulation|***** START OF TIME 37 COMPLETE *****
+08/04 19:59:20 INFO sim.Simulation|***** START OF TIME 38 *****
+08/04 19:59:20 INFO sim.Simulation|***** START OF TIME 38 COMPLETE *****
+08/04 19:59:30 INFO sim.Simulation|***** START OF TIME 39 *****
+08/04 19:59:31 INFO sim.Simulation|***** START OF TIME 39 COMPLETE *****
+08/04 19:59:40 INFO sim.Simulation|***** START OF TIME 40 *****
+08/04 19:59:40 INFO sim.Simulation|***** START OF TIME 40 COMPLETE *****
+08/04 19:59:50 INFO sim.Simulation|***** START OF TIME 41 *****
+08/04 19:59:51 INFO sim.Simulation|***** START OF TIME 41 COMPLETE *****
+08/04 20:00:00 INFO sim.Simulation|***** START OF TIME 42 *****
+08/04 20:00:00 INFO sim.Simulation|***** START OF TIME 42 COMPLETE *****
+08/04 20:00:10 INFO sim.Simulation|***** START OF TIME 43 *****
+08/04 20:00:10 INFO sim.Simulation|***** START OF TIME 43 COMPLETE *****
+08/04 20:00:20 INFO sim.Simulation|***** START OF TIME 44 *****
+08/04 20:00:20 INFO sim.Simulation|***** START OF TIME 44 COMPLETE *****
+08/04 20:00:30 INFO sim.Simulation|***** START OF TIME 45 *****
+08/04 20:00:31 INFO sim.Simulation|***** START OF TIME 45 COMPLETE *****
+08/04 20:00:40 INFO sim.Simulation|***** START OF TIME 46 *****
+08/04 20:00:40 INFO sim.Simulation|***** START OF TIME 46 COMPLETE *****
+08/04 20:00:50 INFO sim.Simulation|***** START OF TIME 47 *****
+08/04 20:00:51 INFO sim.Simulation|***** START OF TIME 47 COMPLETE *****
+08/04 20:01:00 INFO sim.Simulation|***** START OF TIME 48 *****
+08/04 20:01:00 INFO sim.Simulation|***** START OF TIME 48 COMPLETE *****
+08/04 20:01:10 INFO sim.Simulation|***** START OF TIME 49 *****
+08/04 20:01:11 INFO sim.Simulation|***** START OF TIME 49 COMPLETE *****
+08/04 20:01:20 INFO sim.Simulation|***** START OF TIME 50 *****
+08/04 20:01:20 INFO sim.Simulation|***** START OF TIME 50 COMPLETE *****
+08/04 20:01:30 INFO sim.Simulation|***** START OF TIME 51 *****
+08/04 20:01:31 INFO sim.Simulation|***** START OF TIME 51 COMPLETE *****
+08/04 20:01:40 INFO sim.Simulation|***** START OF TIME 52 *****
+08/04 20:01:41 INFO sim.Simulation|***** START OF TIME 52 COMPLETE *****
+08/04 20:01:50 INFO sim.Simulation|***** START OF TIME 53 *****
+08/04 20:01:51 INFO sim.Simulation|***** START OF TIME 53 COMPLETE *****
+08/04 20:02:00 INFO sim.Simulation|***** START OF TIME 54 *****
+08/04 20:02:00 INFO sim.Simulation|***** START OF TIME 54 COMPLETE *****
+08/04 20:02:10 INFO sim.Simulation|***** START OF TIME 55 *****
+08/04 20:02:12 INFO sim.Simulation|***** START OF TIME 55 COMPLETE *****
+08/04 20:02:20 INFO sim.Simulation|***** START OF TIME 56 *****
+08/04 20:02:20 INFO sim.Simulation|***** START OF TIME 56 COMPLETE *****
+08/04 20:02:30 INFO sim.Simulation|***** START OF TIME 57 *****
+08/04 20:02:31 INFO sim.Simulation|***** START OF TIME 57 COMPLETE *****
+08/04 20:02:40 INFO sim.Simulation|***** START OF TIME 58 *****
+08/04 20:02:40 INFO sim.Simulation|***** START OF TIME 58 COMPLETE *****
+08/04 20:02:50 INFO sim.Simulation|***** START OF TIME 59 *****
+08/04 20:02:50 INFO sim.Simulation|***** START OF TIME 59 COMPLETE *****
+08/04 20:03:00 INFO sim.Simulation|***** START OF TIME 60 *****
+08/04 20:03:00 FINE sim.Simulation|Simulation 18 is requested to stop
+08/04 20:03:00 INFO sim.Simulation|***** START OF TIME 60 COMPLETE *****
+08/04 20:03:00 FINE sim.Simulation|Simulation 18 is preparing to stop
+08/04 20:03:00 FINE sim.Simulation|Simulation 18 is being stopped
+08/04 20:03:00 INFO sim.Admin|created simulation 19
+08/04 20:03:00 FINE sim.Admin|Simulation log complete
+************************************************************
+* Simulation log complete
+************************************************************
+
+
+09/04 16:45:00 FINE sim.Admin|Log for simulation 18 started
+************************************************************
+* Log for simulation 18 started
+************************************************************
+
+
+09/04 16:45:00 FINE sim.ExternalAgent|sample setup with address adv1
+09/04 16:45:00 INFO sim.Simulation|***** START OF TIME 0 *****
+09/04 16:45:00 INFO sim.Simulation|***** START OF TIME 0 COMPLETE *****
+09/04 16:45:10 INFO sim.Simulation|***** START OF TIME 1 *****
+09/04 16:45:14 INFO sim.Simulation|***** START OF TIME 1 COMPLETE *****
+09/04 16:45:15 SEVERE tact.TACTConnection|sample@tact-1: reading error 
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.io.DataInputStream.readInt(Unknown Source)
+	at se.sics.isl.tact.TACTConnection$TACTReader.run(TACTConnection.java:405)
+09/04 16:45:20 INFO sim.Simulation|***** START OF TIME 2 *****
+09/04 16:45:25 INFO sim.Simulation|***** START OF TIME 2 COMPLETE *****
+09/04 16:45:30 INFO sim.Simulation|***** START OF TIME 3 *****
+09/04 16:45:37 INFO sim.Simulation|***** START OF TIME 3 COMPLETE *****
+09/04 16:45:40 INFO sim.Simulation|***** START OF TIME 4 *****
+09/04 16:45:43 INFO sim.Simulation|***** START OF TIME 4 COMPLETE *****
+09/04 16:45:50 INFO sim.Simulation|***** START OF TIME 5 *****
+09/04 16:45:56 INFO sim.Simulation|***** START OF TIME 5 COMPLETE *****
+09/04 16:46:00 INFO sim.Simulation|***** START OF TIME 6 *****
+09/04 16:46:04 INFO sim.Simulation|***** START OF TIME 6 COMPLETE *****
+09/04 16:46:10 INFO sim.Simulation|***** START OF TIME 7 *****
+09/04 16:46:13 INFO sim.Simulation|***** START OF TIME 7 COMPLETE *****
+09/04 16:46:20 INFO sim.Simulation|***** START OF TIME 8 *****
+09/04 16:46:24 INFO sim.Simulation|***** START OF TIME 8 COMPLETE *****
+09/04 16:46:30 INFO sim.Simulation|***** START OF TIME 9 *****
+09/04 16:46:35 INFO sim.Simulation|***** START OF TIME 9 COMPLETE *****
+09/04 16:46:40 INFO sim.Simulation|***** START OF TIME 10 *****
+09/04 16:46:46 INFO sim.Simulation|***** START OF TIME 10 COMPLETE *****
+09/04 16:46:50 INFO sim.Simulation|***** START OF TIME 11 *****
+09/04 16:47:00 INFO sim.Simulation|***** START OF TIME 11 COMPLETE *****
+09/04 16:47:00 INFO sim.Simulation|***** START OF TIME 12 *****
+09/04 16:47:04 INFO sim.Simulation|***** START OF TIME 12 COMPLETE *****
+09/04 16:47:10 INFO sim.Simulation|***** START OF TIME 13 *****
+09/04 16:47:14 INFO sim.Simulation|***** START OF TIME 13 COMPLETE *****
+09/04 16:47:20 INFO sim.Simulation|***** START OF TIME 14 *****
+09/04 16:47:24 INFO sim.Simulation|***** START OF TIME 14 COMPLETE *****
+09/04 16:47:30 INFO sim.Simulation|***** START OF TIME 15 *****

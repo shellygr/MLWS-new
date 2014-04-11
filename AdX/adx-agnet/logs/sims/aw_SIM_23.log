@@ -1,0 +1,708 @@
+08/04 21:08:00 INFO OrOmerShelly.Coordinator|Got publisherCatalog: nyt ; amazon ; fox ; wallmart ; ebay ; sears ; 
+08/04 21:08:00 INFO OrOmerShelly.Coordinator|Available queries: [Ltau.tac.adx.props.AdxQuery;@c8e4de
+08/04 21:08:00 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: edu.umich.eecs.tac.props.AdvertiserInfo@bc76a1c1
+08/04 21:08:00 INFO OrOmerShelly.Coordinator|Day 0 :BankStatus[0.000000]
+08/04 21:08:00 INFO OrOmerShelly.Coordinator|tau.tac.adx.report.demand.InitialCampaignMessage[1761801,1250,1,5,[OLD, MALE],2.0,1.5,demand,[]]
+08/04 21:08:00 INFO OrOmerShelly.Coordinator|Day 0: Allocated campaign - Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5)
+08/04 21:08:00 INFO OrOmerShelly.Coordinator|Day 0: Campaign opportunity - Campaign ID 17177015: day 2 to 4 [OLD, FEMALE], reach: 12500 coefs: (v=2.0, m=1.5)
+08/04 21:08:00 INFO OrOmerShelly.Coordinator|Day 0: Campaign total budget bid: 3268.362252998769
+08/04 21:08:00 INFO OrOmerShelly.Coordinator|Day 0: Initial ucs bid is 0.12351065152838663
+08/04 21:08:00 INFO OrOmerShelly.Coordinator|Day 0 : Simulation Status Received
+08/04 21:08:00 INFO OrOmerShelly.Coordinator|Initialized ImpressionBidder
+08/04 21:08:00 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5)]
+08/04 21:08:00 INFO OrOmerShelly.Coordinator|campaign Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5) is active
+08/04 21:08:00 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:08:00 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:08:00 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:08:00 INFO bidders.ImpressionBidder|Default bid bundle bid for Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5) will be 0.8377898975153653
+08/04 21:08:00 INFO bidders.ImpressionBidder|Day 0: Updated 168 Bid Bundle entries for Campaign id 1761801
+08/04 21:08:00 INFO OrOmerShelly.Coordinator|Day 0 ended. Starting next day
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|Day 1 :BankStatus[0.000000]
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|Campaign auction report for day 1: CampaignReport: CampaignAuctionReportKey [adnetName=DummyAdnetwork-6] : CampaignAuctionReportEntry [actualBid=2094.0, effectiveBid=2094.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-3] : CampaignAuctionReportEntry [actualBid=2328.0, effectiveBid=2328.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-4] : CampaignAuctionReportEntry [actualBid=2331.0, effectiveBid=2331.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-7] : CampaignAuctionReportEntry [actualBid=2504.0, effectiveBid=2504.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork] : CampaignAuctionReportEntry [actualBid=2764.0, effectiveBid=2764.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-5] : CampaignAuctionReportEntry [actualBid=3064.0, effectiveBid=3064.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-2] : CampaignAuctionReportEntry [actualBid=3226.0, effectiveBid=3226.0]
+CampaignAuctionReportKey [adnetName=adv1] : CampaignAuctionReportEntry [actualBid=3268.0, effectiveBid=3268.0]
+
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|Day 1: Daily notification for campaign 17177015
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|Day 1:  allocated to DummyAdnetwork-6. UCS Level set to 0.47829690000000014 at price 0.0 Quality Score is: 1.0
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|Day 1: Campaign opportunity - Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5)
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|Day 1: Campaign total budget bid: 980.5086758996306
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|Day 1: Adjusting ucs bid: was 0.12351065152838663 level reported: 0.47829690000000014 target: 0.8 adjusted: 0.1124930886573812
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 8052 video: 2597 text: 5456)
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 4632 video: 2093 text: 2540)
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 9219 video: 3249 text: 5971)
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 37391 video: 11681 text: 25711)
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 40464 video: 12722 text: 27743)
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 10360 video: 3167 text: 7194)
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|Day 1 : Simulation Status Received
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5)]
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|campaign Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5) is active
+08/04 21:08:11 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:08:11 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:08:11 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:08:11 INFO bidders.ImpressionBidder|Default bid bundle bid for Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5) will be 0.4298754159922088
+08/04 21:08:11 INFO bidders.ImpressionBidder|Day 1: Updated 168 Bid Bundle entries for Campaign id 1761801
+08/04 21:08:11 INFO OrOmerShelly.Coordinator|Day 1 ended. Starting next day
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Day 2 :BankStatus[-0.145800]
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Campaign auction report for day 2: CampaignReport: CampaignAuctionReportKey [adnetName=adv1] : CampaignAuctionReportEntry [actualBid=980.0, effectiveBid=980.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-6] : CampaignAuctionReportEntry [actualBid=2104.0, effectiveBid=2104.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-4] : CampaignAuctionReportEntry [actualBid=2373.0, effectiveBid=2373.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-2] : CampaignAuctionReportEntry [actualBid=2410.0, effectiveBid=2410.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork] : CampaignAuctionReportEntry [actualBid=2586.0, effectiveBid=2586.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-5] : CampaignAuctionReportEntry [actualBid=2696.0, effectiveBid=2696.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-3] : CampaignAuctionReportEntry [actualBid=3128.0, effectiveBid=3128.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-7] : CampaignAuctionReportEntry [actualBid=3142.0, effectiveBid=3142.0]
+
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Day 2: Updating campaign 1761801 stats: 0.0 tgtImps 0.0 nonTgtImps. Cost of imps is 0.0
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Day 2: Daily notification for campaign 17718072
+08/04 21:08:26 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message: java.lang.NullPointerException : [OrOmerShelly.oos.bidders.CampaignBidder.getTargetIndex(CampaignBidder.java:131), OrOmerShelly.oos.bidders.CampaignBidder.updateWonPendingCampaign(CampaignBidder.java:123), OrOmerShelly.Coordinator.handleAdNetworkDailyNotification(Coordinator.java:340), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:67), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Day 2: Campaign opportunity - Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Day 2: Campaign total budget bid: 1689.0508563805522
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Day 2: Adjusting ucs bid: was 0.1124930886573812 level reported: 0.47829690000000014 target: 0.8 adjusted: 0.14868246400703555
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 56122 video: 2011 text: 54112)
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 36953 video: 34958 text: 1996)
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 60298 video: 2610 text: 57689)
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 228298 video: 11578 text: 216721)
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 265693 video: 12043 text: 253651)
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 62566 video: 2368 text: 60199)
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Day 2 : Simulation Status Received
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5)]
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|campaign Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5) is active
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|campaign Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5) is active
+08/04 21:08:26 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:08:26 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:08:26 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:08:26 INFO bidders.ImpressionBidder|Default bid bundle bid for Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5) will be 0.1047812258924323
+08/04 21:08:26 INFO bidders.ImpressionBidder|Day 2: Updated 168 Bid Bundle entries for Campaign id 17718072
+08/04 21:08:26 INFO bidders.ImpressionBidder|Default bid bundle bid for Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5) will be 0.12290138324326262
+08/04 21:08:26 INFO bidders.ImpressionBidder|Day 2: Updated 168 Bid Bundle entries for Campaign id 1761801
+08/04 21:08:26 INFO OrOmerShelly.Coordinator|Day 2 ended. Starting next day
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Day 3 :BankStatus[-0.291600]
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Campaign auction report for day 3: CampaignReport: CampaignAuctionReportKey [adnetName=adv1] : CampaignAuctionReportEntry [actualBid=1689.0, effectiveBid=1689.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork] : CampaignAuctionReportEntry [actualBid=2910.0, effectiveBid=2910.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-3] : CampaignAuctionReportEntry [actualBid=3187.0, effectiveBid=3187.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-6] : CampaignAuctionReportEntry [actualBid=3290.0, effectiveBid=3290.0]
+
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Day 3: Updating campaign 1761801 stats: 0.0 tgtImps 0.0 nonTgtImps. Cost of imps is 0.0
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Day 3: Daily notification for campaign 19300450
+08/04 21:08:32 SEVERE OrOmerShelly.OOSAgent|Exception thrown while trying to parse message: java.lang.NullPointerException : [OrOmerShelly.oos.bidders.CampaignBidder.getTargetIndex(CampaignBidder.java:131), OrOmerShelly.oos.bidders.CampaignBidder.updateWonPendingCampaign(CampaignBidder.java:123), OrOmerShelly.Coordinator.handleAdNetworkDailyNotification(Coordinator.java:340), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:67), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Day 3: Campaign opportunity - Campaign ID 21168641: day 5 to 14 [OLD, LOW_INCOME], reach: 3750 coefs: (v=2.0, m=1.5)
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Day 3: Campaign total budget bid: 299.1539080277109
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Day 3: Adjusting ucs bid: was 0.14868246400703555 level reported: 0.47829690000000014 target: 0.8 adjusted: 0.18656039509575903
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 21001 video: 2306 text: 18696)
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 13422 video: 11046 text: 2377)
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 23143 video: 3039 text: 20105)
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 100352 video: 13723 text: 86630)
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 89155 video: 14081 text: 75075)
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 24458 video: 3655 text: 20804)
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Day 3 : Simulation Status Received
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|campaign Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5) is active
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|campaign Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5) is active
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|campaign Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5) is active
+08/04 21:08:32 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:08:32 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:08:32 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:08:32 INFO bidders.ImpressionBidder|Default bid bundle bid for Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5) will be 0.32965908046457887
+08/04 21:08:32 INFO bidders.ImpressionBidder|Day 3: Updated 168 Bid Bundle entries for Campaign id 17718072
+08/04 21:08:32 INFO bidders.ImpressionBidder|Default bid bundle bid for Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5) will be 0.24909893729075006
+08/04 21:08:32 INFO bidders.ImpressionBidder|Day 3: Updated 168 Bid Bundle entries for Campaign id 1761801
+08/04 21:08:32 INFO bidders.ImpressionBidder|Default bid bundle bid for Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5) will be 241.02196618594573
+08/04 21:08:32 INFO bidders.ImpressionBidder|Day 3: Updated 168 Bid Bundle entries for Campaign id 19300450
+08/04 21:08:32 INFO OrOmerShelly.Coordinator|Day 3 ended. Starting next day
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Day 4 :BankStatus[-0.437400]
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Campaign auction report for day 4: CampaignReport: CampaignAuctionReportKey [adnetName=DummyAdnetwork-3] : CampaignAuctionReportEntry [actualBid=2074.0, effectiveBid=2074.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork] : CampaignAuctionReportEntry [actualBid=2336.0, effectiveBid=2336.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-6] : CampaignAuctionReportEntry [actualBid=2704.0, effectiveBid=2704.0]
+
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Day 4: Updating campaign 1761801 stats: 0.0 tgtImps 0.0 nonTgtImps. Cost of imps is 0.0
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Day 4: Updating campaign 17718072 stats: 0.0 tgtImps 0.0 nonTgtImps. Cost of imps is 0.0
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Day 4: Daily notification for campaign 21168641
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Day 4:  allocated to DummyAdnetwork-3. UCS Level set to 0.47829690000000014 at price 0.0 Quality Score is: 1.0
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Day 4: Campaign opportunity - Campaign ID 14196657: day 6 to 15 [FEMALE, LOW_INCOME], reach: 12500 coefs: (v=2.0, m=1.5)
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Day 4: Campaign total budget bid: 993.3376146873242
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Day 4: Adjusting ucs bid: was 0.18656039509575903 level reported: 0.47829690000000014 target: 0.8 adjusted: 0.18263663824588264
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 25962 video: 2743 text: 23220)
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 16313 video: 13606 text: 2708)
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 28517 video: 3454 text: 25064)
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 107830 video: 14294 text: 93537)
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 122561 video: 19478 text: 103084)
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 29068 video: 2357 text: 26712)
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Day 4 : Simulation Status Received
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|campaign Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5) is active
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|campaign Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5) is active
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|campaign Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5) is active
+08/04 21:08:43 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:08:43 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:08:43 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:08:43 INFO bidders.ImpressionBidder|Default bid bundle bid for Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5) will be 0.3190562201271526
+08/04 21:08:43 INFO bidders.ImpressionBidder|Day 4: Updated 168 Bid Bundle entries for Campaign id 17718072
+08/04 21:08:43 INFO bidders.ImpressionBidder|Default bid bundle bid for Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5) will be 0.7339878642998424
+08/04 21:08:43 INFO bidders.ImpressionBidder|Day 4: Updated 168 Bid Bundle entries for Campaign id 1761801
+08/04 21:08:43 INFO bidders.ImpressionBidder|Default bid bundle bid for Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5) will be 98.41936463787717
+08/04 21:08:43 INFO bidders.ImpressionBidder|Day 4: Updated 168 Bid Bundle entries for Campaign id 19300450
+08/04 21:08:43 INFO OrOmerShelly.Coordinator|Day 4 ended. Starting next day
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Day 5 :BankStatus[-0.583200]
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Campaign auction report for day 5: CampaignReport: CampaignAuctionReportKey [adnetName=DummyAdnetwork-3] : CampaignAuctionReportEntry [actualBid=2024.0, effectiveBid=2024.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-6] : CampaignAuctionReportEntry [actualBid=2415.0, effectiveBid=2415.0]
+
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Day 5: Updating campaign 19300450 stats: 0.0 tgtImps 0.0 nonTgtImps. Cost of imps is 0.0
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Day 5: Updating campaign 1761801 stats: 0.0 tgtImps 0.0 nonTgtImps. Cost of imps is 0.0
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Day 5: Updating campaign 17718072 stats: 0.0 tgtImps 0.0 nonTgtImps. Cost of imps is 0.0
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Day 5: Daily notification for campaign 14196657
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Day 5:  allocated to DummyAdnetwork-3. UCS Level set to 0.47829690000000014 at price 0.0 Quality Score is: 1.0
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Day 5: Campaign opportunity - Campaign ID 2363858: day 7 to 16 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Day 5: Campaign total budget bid: 506.7152569141656
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Day 5: Adjusting ucs bid: was 0.18263663824588264 level reported: 0.47829690000000014 target: 0.8 adjusted: 0.18086103614975735
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 29567 video: 1981 text: 27587)
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 18578 video: 15514 text: 3065)
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 31936 video: 2973 text: 28964)
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 141394 video: 14738 text: 126657)
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 122866 video: 15369 text: 107498)
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 34049 video: 5879 text: 28171)
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Day 5 : Simulation Status Received
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|campaign Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5) is active
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|campaign Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5) is active
+08/04 21:08:53 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:08:53 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:08:53 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:08:53 INFO bidders.ImpressionBidder|Default bid bundle bid for Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5) will be 0.032134059706511696
+08/04 21:08:53 INFO bidders.ImpressionBidder|Day 5: Updated 168 Bid Bundle entries for Campaign id 17718072
+08/04 21:08:53 INFO bidders.ImpressionBidder|Default bid bundle bid for Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5) will be 207.46550051515445
+08/04 21:08:53 INFO bidders.ImpressionBidder|Day 5: Updated 168 Bid Bundle entries for Campaign id 19300450
+08/04 21:08:53 INFO OrOmerShelly.Coordinator|Day 5 ended. Starting next day
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Day 6 :BankStatus[-0.729000]
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Campaign auction report for day 6: CampaignReport: CampaignAuctionReportKey [adnetName=DummyAdnetwork-3] : CampaignAuctionReportEntry [actualBid=2762.0, effectiveBid=2762.0]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-6] : CampaignAuctionReportEntry [actualBid=2805.0, effectiveBid=2805.069190984196]
+
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Day 6: Updating campaign 19300450 stats: 0.0 tgtImps 0.0 nonTgtImps. Cost of imps is 0.0
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Day 6: Updating campaign 1761801 stats: 0.0 tgtImps 0.0 nonTgtImps. Cost of imps is 0.0
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Day 6: Updating campaign 17718072 stats: 0.0 tgtImps 0.0 nonTgtImps. Cost of imps is 0.0
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Day 6: Daily notification for campaign 2363858
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Day 6:  allocated to DummyAdnetwork-3. UCS Level set to 0.47829690000000014 at price 0.0 Quality Score is: 0.4
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Day 6: Campaign opportunity - Campaign ID 25595123: day 8 to 12 [OLD, LOW_INCOME], reach: 12500 coefs: (v=2.0, m=1.5)
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Day 6: Campaign total budget bid: 1994.3593868514058
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Day 6: Adjusting ucs bid: was 0.18086103614975735 level reported: 0.47829690000000014 target: 0.8 adjusted: 0.1285996419496266
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 27222 video: 2165 text: 25058)
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 17019 video: 14921 text: 2099)
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 29293 video: 2862 text: 26432)
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 112985 video: 11527 text: 101459)
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 129312 video: 14646 text: 114667)
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 31331 video: 3287 text: 28045)
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Day 6 : Simulation Status Received
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|campaign Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5) is active
+08/04 21:09:03 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:09:03 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:09:03 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:09:03 INFO bidders.ImpressionBidder|Default bid bundle bid for Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5) will be 0.29691845614317597
+08/04 21:09:03 INFO bidders.ImpressionBidder|Day 6: Updated 168 Bid Bundle entries for Campaign id 17718072
+08/04 21:09:03 INFO OrOmerShelly.Coordinator|Day 6 ended. Starting next day
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Day 7 :BankStatus[-0.874800]
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Campaign auction report for day 7: CampaignReport: CampaignAuctionReportKey [adnetName=DummyAdnetwork-3] : CampaignAuctionReportEntry [actualBid=2451.0, effectiveBid=1746.018246489164]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-6] : CampaignAuctionReportEntry [actualBid=3101.0, effectiveBid=1347.9476645474483]
+
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Day 7: Updating campaign 19300450 stats: 0.0 tgtImps 0.0 nonTgtImps. Cost of imps is 0.0
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Day 7: Updating campaign 17718072 stats: 0.0 tgtImps 0.0 nonTgtImps. Cost of imps is 0.0
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Day 7: Daily notification for campaign 25595123
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Day 7:  allocated to DummyAdnetwork-3. UCS Level set to 0.5314410000000002 at price 0.0 Quality Score is: 0.16000000000000003
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Day 7: Campaign opportunity - Campaign ID 13896146: day 9 to 11 [FEMALE, LOW_INCOME], reach: 3750 coefs: (v=2.0, m=1.5)
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Day 7: Campaign total budget bid: 993.3376146873242
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Day 7: Adjusting ucs bid: was 0.1285996419496266 level reported: 0.5314410000000002 target: 0.8 adjusted: 0.14944435270871792
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 50984 video: 2049 text: 48936)
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 32994 video: 29877 text: 3118)
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 53899 video: 2597 text: 51303)
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 241318 video: 16131 text: 225188)
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 206317 video: 11437 text: 194881)
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 57188 video: 5265 text: 51924)
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Day 7 : Simulation Status Received
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:09:15 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:09:15 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:09:15 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:09:15 INFO OrOmerShelly.Coordinator|Day 7 ended. Starting next day
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Day 8 :BankStatus[-1.020600]
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Day 8: Updating campaign 17718072 stats: 0.0 tgtImps 0.0 nonTgtImps. Cost of imps is 0.0
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Day 8: Daily notification for campaign 13896146
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Day 8:  allocated to . UCS Level set to 0.5314410000000002 at price 0.0 Quality Score is: 0.06400000000000002
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Day 8: Campaign opportunity - Campaign ID 23402291: day 10 to 14 [YOUNG, FEMALE], reach: 3750 coefs: (v=2.0, m=1.5)
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Day 8: Campaign total budget bid: 605.0358537793234
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Day 8: Adjusting ucs bid: was 0.14944435270871792 level reported: 0.5314410000000002 target: 0.8 adjusted: 0.10092197862629532
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 7707 video: 2216 text: 5492)
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 4564 video: 2126 text: 2439)
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 8735 video: 2094 text: 6642)
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 39369 video: 13830 text: 25540)
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 36694 video: 10596 text: 26099)
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 10725 video: 3705 text: 7021)
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Day 8 : Simulation Status Received
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:09:20 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:09:20 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:09:20 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:09:20 INFO OrOmerShelly.Coordinator|Day 8 ended. Starting next day
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|Day 9 :BankStatus[-1.166400]
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|Day 9: Daily notification for campaign 23402291
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|Day 9:  allocated to . UCS Level set to 0.5314410000000002 at price 0.0 Quality Score is: 0.06400000000000002
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|Day 9: Campaign opportunity - Campaign ID 32565619: day 11 to 13 [OLD, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|Day 9: Campaign total budget bid: 1655.29694969609
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|Day 9: Adjusting ucs bid: was 0.10092197862629532 level reported: 0.5314410000000002 target: 0.8 adjusted: 0.12802548428419452
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 23426 video: 2570 text: 20857)
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 14401 video: 11585 text: 2817)
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 26175 video: 3925 text: 22251)
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 113237 video: 18092 text: 95146)
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 98857 video: 16249 text: 82609)
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 27154 video: 4126 text: 23029)
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|Day 9 : Simulation Status Received
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:09:32 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:09:32 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:09:32 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:09:32 INFO OrOmerShelly.Coordinator|Day 9 ended. Starting next day
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Day 10 :BankStatus[-1.312200]
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Campaign auction report for day 10: CampaignReport: CampaignAuctionReportKey [adnetName=DummyAdnetwork-3] : CampaignAuctionReportEntry [actualBid=2015.0, effectiveBid=1435.4250374033725]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-6] : CampaignAuctionReportEntry [actualBid=2418.0, effectiveBid=1051.0601266932376]
+
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Day 10: Daily notification for campaign 32565619
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Day 10:  allocated to DummyAdnetwork-6. UCS Level set to 0.5314410000000002 at price 0.0 Quality Score is: 0.06400000000000002
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Day 10: Campaign opportunity - Campaign ID 28297757: day 12 to 16 [FEMALE, HIGH_INCOME], reach: 3750 coefs: (v=2.0, m=1.5)
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Day 10: Campaign total budget bid: 597.104945746543
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Day 10: Adjusting ucs bid: was 0.12802548428419452 level reported: 0.5314410000000002 target: 0.8 adjusted: 0.1624078803180735
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 57936 video: 2940 text: 54997)
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 37624 video: 33888 text: 3737)
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 61394 video: 2580 text: 58815)
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 278093 video: 17109 text: 260985)
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 238512 video: 10448 text: 228065)
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 66994 video: 7488 text: 59507)
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Day 10 : Simulation Status Received
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:09:46 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:09:46 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:09:46 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:09:46 INFO OrOmerShelly.Coordinator|Day 10 ended. Starting next day
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|Day 11 :BankStatus[-1.458000]
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|Day 11: Daily notification for campaign 28297757
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|Day 11:  allocated to . UCS Level set to 0.5314410000000002 at price 0.0 Quality Score is: 0.06400000000000002
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|Day 11: Campaign opportunity - Campaign ID 4525759: day 13 to 22 [YOUNG, MALE], reach: 6250 coefs: (v=2.0, m=1.5)
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|Day 11: Campaign total budget bid: 500.6878136755078
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|Day 11: Adjusting ucs bid: was 0.1624078803180735 level reported: 0.5314410000000002 target: 0.8 adjusted: 0.11641455341284954
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 12565 video: 3178 text: 9388)
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 7644 video: 5619 text: 2026)
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 13935 video: 3154 text: 10782)
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 60245 video: 17148 text: 43098)
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 55970 video: 13917 text: 42054)
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 15698 video: 2890 text: 12809)
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|Day 11 : Simulation Status Received
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:09:51 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:09:51 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:09:51 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:09:51 INFO OrOmerShelly.Coordinator|Day 11 ended. Starting next day
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Day 12 :BankStatus[-1.603800]
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Campaign auction report for day 12: CampaignReport: CampaignAuctionReportKey [adnetName=DummyAdnetwork-3] : CampaignAuctionReportEntry [actualBid=3234.0, effectiveBid=2303.8037573014917]
+
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Day 12: Daily notification for campaign 4525759
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Day 12:  allocated to DummyAdnetwork-3. UCS Level set to 0.5314410000000002 at price 0.0 Quality Score is: 0.06400000000000002
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Day 12: Campaign opportunity - Campaign ID 18361886: day 14 to 23 [OLD, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Day 12: Campaign total budget bid: 496.589084908827
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Day 12: Adjusting ucs bid: was 0.11641455341284954 level reported: 0.5314410000000002 target: 0.8 adjusted: 0.14767872946285096
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 15771 video: 1860 text: 13912)
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 9914 video: 6970 text: 2945)
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 17868 video: 2958 text: 14911)
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 81417 video: 14199 text: 67219)
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 69707 video: 14861 text: 54847)
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 20002 video: 5628 text: 14375)
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Day 12 : Simulation Status Received
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:10:01 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:10:01 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:10:01 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:10:01 INFO OrOmerShelly.Coordinator|Day 12 ended. Starting next day
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Day 13 :BankStatus[-1.749600]
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Campaign auction report for day 13: CampaignReport: CampaignAuctionReportKey [adnetName=DummyAdnetwork-3] : CampaignAuctionReportEntry [actualBid=2514.0, effectiveBid=1790.8975404625699]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-6] : CampaignAuctionReportEntry [actualBid=2704.0, effectiveBid=1175.3790664096423]
+
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Day 13: Daily notification for campaign 18361886
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Day 13:  allocated to DummyAdnetwork-3. UCS Level set to 0.5314410000000002 at price 0.0 Quality Score is: 0.06400000000000002
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Day 13: Campaign opportunity - Campaign ID 15012658: day 15 to 17 [OLD, MALE], reach: 12500 coefs: (v=2.0, m=1.5)
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Day 13: Campaign total budget bid: 3367.6218474236744
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Day 13: Adjusting ucs bid: was 0.14767872946285096 level reported: 0.5314410000000002 target: 0.8 adjusted: 0.12314241913760998
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 14363 video: 2265 text: 12099)
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 9023 video: 6473 text: 2551)
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 15800 video: 2724 text: 13077)
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 64350 video: 9819 text: 54532)
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 70500 video: 15237 text: 55264)
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 18182 video: 3497 text: 14686)
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Day 13 : Simulation Status Received
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:10:11 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:10:11 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:10:11 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:10:11 INFO OrOmerShelly.Coordinator|Day 13 ended. Starting next day
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Day 14 :BankStatus[-1.895400]
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Campaign auction report for day 14: CampaignReport: CampaignAuctionReportKey [adnetName=DummyAdnetwork-3] : CampaignAuctionReportEntry [actualBid=2321.0, effectiveBid=2054.0770052170114]
+
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Day 14: Daily notification for campaign 15012658
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Day 14:  allocated to DummyAdnetwork-3. UCS Level set to 0.5314410000000002 at price 0.0 Quality Score is: 0.06400000000000002
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Day 14: Campaign opportunity - Campaign ID 23681652: day 16 to 20 [YOUNG, FEMALE], reach: 12500 coefs: (v=2.0, m=1.5)
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Day 14: Campaign total budget bid: 2016.7861792644114
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Day 14: Adjusting ucs bid: was 0.12314241913760998 level reported: 0.5314410000000002 target: 0.8 adjusted: 0.11847647296490572
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 19790 video: 2283 text: 17508)
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 12279 video: 9977 text: 2303)
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 21856 video: 3376 text: 18481)
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 94826 video: 14053 text: 80774)
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 84620 video: 17096 text: 67525)
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 23751 video: 4229 text: 19523)
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Day 14 : Simulation Status Received
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:10:22 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:10:22 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:10:22 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:10:22 INFO OrOmerShelly.Coordinator|Day 14 ended. Starting next day
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Day 15 :BankStatus[-2.041200]
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Campaign auction report for day 15: CampaignReport: CampaignAuctionReportKey [adnetName=DummyAdnetwork-6] : CampaignAuctionReportEntry [actualBid=2051.0, effectiveBid=1587.2633827639447]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-3] : CampaignAuctionReportEntry [actualBid=3295.0, effectiveBid=2916.063650232681]
+
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Day 15: Daily notification for campaign 23681652
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Day 15:  allocated to DummyAdnetwork-6. UCS Level set to 0.5314410000000002 at price 0.0 Quality Score is: 0.06400000000000002
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Day 15: Campaign opportunity - Campaign ID 31562177: day 17 to 21 [OLD, LOW_INCOME], reach: 3750 coefs: (v=2.0, m=1.5)
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Day 15: Campaign total budget bid: 598.3078160554218
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Day 15: Adjusting ucs bid: was 0.11847647296490572 level reported: 0.5314410000000002 target: 0.8 adjusted: 0.12327150957506261
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 16549 video: 1946 text: 14604)
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 10332 video: 8405 text: 1928)
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 17613 video: 2249 text: 15365)
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 71781 video: 15580 text: 56202)
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 78370 video: 12181 text: 66190)
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 20010 video: 4422 text: 15589)
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Day 15 : Simulation Status Received
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:10:32 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:10:32 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:10:32 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:10:32 INFO OrOmerShelly.Coordinator|Day 15 ended. Starting next day
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Day 16 :BankStatus[-2.187000]
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Campaign auction report for day 16: CampaignReport: CampaignAuctionReportKey [adnetName=DummyAdnetwork-3] : CampaignAuctionReportEntry [actualBid=2174.0, effectiveBid=2074.4636296484973]
+
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Day 16: Daily notification for campaign 31562177
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Day 16:  allocated to DummyAdnetwork-3. UCS Level set to 0.5904900000000002 at price 0.0 Quality Score is: 0.06400000000000002
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Day 16: Campaign opportunity - Campaign ID 13263705: day 18 to 22 [MALE, LOW_INCOME], reach: 12500 coefs: (v=2.0, m=1.5)
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Day 16: Campaign total budget bid: 1996.6118104546574
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Day 16: Adjusting ucs bid: was 0.12327150957506261 level reported: 0.5904900000000002 target: 0.8 adjusted: 0.13900907471615725
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 32570 video: 1834 text: 30737)
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 21038 video: 18733 text: 2306)
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 35331 video: 2475 text: 32857)
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 155014 video: 12652 text: 142363)
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 135579 video: 12315 text: 123265)
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 37515 video: 4202 text: 33314)
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Day 16 : Simulation Status Received
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:10:43 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:10:43 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:10:43 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:10:43 INFO OrOmerShelly.Coordinator|Day 16 ended. Starting next day
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|Day 17 :BankStatus[-2.332800]
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|Campaign auction report for day 17: CampaignReport: CampaignAuctionReportKey [adnetName=DummyAdnetwork-6] : CampaignAuctionReportEntry [actualBid=2695.0, effectiveBid=2085.6532503894837]
+
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|Day 17: Daily notification for campaign 13263705
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|Day 17:  allocated to DummyAdnetwork-6. UCS Level set to 0.5904900000000002 at price 0.0 Quality Score is: 0.06400000000000002
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|Day 17: Campaign opportunity - Campaign ID 1110016: day 19 to 21 [FEMALE, HIGH_INCOME], reach: 3750 coefs: (v=2.0, m=1.5)
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|Day 17: Campaign total budget bid: 995.1749095775716
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|Day 17: Adjusting ucs bid: was 0.13900907471615725 level reported: 0.5904900000000002 target: 0.8 adjusted: 0.16813286595993934
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 15503 video: 2122 text: 13382)
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 9661 video: 7726 text: 1936)
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 16677 video: 2363 text: 14315)
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 73496 video: 15370 text: 58127)
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 67584 video: 16002 text: 51583)
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 18665 video: 3857 text: 14809)
+08/04 21:10:51 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:10:52 INFO OrOmerShelly.Coordinator|Day 17 : Simulation Status Received
+08/04 21:10:52 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:10:52 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:10:52 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:10:52 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:10:52 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:10:52 INFO OrOmerShelly.Coordinator|Day 17 ended. Starting next day
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Day 18 :BankStatus[-2.478600]
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Campaign auction report for day 18: CampaignReport: CampaignAuctionReportKey [adnetName=DummyAdnetwork-6] : CampaignAuctionReportEntry [actualBid=2327.0, effectiveBid=1800.859040317747]
+
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Day 18: Daily notification for campaign 1110016
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Day 18:  allocated to DummyAdnetwork-6. UCS Level set to 0.5904900000000002 at price 0.0 Quality Score is: 0.06400000000000002
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Day 18: Campaign opportunity - Campaign ID 24946057: day 20 to 24 [MALE, LOW_INCOME], reach: 3750 coefs: (v=2.0, m=1.5)
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Day 18: Campaign total budget bid: 598.9835431363972
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Day 18: Adjusting ucs bid: was 0.16813286595993934 level reported: 0.5904900000000002 target: 0.8 adjusted: 0.144037915258101
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 39914 video: 1946 text: 37969)
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 26041 video: 24124 text: 1918)
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 42653 video: 2380 text: 40274)
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 163705 video: 11480 text: 152226)
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 185932 video: 10683 text: 175250)
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 45063 video: 3067 text: 41997)
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Day 18 : Simulation Status Received
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:11:04 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:11:04 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:11:04 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:11:04 INFO OrOmerShelly.Coordinator|Day 18 ended. Starting next day
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Day 19 :BankStatus[-2.624400]
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Campaign auction report for day 19: CampaignReport: CampaignAuctionReportKey [adnetName=DummyAdnetwork-3] : CampaignAuctionReportEntry [actualBid=3188.0, effectiveBid=2873.0262074375496]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-6] : CampaignAuctionReportEntry [actualBid=2885.0, effectiveBid=2232.693739285217]
+
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Day 19: Daily notification for campaign 24946057
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Day 19:  allocated to DummyAdnetwork-3. UCS Level set to 0.5904900000000002 at price 0.0 Quality Score is: 0.06400000000000002
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Day 19: Campaign opportunity - Campaign ID 19089587: day 21 to 25 [OLD, MALE], reach: 3750 coefs: (v=2.0, m=1.5)
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Day 19: Campaign total budget bid: 606.1719325362614
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Day 19: Adjusting ucs bid: was 0.144037915258101 level reported: 0.5904900000000002 target: 0.8 adjusted: 0.17421529888382573
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 13739 video: 2712 text: 11028)
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 8541 video: 5982 text: 2560)
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 15569 video: 2627 text: 12943)
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 69822 video: 19399 text: 50424)
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 62238 video: 14650 text: 47589)
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 18247 video: 4242 text: 14006)
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Day 19 : Simulation Status Received
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:11:11 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:11:11 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:11:11 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:11:11 INFO OrOmerShelly.Coordinator|Day 19 ended. Starting next day
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Day 20 :BankStatus[-2.770200]
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Campaign auction report for day 20: CampaignReport: CampaignAuctionReportKey [adnetName=DummyAdnetwork-3] : CampaignAuctionReportEntry [actualBid=2092.0, effectiveBid=1885.3107986070745]
+CampaignAuctionReportKey [adnetName=DummyAdnetwork-6] : CampaignAuctionReportEntry [actualBid=2315.0, effectiveBid=1791.5722725980165]
+
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Day 20: Daily notification for campaign 19089587
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Day 20:  allocated to DummyAdnetwork-3. UCS Level set to 0.5904900000000002 at price 0.0 Quality Score is: 0.06400000000000002
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Day 20: Campaign opportunity - Campaign ID 18086967: day 22 to 24 [YOUNG, HIGH_INCOME], reach: 12500 coefs: (v=2.0, m=1.5)
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Day 20: Campaign total budget bid: 3385.0320036889443
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Day 20: Adjusting ucs bid: was 0.17421529888382573 level reported: 0.5904900000000002 target: 0.8 adjusted: 0.1244811691972702
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Publishers Report: 
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|(publisher: fox popularity: 15146 video: 2061 text: 13086)
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Updating statistics for: fox
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|(publisher: sears popularity: 9403 video: 7551 text: 1853)
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Updating statistics for: sears
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|(publisher: nyt popularity: 16665 video: 2687 text: 13979)
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Updating statistics for: nyt
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|(publisher: amazon popularity: 71266 video: 12574 text: 58693)
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Updating statistics for: amazon
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|(publisher: ebay popularity: 64417 video: 12421 text: 51997)
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Updating statistics for: ebay
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|(publisher: wallmart popularity: 17345 video: 2790 text: 14556)
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Updating statistics for: wallmart
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Day 20 : Simulation Status Received
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Adding last day's bid bundle to bidBundleHistory
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 17718072: day 3 to 7 [OLD, FEMALE], reach: 6250 coefs: (v=2.0, m=1.5), Campaign ID 1761801: day 1 to 5 [OLD, MALE], reach: 1250 coefs: (v=2.0, m=1.5), Campaign ID 19300450: day 4 to 6 [MALE, HIGH_INCOME], reach: 6250 coefs: (v=2.0, m=1.5)]
+08/04 21:11:21 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for nyt
+08/04 21:11:21 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.UserAnalyzer.calcMarketSegmentsDistribution(UserAnalyzer.java:98), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:202), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:397), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:361), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+08/04 21:11:21 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+08/04 21:11:21 INFO OrOmerShelly.Coordinator|Day 20 ended. Starting next day
+09/04 17:08:00 INFO OrOmerShelly.Coordinator|Got publisherCatalog: cnn ; amazon ; fox ; wallmart ; ebay ; bestbuy ; 
+09/04 17:08:00 INFO OrOmerShelly.Coordinator|Available queries: [Ltau.tac.adx.props.AdxQuery;@577c5e
+09/04 17:08:00 INFO OrOmerShelly.OOSAgent|UNKNOWN Message Received: edu.umich.eecs.tac.props.AdvertiserInfo@bc76a1c1
+09/04 17:08:00 INFO OrOmerShelly.Coordinator|Day 0 :BankStatus[0.000000]
+09/04 17:08:00 INFO OrOmerShelly.Coordinator|tau.tac.adx.report.demand.InitialCampaignMessage[917898,1250,1,5,[OLD, LOW_INCOME],2.0,1.5,demand,[]]
+09/04 17:08:00 INFO OrOmerShelly.Coordinator|Day 0: Allocated campaign - Campaign ID 917898: day 1 to 5 [OLD, LOW_INCOME], reach: 1250 coefs: (v=2.0, m=1.5) budget: 1.25
+09/04 17:08:00 INFO OrOmerShelly.Coordinator|Day 0: Campaign opportunity - Campaign ID 17401056: day 2 to 11 [OLD, FEMALE], reach: 3750 coefs: (v=2.0, m=1.5) budget: 0.0
+09/04 17:08:00 INFO OrOmerShelly.Coordinator|Day 0: Campaign total budget bid: 294.1526027698892
+09/04 17:08:00 INFO OrOmerShelly.Coordinator|Day 0: Initial ucs bid is 0.12353362898690778
+09/04 17:08:01 INFO OrOmerShelly.Coordinator|Day 0 : Simulation Status Received
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Generating default instances for publisher - cnn
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Getting averaged publisher stats as there is no record for publisher cnn
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: PublisherStats for publisher cnn are: Popularity = 220; VideoOrientation = 110; TextOrientation = 110
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [1.0, 1.0, 1.0, 0.4275, 1.25, 312.5, 1.0396400778210115, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [1.0, 2.0, 1.0, 0.4275, 1.25, 312.5, 2.079280155642023, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [2.0, 1.0, 1.0, 0.4275, 1.25, 312.5, 1.5594601167315174, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [2.0, 2.0, 1.0, 0.4275, 1.25, 312.5, 3.118920233463035, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Generating default instances for publisher - amazon
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Getting averaged publisher stats as there is no record for publisher amazon
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: PublisherStats for publisher amazon are: Popularity = 1280; VideoOrientation = 640; TextOrientation = 640
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [1.0, 1.0, 1.0, 0.4543, 1.25, 312.5, 1.177968386989711, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [1.0, 2.0, 1.0, 0.4543, 1.25, 312.5, 2.355936773979422, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [2.0, 1.0, 1.0, 0.4543, 1.25, 312.5, 1.7669525804845665, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [2.0, 2.0, 1.0, 0.4543, 1.25, 312.5, 3.533905160969133, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Generating default instances for publisher - fox
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Getting averaged publisher stats as there is no record for publisher fox
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: PublisherStats for publisher fox are: Popularity = 310; VideoOrientation = 155; TextOrientation = 155
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [1.0, 1.0, 1.0, 0.42479999999999996, 1.25, 312.5, 0.9223874374652583, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [1.0, 2.0, 1.0, 0.42479999999999996, 1.25, 312.5, 1.8447748749305166, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [2.0, 1.0, 1.0, 0.42479999999999996, 1.25, 312.5, 1.3835811561978875, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [2.0, 2.0, 1.0, 0.42479999999999996, 1.25, 312.5, 2.767162312395775, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Generating default instances for publisher - wallmart
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Getting averaged publisher stats as there is no record for publisher wallmart
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: PublisherStats for publisher wallmart are: Popularity = 380; VideoOrientation = 190; TextOrientation = 190
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [1.0, 1.0, 1.0, 0.4697, 1.25, 312.5, 1.173123801150895, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [1.0, 2.0, 1.0, 0.4697, 1.25, 312.5, 2.34624760230179, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [2.0, 1.0, 1.0, 0.4697, 1.25, 312.5, 1.7596857017263425, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [2.0, 2.0, 1.0, 0.4697, 1.25, 312.5, 3.519371403452685, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Generating default instances for publisher - ebay
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Getting averaged publisher stats as there is no record for publisher ebay
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: PublisherStats for publisher ebay are: Popularity = 850; VideoOrientation = 425; TextOrientation = 425
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [1.0, 1.0, 1.0, 0.4543, 1.25, 312.5, 1.2008860598883437, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [1.0, 2.0, 1.0, 0.4543, 1.25, 312.5, 2.4017721197766875, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [2.0, 1.0, 1.0, 0.4543, 1.25, 312.5, 1.8013290898325156, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [2.0, 2.0, 1.0, 0.4543, 1.25, 312.5, 3.602658179665031, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Generating default instances for publisher - bestbuy
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Getting averaged publisher stats as there is no record for publisher bestbuy
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: PublisherStats for publisher bestbuy are: Popularity = 160; VideoOrientation = 80; TextOrientation = 80
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [1.0, 1.0, 1.0, 0.42774999999999996, 1.25, 312.5, 0.927632720333102, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [1.0, 2.0, 1.0, 0.42774999999999996, 1.25, 312.5, 1.855265440666204, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [2.0, 1.0, 1.0, 0.42774999999999996, 1.25, 312.5, 1.3914490804996529, 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|getDefaultDataset: Adding instance - [2.0, 2.0, 1.0, 0.42774999999999996, 1.25, 312.5, 2.7828981609993058, 0.0]
+09/04 17:08:01 INFO OrOmerShelly.Coordinator|Initialized ImpressionBidder
+09/04 17:08:01 INFO OrOmerShelly.Coordinator|Fetching active campaigns from: [Campaign ID 917898: day 1 to 5 [OLD, LOW_INCOME], reach: 1250 coefs: (v=2.0, m=1.5) budget: 1.25]
+09/04 17:08:01 INFO OrOmerShelly.Coordinator|campaign Campaign ID 917898: day 1 to 5 [OLD, LOW_INCOME], reach: 1250 coefs: (v=2.0, m=1.5) budget: 1.25 is active
+09/04 17:08:01 INFO bidders.ImpressionBidder|fillBidBundle: Filling bid bundle for cnn
+09/04 17:08:01 INFO bidders.ImpressionBidder|fillBidBundle: marketSegmentDistribution for publisher is: [ImpParams = MarketSegments=[YOUNG, FEMALE]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, FEMALE]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, FEMALE]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, FEMALE]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[OLD, FEMALE]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[OLD, FEMALE]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[OLD, FEMALE]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[OLD, FEMALE]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, MALE]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, MALE]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, MALE]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, MALE]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[OLD, MALE]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[OLD, MALE]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[OLD, MALE]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[OLD, MALE]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[LOW_INCOME, FEMALE]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[LOW_INCOME, FEMALE]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[LOW_INCOME, FEMALE]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[LOW_INCOME, FEMALE]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[HIGH_INCOME, FEMALE]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[HIGH_INCOME, FEMALE]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[HIGH_INCOME, FEMALE]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[HIGH_INCOME, FEMALE]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[LOW_INCOME, MALE]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[LOW_INCOME, MALE]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[LOW_INCOME, MALE]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[LOW_INCOME, MALE]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[MALE, HIGH_INCOME]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[MALE, HIGH_INCOME]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[MALE, HIGH_INCOME]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[MALE, HIGH_INCOME]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, LOW_INCOME]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, LOW_INCOME]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, LOW_INCOME]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, LOW_INCOME]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, HIGH_INCOME]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, HIGH_INCOME]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, HIGH_INCOME]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, HIGH_INCOME]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[OLD, LOW_INCOME]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[OLD, LOW_INCOME]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[OLD, LOW_INCOME]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[OLD, LOW_INCOME]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[OLD, HIGH_INCOME]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[OLD, HIGH_INCOME]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[OLD, HIGH_INCOME]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[OLD, HIGH_INCOME]; Device=mobile; AdType=video ; Weight = 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|fillBidBundle: Sorted marketSegmentDistribution for publisher is: [ImpParams = MarketSegments=[YOUNG, FEMALE]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, FEMALE]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, FEMALE]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, FEMALE]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[OLD, FEMALE]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[OLD, FEMALE]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[OLD, FEMALE]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[OLD, FEMALE]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, MALE]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, MALE]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, MALE]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, MALE]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[OLD, MALE]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[OLD, MALE]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[OLD, MALE]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[OLD, MALE]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[LOW_INCOME, FEMALE]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[LOW_INCOME, FEMALE]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[LOW_INCOME, FEMALE]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[LOW_INCOME, FEMALE]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[HIGH_INCOME, FEMALE]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[HIGH_INCOME, FEMALE]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[HIGH_INCOME, FEMALE]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[HIGH_INCOME, FEMALE]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[LOW_INCOME, MALE]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[LOW_INCOME, MALE]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[LOW_INCOME, MALE]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[LOW_INCOME, MALE]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[MALE, HIGH_INCOME]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[MALE, HIGH_INCOME]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[MALE, HIGH_INCOME]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[MALE, HIGH_INCOME]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, LOW_INCOME]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, LOW_INCOME]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, LOW_INCOME]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, LOW_INCOME]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, HIGH_INCOME]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, HIGH_INCOME]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, HIGH_INCOME]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[YOUNG, HIGH_INCOME]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[OLD, LOW_INCOME]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[OLD, LOW_INCOME]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[OLD, LOW_INCOME]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[OLD, LOW_INCOME]; Device=mobile; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[OLD, HIGH_INCOME]; Device=pc; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[OLD, HIGH_INCOME]; Device=pc; AdType=video ; Weight = 0.0, ImpParams = MarketSegments=[OLD, HIGH_INCOME]; Device=mobile; AdType=text ; Weight = 0.0, ImpParams = MarketSegments=[OLD, HIGH_INCOME]; Device=mobile; AdType=video ; Weight = 0.0]
+09/04 17:08:01 INFO bidders.ImpressionBidder|fillBidBundle: Working on impParams = MarketSegments=[YOUNG, FEMALE]; Device=pc; AdType=text
+09/04 17:08:01 WARNING bidders.ImpressionBidder|Failed to get initial bid: java.lang.NullPointerException Stack: [OrOmerShelly.oos.bidders.ImpressionBidder.generateFirstInstance(ImpressionBidder.java:381), OrOmerShelly.oos.bidders.ImpressionBidder.initialBid(ImpressionBidder.java:401), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:289), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:399), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:363), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+09/04 17:08:01 WARNING bidders.ImpressionBidder|Failed to get last bid averaged - maybe there's no last bid: [OrOmerShelly.oos.bidders.ImpressionBidder.getLastBidAveraged(ImpressionBidder.java:414), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:294), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:399), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:363), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+09/04 17:08:01 SEVERE OrOmerShelly.Coordinator|Exception in running classifier: java.lang.NullPointerException - [OrOmerShelly.oos.bidders.ImpressionBidder.getLastBidAveraged(ImpressionBidder.java:414), OrOmerShelly.oos.bidders.ImpressionBidder.fillBidBundle(ImpressionBidder.java:294), OrOmerShelly.Coordinator.calculateAndSendBidBundle(Coordinator.java:399), OrOmerShelly.Coordinator.handleSimulationStatus(Coordinator.java:363), OrOmerShelly.OOSAgent.messageReceived(OOSAgent.java:71), se.sics.tasim.aw.AgentService.deliverToAgent(AgentService.java:130), tau.tac.adx.agentware.AgentServiceImpl.deliverToAgent(AgentServiceImpl.java:134), tau.tac.adx.agentware.SimClient.run(SimClient.java:439), java.lang.Thread.run(Unknown Source)]
+09/04 17:08:01 WARNING OrOmerShelly.Coordinator|BidBundle is null! Getting default BidBundle
+09/04 17:08:01 INFO bidders.ImpressionBidder|Default bid bundle bid for Campaign ID 917898: day 1 to 5 [OLD, LOW_INCOME], reach: 1250 coefs: (v=2.0, m=1.5) budget: 1.25 will be 0.5019871680965453 where our rnd was 0.5019871680965453
+09/04 17:08:01 INFO OrOmerShelly.Coordinator|Day 0 ended. Starting next day

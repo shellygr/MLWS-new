@@ -1,0 +1,36 @@
+09/04 22:55:34 INFO file.FileDatabase|infodb: database opened as C:\users\user\git\MLWS-new\AdX\adx-server\infodb
+09/04 22:55:34 INFO common.BlockingViewerServer|viewer server started at *:4042
+09/04 19:55:35 INFO sim.Admin|adding manager for simulation type tac13adx
+09/04 19:55:35 INFO server.TACTGateway|TACT Server started at *:6502
+09/04 19:55:39 INFO server.TACTChannel|user sample logged in as sample@tact-1 with version 0.9.6 from 127.0.0.1
+09/04 19:55:39 INFO sim.Admin|created simulation 30
+09/04 19:56:00 FINE sim.Admin|Entering log for simulation 29
+************************************************************
+* Entering log for simulation 29
+************************************************************
+
+
+09/04 20:06:00 SEVERE common.SimServer|could not generate results for simulation 29
+java.io.IOException: could not parse simulation log 29
+	at edu.umich.eecs.tac.is.TACAAResultManager.generateResult(TACAAResultManager.java:47)
+	at se.sics.tasim.is.common.ResultManager.generateResult(ResultManager.java:62)
+	at se.sics.tasim.is.common.SimServer.generateResults(SimServer.java:2459)
+	at se.sics.tasim.is.common.SimServer.generateResults(SimServer.java:2395)
+	at se.sics.tasim.is.common.SimulationArchiver.generateResults(SimulationArchiver.java:89)
+	at se.sics.tasim.is.common.SimulationArchiver.run(SimulationArchiver.java:80)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.text.ParseException: unexpected EOF
+	at se.sics.isl.transport.BinaryTransportReader.getSValue(BinaryTransportReader.java:364)
+	at se.sics.isl.transport.BinaryTransportReader.getAttributeAsObject(BinaryTransportReader.java:581)
+	at se.sics.isl.transport.BinaryTransportReader.getAttributeAsString(BinaryTransportReader.java:609)
+	at se.sics.isl.transport.BinaryTransportReader.getAttribute(BinaryTransportReader.java:635)
+	at se.sics.isl.transport.TransportReader.getAttribute(TransportReader.java:124)
+	at se.sics.isl.transport.TransportReader.getAttribute(TransportReader.java:115)
+	at se.sics.tasim.props.SimpleContent.read(SimpleContent.java:230)
+	at se.sics.isl.transport.TransportReader.readTransportable(TransportReader.java:89)
+	at se.sics.isl.transport.TransportReader.readTransportable(TransportReader.java:55)
+	at edu.umich.eecs.tac.Parser.handleNodes(Parser.java:190)
+	at edu.umich.eecs.tac.Parser.start(Parser.java:91)
+	at tau.tac.adx.TACAdxSimulationInfo.<init>(TACAdxSimulationInfo.java:108)
+	at edu.umich.eecs.tac.is.TACAAResultManager.generateResult(TACAAResultManager.java:45)
+	... 6 more

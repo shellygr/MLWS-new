@@ -1,0 +1,107 @@
+04/04 09:37:00 FINE sim.Admin|Log for simulation 4 started
+************************************************************
+* Log for simulation 4 started
+************************************************************
+
+
+04/04 09:37:00 INFO sim.TACAdxSimulation|TACAA Simulation 4 is setting up...
+04/04 09:37:00 INFO sim.TACAdxSimulation|Created Adx Agent
+04/04 09:37:00 INFO sim.TACAdxSimulation|Created Demand Agent
+04/04 09:37:00 FINE generators.SimpleUserGenerator|Generated 10000 tau.tac.adx.users.AdxUsers
+04/04 09:37:00 FINE sim.ExternalAgent|sample setup with address adv1
+04/04 09:37:00 FINE agents.SampleAdNetwork|AdNet DummyAdnetwork simulationSetup
+04/04 09:37:00 FINE agents.SampleAdNetwork|AdNet DummyAdnetwork-2 simulationSetup
+04/04 09:37:00 FINE agents.SampleAdNetwork|AdNet DummyAdnetwork-3 simulationSetup
+04/04 09:37:00 FINE agents.SampleAdNetwork|AdNet DummyAdnetwork-4 simulationSetup
+04/04 09:37:00 FINE agents.SampleAdNetwork|AdNet DummyAdnetwork-5 simulationSetup
+04/04 09:37:00 FINE agents.SampleAdNetwork|AdNet DummyAdnetwork-6 simulationSetup
+04/04 09:37:00 FINE agents.SampleAdNetwork|AdNet DummyAdnetwork-7 simulationSetup
+04/04 09:37:00 INFO publisher.AdxPublisherReportManagerImpl|AdxQueryReportManager created.
+04/04 09:37:00 INFO adn.AdNetworkReportManagerImpl|AdxQueryReportManager created.
+04/04 09:37:00 INFO agents.DemandAgent|setting up...
+04/04 09:37:00 FINE agents.DemandAgent|Finished setup
+04/04 09:37:00 INFO sim.Simulation|***** START OF TIME 0 *****
+04/04 09:37:00 FINE agents.DemandAgent|Allocating initial campaign : CampaignImpl [id=520793767, reachImps=1250, dayStart=1, dayEnd=5, targetSegment=[FEMALE, HIGH_INCOME], videoCoef=2.0, mobileCoef=1.5, budget=1.25, advertiser=adv1]
+04/04 09:37:00 FINE agents.DemandAgent|Allocating initial campaign : CampaignImpl [id=1060144791, reachImps=1250, dayStart=1, dayEnd=5, targetSegment=[OLD, LOW_INCOME], videoCoef=2.0, mobileCoef=1.5, budget=1.25, advertiser=DummyAdnetwork]
+04/04 09:37:00 FINE agents.DemandAgent|Allocating initial campaign : CampaignImpl [id=181683178, reachImps=1250, dayStart=1, dayEnd=5, targetSegment=[MALE, LOW_INCOME], videoCoef=2.0, mobileCoef=1.5, budget=1.25, advertiser=DummyAdnetwork-2]
+04/04 09:37:00 FINE agents.DemandAgent|Allocating initial campaign : CampaignImpl [id=1974910259, reachImps=1250, dayStart=1, dayEnd=5, targetSegment=[OLD, FEMALE], videoCoef=2.0, mobileCoef=1.5, budget=1.25, advertiser=DummyAdnetwork-3]
+04/04 09:37:00 FINE agents.DemandAgent|Allocating initial campaign : CampaignImpl [id=809474981, reachImps=1250, dayStart=1, dayEnd=5, targetSegment=[YOUNG, LOW_INCOME], videoCoef=2.0, mobileCoef=1.5, budget=1.25, advertiser=DummyAdnetwork-4]
+04/04 09:37:00 FINE agents.DemandAgent|Allocating initial campaign : CampaignImpl [id=537101922, reachImps=1250, dayStart=1, dayEnd=5, targetSegment=[YOUNG, FEMALE], videoCoef=2.0, mobileCoef=1.5, budget=1.25, advertiser=DummyAdnetwork-5]
+04/04 09:37:00 FINE agents.DemandAgent|Allocating initial campaign : CampaignImpl [id=1198234713, reachImps=1250, dayStart=1, dayEnd=5, targetSegment=[FEMALE, LOW_INCOME], videoCoef=2.0, mobileCoef=1.5, budget=1.25, advertiser=DummyAdnetwork-6]
+04/04 09:37:00 FINE agents.DemandAgent|Allocating initial campaign : CampaignImpl [id=1776663472, reachImps=1250, dayStart=1, dayEnd=5, targetSegment=[MALE, YOUNG], videoCoef=2.0, mobileCoef=1.5, budget=1.25, advertiser=DummyAdnetwork-7]
+04/04 09:37:00 INFO agents.DemandAgent|Day 0 :Notifying new campaign opportunity: CampaignImpl [id=25546415, reachImps=3750, dayStart=2, dayEnd=4, targetSegment=[OLD, MALE], videoCoef=2.0, mobileCoef=1.5, budget=null, advertiser=null]
+04/04 09:37:00 INFO sim.Simulation|***** START OF TIME 0 COMPLETE *****
+04/04 09:37:01 FINE agents.DemandAgent|Day 0 :Got AdNetBidMessage from DummyAdnetwork : UCS Bid: 0.2 Cmp ID: 25546415 Cmp Bid: 2571
+04/04 09:37:01 FINE agents.DemandAgent|Day 0 :Got AdNetBidMessage from DummyAdnetwork-2 : UCS Bid: 0.2 Cmp ID: 25546415 Cmp Bid: 2768
+04/04 09:37:01 FINE agents.DemandAgent|Day 0 :Got AdNetBidMessage from DummyAdnetwork-3 : UCS Bid: 0.2 Cmp ID: 25546415 Cmp Bid: 2729
+04/04 09:37:01 FINE agents.DemandAgent|Day 0 :Got AdNetBidMessage from DummyAdnetwork-4 : UCS Bid: 0.2 Cmp ID: 25546415 Cmp Bid: 2369
+04/04 09:37:01 FINE agents.DemandAgent|Day 0 :Got AdNetBidMessage from DummyAdnetwork-5 : UCS Bid: 0.2 Cmp ID: 25546415 Cmp Bid: 2390
+04/04 09:37:01 FINE agents.DemandAgent|Day 0 :Got AdNetBidMessage from DummyAdnetwork-6 : UCS Bid: 0.2 Cmp ID: 25546415 Cmp Bid: 3142
+04/04 09:37:01 FINE agents.DemandAgent|Day 0 :Got AdNetBidMessage from DummyAdnetwork-7 : UCS Bid: 0.2 Cmp ID: 25546415 Cmp Bid: 2432
+04/04 09:37:01 FINE agents.DemandAgent|Day 0 :Got AdNetBidMessage from adv1 : UCS Bid: 0.15397264696317986 Cmp ID: 25546415 Cmp Bid: 1010
+04/04 09:37:10 INFO sim.Simulation|***** START OF TIME 1 *****
+04/04 09:37:10 INFO agents.DemandAgent|Day 1 : Auction pending campaign: CampaignImpl [id=25546415, reachImps=3750, dayStart=2, dayEnd=4, targetSegment=[OLD, MALE], videoCoef=2.0, mobileCoef=1.5, budget=null, advertiser=null]
+04/04 09:37:10 FINE agents.DemandAgent|Day 1 :Reporting auction results...CampaignImpl [id=25546415, reachImps=3750, dayStart=2, dayEnd=4, targetSegment=[OLD, MALE], videoCoef=2.0, mobileCoef=1.5, budget=2729.0, advertiser=DummyAdnetwork-3]
+04/04 09:37:10 INFO agents.DemandAgent|Day 1 :Notifying new campaign opportunity: CampaignImpl [id=1491571684, reachImps=12500, dayStart=3, dayEnd=5, targetSegment=[YOUNG, HIGH_INCOME], videoCoef=2.0, mobileCoef=1.5, budget=null, advertiser=null]
+04/04 09:37:11 INFO sim.Simulation|***** START OF TIME 1 COMPLETE *****
+04/04 09:37:11 FINE agents.DemandAgent|Day 1 :Got AdNetBidMessage from adv1 : UCS Bid: 0.19636086519607307 Cmp ID: 1491571684 Cmp Bid: 3385
+04/04 09:37:11 FINE agents.DemandAgent|Day 1 :Got AdNetBidMessage from DummyAdnetwork : UCS Bid: 0.2 Cmp ID: 1491571684 Cmp Bid: 2302
+04/04 09:37:11 FINE agents.DemandAgent|Day 1 :Got AdNetBidMessage from DummyAdnetwork-2 : UCS Bid: 0.2 Cmp ID: 1491571684 Cmp Bid: 2631
+04/04 09:37:11 FINE agents.DemandAgent|Day 1 :Got AdNetBidMessage from DummyAdnetwork-3 : UCS Bid: 0.2 Cmp ID: 1491571684 Cmp Bid: 2724
+04/04 09:37:11 FINE agents.DemandAgent|Day 1 :Got AdNetBidMessage from DummyAdnetwork-4 : UCS Bid: 0.2 Cmp ID: 1491571684 Cmp Bid: 3245
+04/04 09:37:11 FINE agents.DemandAgent|Day 1 :Got AdNetBidMessage from DummyAdnetwork-5 : UCS Bid: 0.2 Cmp ID: 1491571684 Cmp Bid: 3127
+04/04 09:37:11 FINE agents.DemandAgent|Day 1 :Got AdNetBidMessage from DummyAdnetwork-6 : UCS Bid: 0.2 Cmp ID: 1491571684 Cmp Bid: 2232
+04/04 09:37:11 FINE agents.DemandAgent|Day 1 :Got AdNetBidMessage from DummyAdnetwork-7 : UCS Bid: 0.2 Cmp ID: 1491571684 Cmp Bid: 2373
+04/04 09:37:20 INFO sim.Simulation|***** START OF TIME 2 *****
+04/04 09:37:20 INFO agents.DemandAgent|Day 2 : Auction pending campaign: CampaignImpl [id=1491571684, reachImps=12500, dayStart=3, dayEnd=5, targetSegment=[YOUNG, HIGH_INCOME], videoCoef=2.0, mobileCoef=1.5, budget=null, advertiser=null]
+04/04 09:37:20 FINE agents.DemandAgent|Day 2 :Reporting auction results...CampaignImpl [id=1491571684, reachImps=12500, dayStart=3, dayEnd=5, targetSegment=[YOUNG, HIGH_INCOME], videoCoef=2.0, mobileCoef=1.5, budget=2.302, advertiser=DummyAdnetwork-6]
+04/04 09:37:20 INFO agents.DemandAgent|Day 2 :Notifying new campaign opportunity: CampaignImpl [id=871462842, reachImps=3750, dayStart=4, dayEnd=8, targetSegment=[YOUNG, FEMALE], videoCoef=2.0, mobileCoef=1.5, budget=null, advertiser=null]
+04/04 09:37:20 INFO sim.Simulation|***** START OF TIME 2 COMPLETE *****
+04/04 09:37:20 FINE agents.DemandAgent|Day 2 :Got AdNetBidMessage from DummyAdnetwork : UCS Bid: 0.2 Cmp ID: 871462842 Cmp Bid: 1
+04/04 09:37:20 FINE agents.DemandAgent|Day 2 :Got AdNetBidMessage from DummyAdnetwork-2 : UCS Bid: 0.2 Cmp ID: 871462842 Cmp Bid: 2113
+04/04 09:37:20 FINE agents.DemandAgent|Day 2 :Got AdNetBidMessage from DummyAdnetwork-3 : UCS Bid: 0.2 Cmp ID: 871462842 Cmp Bid: 2311
+04/04 09:37:20 FINE agents.DemandAgent|Day 2 :Got AdNetBidMessage from DummyAdnetwork-4 : UCS Bid: 0.2 Cmp ID: 871462842 Cmp Bid: 1
+04/04 09:37:20 FINE agents.DemandAgent|Day 2 :Got AdNetBidMessage from DummyAdnetwork-5 : UCS Bid: 0.2 Cmp ID: 871462842 Cmp Bid: 2369
+04/04 09:37:20 FINE agents.DemandAgent|Day 2 :Got AdNetBidMessage from DummyAdnetwork-6 : UCS Bid: 0.2 Cmp ID: 871462842 Cmp Bid: 2232
+04/04 09:37:20 FINE agents.DemandAgent|Day 2 :Got AdNetBidMessage from DummyAdnetwork-7 : UCS Bid: 0.2 Cmp ID: 871462842 Cmp Bid: 2514
+04/04 09:37:20 FINE agents.DemandAgent|Day 2 :Got AdNetBidMessage from adv1 : UCS Bid: 0.19487863950930948 Cmp ID: 871462842 Cmp Bid: 605
+04/04 09:37:30 INFO sim.Simulation|***** START OF TIME 3 *****
+04/04 09:37:30 INFO agents.DemandAgent|Day 3 : Auction pending campaign: CampaignImpl [id=871462842, reachImps=3750, dayStart=4, dayEnd=8, targetSegment=[YOUNG, FEMALE], videoCoef=2.0, mobileCoef=1.5, budget=null, advertiser=null]
+04/04 09:37:30 FINE agents.DemandAgent|Day 3 :Reporting auction results...CampaignImpl [id=871462842, reachImps=3750, dayStart=4, dayEnd=8, targetSegment=[YOUNG, FEMALE], videoCoef=2.0, mobileCoef=1.5, budget=2311.0, advertiser=DummyAdnetwork-3]
+04/04 09:37:30 INFO agents.DemandAgent|Day 3 :Notifying new campaign opportunity: CampaignImpl [id=1020849773, reachImps=3750, dayStart=5, dayEnd=7, targetSegment=[YOUNG, HIGH_INCOME], videoCoef=2.0, mobileCoef=1.5, budget=null, advertiser=null]
+04/04 09:37:30 INFO sim.Simulation|***** START OF TIME 3 COMPLETE *****
+04/04 09:37:30 FINE agents.DemandAgent|Day 3 :Got AdNetBidMessage from DummyAdnetwork : UCS Bid: 0.2 Cmp ID: 1020849773 Cmp Bid: 1
+04/04 09:37:30 FINE agents.DemandAgent|Day 3 :Got AdNetBidMessage from DummyAdnetwork-2 : UCS Bid: 0.2 Cmp ID: 1020849773 Cmp Bid: 2427
+04/04 09:37:30 FINE agents.DemandAgent|Day 3 :Got AdNetBidMessage from DummyAdnetwork-3 : UCS Bid: 0.2 Cmp ID: 1020849773 Cmp Bid: 2124
+04/04 09:37:30 FINE agents.DemandAgent|Day 3 :Got AdNetBidMessage from DummyAdnetwork-4 : UCS Bid: 0.2 Cmp ID: 1020849773 Cmp Bid: 1
+04/04 09:37:30 FINE agents.DemandAgent|Day 3 :Got AdNetBidMessage from DummyAdnetwork-5 : UCS Bid: 0.2 Cmp ID: 1020849773 Cmp Bid: 2485
+04/04 09:37:30 FINE agents.DemandAgent|Day 3 :Got AdNetBidMessage from DummyAdnetwork-6 : UCS Bid: 0.2 Cmp ID: 1020849773 Cmp Bid: 3185
+04/04 09:37:30 FINE agents.DemandAgent|Day 3 :Got AdNetBidMessage from DummyAdnetwork-7 : UCS Bid: 0.2 Cmp ID: 1020849773 Cmp Bid: 2111
+04/04 09:37:30 FINE agents.DemandAgent|Day 3 :Got AdNetBidMessage from adv1 : UCS Bid: 0.14053079936857957 Cmp ID: 1020849773 Cmp Bid: 1015
+04/04 09:37:40 INFO sim.Simulation|***** START OF TIME 4 *****
+04/04 09:37:40 INFO agents.DemandAgent|Day 4 : Auction pending campaign: CampaignImpl [id=1020849773, reachImps=3750, dayStart=5, dayEnd=7, targetSegment=[YOUNG, HIGH_INCOME], videoCoef=2.0, mobileCoef=1.5, budget=null, advertiser=null]
+04/04 09:37:40 FINE agents.DemandAgent|Day 4 :Reporting auction results...CampaignImpl [id=1020849773, reachImps=3750, dayStart=5, dayEnd=7, targetSegment=[YOUNG, HIGH_INCOME], videoCoef=2.0, mobileCoef=1.5, budget=2485.0, advertiser=DummyAdnetwork-5]
+04/04 09:37:40 INFO agents.DemandAgent|Day 4 :Notifying new campaign opportunity: CampaignImpl [id=1941206051, reachImps=12500, dayStart=6, dayEnd=10, targetSegment=[FEMALE, HIGH_INCOME], videoCoef=2.0, mobileCoef=1.5, budget=null, advertiser=null]
+04/04 09:37:40 INFO sim.Simulation|***** START OF TIME 4 COMPLETE *****
+04/04 09:37:40 FINE agents.DemandAgent|Day 4 :Got AdNetBidMessage from DummyAdnetwork : UCS Bid: 0.2 Cmp ID: 1941206051 Cmp Bid: 1
+04/04 09:37:40 FINE agents.DemandAgent|Day 4 :Got AdNetBidMessage from DummyAdnetwork-2 : UCS Bid: 0.2 Cmp ID: 1941206051 Cmp Bid: 1
+04/04 09:37:40 FINE agents.DemandAgent|Day 4 :Got AdNetBidMessage from DummyAdnetwork-3 : UCS Bid: 0.2 Cmp ID: 1941206051 Cmp Bid: 2779
+04/04 09:37:40 FINE agents.DemandAgent|Day 4 :Got AdNetBidMessage from DummyAdnetwork-4 : UCS Bid: 0.2 Cmp ID: 1941206051 Cmp Bid: 1
+04/04 09:37:40 FINE agents.DemandAgent|Day 4 :Got AdNetBidMessage from DummyAdnetwork-5 : UCS Bid: 0.2 Cmp ID: 1941206051 Cmp Bid: 2549
+04/04 09:37:40 FINE agents.DemandAgent|Day 4 :Got AdNetBidMessage from DummyAdnetwork-6 : UCS Bid: 0.2 Cmp ID: 1941206051 Cmp Bid: 2092
+04/04 09:37:40 FINE agents.DemandAgent|Day 4 :Got AdNetBidMessage from DummyAdnetwork-7 : UCS Bid: 0.2 Cmp ID: 1941206051 Cmp Bid: 3058
+04/04 09:37:40 FINE agents.DemandAgent|Day 4 :Got AdNetBidMessage from adv1 : UCS Bid: 0.18649607019925069 Cmp ID: 1941206051 Cmp Bid: 1990
+04/04 09:37:50 INFO sim.Simulation|***** START OF TIME 5 *****
+04/04 09:37:50 INFO agents.DemandAgent|Day 5 : Auction pending campaign: CampaignImpl [id=1941206051, reachImps=12500, dayStart=6, dayEnd=10, targetSegment=[FEMALE, HIGH_INCOME], videoCoef=2.0, mobileCoef=1.5, budget=null, advertiser=null]
+04/04 09:37:50 INFO demand.CampaignImpl|Campaign 25546415 ended for advertiser DummyAdnetwork-3. Stats CampaignStats [tartgetedImps=3751.5, otherImps=0.0, cost=2550.000856301113] Reach 3750 ERR 1.0003607980854015 Budget 2729.0 Revenue 2729.9846179750607
+04/04 09:37:50 FINE agents.DemandAgent|Day 5 :Reporting auction results...CampaignImpl [id=1941206051, reachImps=12500, dayStart=6, dayEnd=10, targetSegment=[FEMALE, HIGH_INCOME], videoCoef=2.0, mobileCoef=1.5, budget=2.092, advertiser=adv1]
+04/04 09:37:50 INFO agents.DemandAgent|Day 5 :Notifying new campaign opportunity: CampaignImpl [id=214088921, reachImps=12500, dayStart=7, dayEnd=9, targetSegment=[OLD, MALE], videoCoef=2.0, mobileCoef=1.5, budget=null, advertiser=null]
+04/04 09:37:50 INFO sim.Simulation|***** START OF TIME 5 COMPLETE *****
+04/04 09:37:50 FINE agents.DemandAgent|Day 5 :Got AdNetBidMessage from DummyAdnetwork : UCS Bid: 0.2 Cmp ID: 214088921 Cmp Bid: 1
+04/04 09:37:50 FINE agents.DemandAgent|Day 5 :Got AdNetBidMessage from DummyAdnetwork-2 : UCS Bid: 0.2 Cmp ID: 214088921 Cmp Bid: 1
+04/04 09:37:50 FINE agents.DemandAgent|Day 5 :Got AdNetBidMessage from DummyAdnetwork-3 : UCS Bid: 0.2 Cmp ID: 214088921 Cmp Bid: 2387
+04/04 09:37:50 FINE agents.DemandAgent|Day 5 :Got AdNetBidMessage from DummyAdnetwork-4 : UCS Bid: 0.2 Cmp ID: 214088921 Cmp Bid: 1
+04/04 09:37:50 FINE agents.DemandAgent|Day 5 :Got AdNetBidMessage from DummyAdnetwork-5 : UCS Bid: 0.2 Cmp ID: 214088921 Cmp Bid: 3104
+04/04 09:37:50 FINE agents.DemandAgent|Day 5 :Got AdNetBidMessage from DummyAdnetwork-6 : UCS Bid: 0.2 Cmp ID: 214088921 Cmp Bid: 2641
+04/04 09:37:50 FINE agents.DemandAgent|Day 5 :Got AdNetBidMessage from DummyAdnetwork-7 : UCS Bid: 0.2 Cmp ID: 214088921 Cmp Bid: 2913
+04/04 09:37:50 FINE agents.DemandAgent|Day 5 :Got AdNetBidMessage from adv1 : UCS Bid: 0.11752837571692082 Cmp ID: 214088921 Cmp Bid: 3367
