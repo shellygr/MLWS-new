@@ -37,8 +37,8 @@ public class CampaignBidder {
 		0.258585859, // 24- high old
 		0,0 }; 
 	
-	private static final double ALPHA = 1;
-	private static final double BETA = 1;
+	private static final double ALPHA = 0.5;
+	private static final double BETA = 100;
 	private static final double GAMMA = 1;
 	
 	private static CampaignBidder instance = null;
@@ -65,7 +65,7 @@ public class CampaignBidder {
 		return instance;
 	}
 	
-	public double getBid(OrOmerShelly.CampaignData pendingCampaign){
+	public double getBid(OrOmerShelly.CampaignData pendingCampaign, double qualityScore){
 	
 		/*
 		 * here we do the magic.
@@ -84,7 +84,8 @@ public class CampaignBidder {
 		double targetAudienceScore = getAudienceScore(pendingCampaign.getTargetSegment());
 		
 		
-		return ALPHA * ( reach / duration ) * 1 / (1 + targetAudienceScore);
+		//return 1;
+		return ALPHA * qualityScore * ( reach / duration ) * 1 / (1 + BETA*targetAudienceScore);
 	}
 	
 	
