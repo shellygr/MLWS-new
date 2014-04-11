@@ -126,6 +126,7 @@ public class ImpressionBidder {
 		double budget = currentCampaign.getBudget();
 		double priority = getCampaignPriority(currentCampaign);
 
+		int countInstances = (dataset == null ? 0 : dataset.numInstances()-1);
 		// Video / Mobile - are worth more according to mobileCoeff, videoCoeff. So take them into account.
 		for (PublisherCatalogEntry publisherCatalogEntry : publisherCatalog.getPublishers()) {
 			String publisherName = publisherCatalogEntry.getPublisherName();
@@ -174,7 +175,8 @@ public class ImpressionBidder {
 					
 					Instance defaultInstance = new SparseInstance(1, attributes, indicesToFill, 1); 
 					defaultInstances.add(defaultInstance);
-					lastInstancesIndicesMap.put(new InstanceIndexKey(publisherName, currentCampaign.getTargetSegment(), device, adType, priority), dataset.numInstances()-1); // -1 or no -1?
+					lastInstancesIndicesMap.put(new InstanceIndexKey(publisherName, currentCampaign.getTargetSegment(), device, adType, priority), countInstances); // -1 or no -1?
+					++countInstances;
 				}
 			}
 		}

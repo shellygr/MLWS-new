@@ -402,7 +402,6 @@ public class Coordinator {
 					new HashSet<MarketSegment>(), Device.pc, AdType.text));
 		}
 
-		log.info("campaign queries: " + querySet);
 		return querySet.toArray(new AdxQuery[querySet.size()]);
 
 	}
