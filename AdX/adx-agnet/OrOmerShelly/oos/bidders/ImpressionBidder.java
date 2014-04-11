@@ -325,8 +325,7 @@ public class ImpressionBidder {
 					bid = calcBid(bid, relevantCampaigns, publisherName, impParams.getMarketSegments());
 					log.info(rname + ": New bid is = " + bid);
 				} else {
-					log.info(rname + ": Could not find relevant campaigns. Will give a bid only if the market segment is unknown");
-					
+										
 					if (isUnknown(impParams)) {
 						log.info(rname + ": Market segment is unknown, bidding only for urgent campaigns");
 						
