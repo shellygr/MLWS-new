@@ -307,22 +307,15 @@ public class UserAnalyzer {
 				for (AdType adType : AdType.values()) {
 					ImpressionParameters impParams = new ImpressionParameters(marketSegment, device, adType);
 					Double weight = 1.0;
-					String logString = "";
 					
 					for (MarketSegment partialMarketSegmnet : marketSegment) {
-						logString += "(" + audienceOrientationMap.get(new AudienceOrientationKey(publisherName, partialMarketSegmnet)) / 100  + "/100) *";
 						weight *= audienceOrientationMap.get(new AudienceOrientationKey(publisherName, partialMarketSegmnet)) / 100; 
 					}
 					
 					weight *= deviceOrientationMap.get(new DeviceOrientationKey(publisherName, device))  / 100;
-					logString += "(" +  deviceOrientationMap.get(new DeviceOrientationKey(publisherName, device))  / 100 + "/100) *";
 					weight *= ((double)(adType == AdType.text ? publisherStats.getTextOrientation() : publisherStats.getVideoOrientation()) / publisherStats.getPopularity());
-					logString += "(" + (adType == AdType.text ? publisherStats.getTextOrientation() : publisherStats.getVideoOrientation()) + " / " + publisherStats.getPopularity() + ") *";
 					weight *= popularityMap.get(publisherName) / 100;
-					logString += "(" + popularityMap.get(publisherName) / 100 + "/100)";
-					
-					System.out.println("PUBLISHER_STATS = " + publisherStats + "; ADTYPE = " + adType + "; WEIGHT = " + logString);
-					
+															
 					ImpressionParamtersDistributionKey key = new ImpressionParamtersDistributionKey(impParams, weight);
 					weights.add(key);					
 				}
@@ -342,7 +335,6 @@ public class UserAnalyzer {
 		int count = (publishersStats == null ? 0 : publishersStats.values().size());
 		
 		if (count == 0) {
-			System.out.println("Returning default publisher stats = " + USER_POPULATION_SIZE + "*" + popularityMap.get(publisherName) + "/100 ; Math.round(popularity/2)=" + Math.round(popularity/2));
 			return new PublisherStats(Math.round(popularity), Math.round(popularity/2), Math.round(popularity/2));
 		}
 		

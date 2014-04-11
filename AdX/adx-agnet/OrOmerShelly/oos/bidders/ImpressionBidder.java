@@ -140,9 +140,7 @@ public class ImpressionBidder {
 				log.info(rname + ": Getting averaged publisher stats as there is no record for publisher " + publisherName);
 				publisherStats = userAnalyzer.getAveragedPublisherStatsForPublisher(publisherName);
 			}
-			
-			log.info(rname + ": PublisherStats for publisher " + publisherName + " are: " + publisherStats.toString());
-			
+						
 			double adTypeOrientation = publisherStats.getVideoOrientation() / publisherStats.getTextOrientation();
 			
 			for (Device device : Device.values()) {
@@ -280,7 +278,6 @@ public class ImpressionBidder {
 			log.info(rname + ": Filling bid bundle for " + publisherName);
 			
 			List<ImpressionParamtersDistributionKey> impressionDistribution = userAnalyzer.calcImpressionDistribution(publisherName);
-			log.info(rname + ": marketSegmentDistribution for publisher is: " + impressionDistribution);
 			
 			Collections.sort(impressionDistribution, 
 					new Comparator<ImpressionParamtersDistributionKey>() {
@@ -290,8 +287,6 @@ public class ImpressionBidder {
 					return o1.getWeight().compareTo(o2.getWeight());
 				}
 			});
-
-			log.info(rname + ": Sorted marketSegmentDistribution for publisher is: " + impressionDistribution);
 
 			Map<Integer,Integer> campaignWeightVector = new HashMap<Integer,Integer>();
 			double bid = 0.0;
@@ -545,14 +540,12 @@ public class ImpressionBidder {
 			// Step2: does the campaign fit the impressions characteristics and market segment?
 			Set<MarketSegment> marketSegments = campaign.getTargetSegment();
 			AdxQuery[] relevantQueries = campaign.getCampaignQueries();
-			log.info(rname + ": RelevantQueries = " + printQueries(relevantQueries));
 			for (AdxQuery query : relevantQueries) {
 				AdType relevantAd = query.getAdType();
 				Device relevantDevice = query.getDevice();
 				
 				if (relevantAd == impressionAdType && relevantDevice == impressionDevice) { // TODO sanity on that... could be probability!!
-					// Campaign should contain a common market segment with the impression
-					log.info(rname + ": Campaign market segment is " + campaign.getTargetSegment() + " and impression is " + impressionMarketSegments);
+					// Campaign should contain a common market segment with the impressio
 					if (marketSegments.containsAll(impressionMarketSegments)) { 
 						log.info(rname + ": equal! Adding campaign");
 						filteredCampaigns.add(campaign);
