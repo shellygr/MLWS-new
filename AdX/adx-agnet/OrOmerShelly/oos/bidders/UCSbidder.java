@@ -147,7 +147,7 @@ public class UCSbidder {
 		/*
 		 */
 		double reinforecement=findReinforcement(anp, co, co.day);
-		int nextState=-1;
+		int nextState=findState(co);
 		
 		double q = Q(state, action);
 		double maxQ = maxQ(nextState)[0];
