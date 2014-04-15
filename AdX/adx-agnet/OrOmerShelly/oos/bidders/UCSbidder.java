@@ -44,34 +44,34 @@ public class UCSbidder {
 	final double finalRange2=3;
 	final double finalRange3=4;
 	final double[] prices={0,1,2,3,4};
-	 double alpha=0.1;
-	 double gamma=0.9;
-	 int state;
-	 int nextstate;
-	 int action;
-	 int[] actionsFromA = new int[] { stateB, stateC, stateD, stateE, stateF };
-	 int[] actionsFromB = new int[] { stateG, stateH, stateI, stateJ, stateK };
-	 int[] actionsFromC = new int[] { stateG, stateH, stateI, stateJ, stateK };
-	 int[] actionsFromD = new int[] { stateG, stateH, stateI, stateJ, stateK };
-	 int[] actionsFromE = new int[] { stateG, stateH, stateI, stateJ, stateK };
-	 int[] actionsFromF = new int[] { stateG, stateH, stateI, stateJ, stateK };
-	 int[][] actions = new int[][] { actionsFromA, actionsFromB, actionsFromC,
+	double alpha=0.1;
+	double gamma=0.9;
+	int state;
+	int nextstate;
+	int action;
+	int[] actionsFromA = new int[] { stateB, stateC, stateD, stateE, stateF };
+	int[] actionsFromB = new int[] { stateG, stateH, stateI, stateJ, stateK };
+	int[] actionsFromC = new int[] { stateG, stateH, stateI, stateJ, stateK };
+	int[] actionsFromD = new int[] { stateG, stateH, stateI, stateJ, stateK };
+	int[] actionsFromE = new int[] { stateG, stateH, stateI, stateJ, stateK };
+	int[] actionsFromF = new int[] { stateG, stateH, stateI, stateJ, stateK };
+	int[][] actions = new int[][] { actionsFromA, actionsFromB, actionsFromC,
 			actionsFromD, actionsFromE, actionsFromF };
 	int[][] R = new int[statesCount][statesCount]; // reward lookup
-	 double[][] Q = new double[statesCount][possibleActions]; // Q learning
+	double[][] Q = new double[statesCount][possibleActions]; // Q learning
 	static List<Double> amountpaid; // the ith entry represents the amount paid on the ith day.
 	static List<Integer> placeReached; // the ith entry represents the UCS place we got on the ith day.
 	private static UCSbidder instance = null;
 
 	protected UCSbidder() {
-	      // Exists only to defeat instantiation.
+		// Exists only to defeat instantiation.
 	}
 
 	public static UCSbidder getInstance() {
 
 		if(instance == null) {
 			instance = new UCSbidder();
-	    }
+		}
 
 		return instance;
 	}
@@ -147,10 +147,10 @@ public class UCSbidder {
 		/*
 		 */
 		double reinforecement=findReinforcement(anp, co, co.day);
-		int nextState=findState(co);
-		
+		nextstate=findState(co);
+
 		double q = Q(state, action);
-		double maxQ = maxQ(nextState)[0];
+		double maxQ = maxQ(nextstate)[0];
 		double value = q + alpha * (reinforecement + gamma * maxQ - q);
 		setQ(state, action, value);
 		//int r = R(state, action);
@@ -166,24 +166,25 @@ public class UCSbidder {
 
 			if (value > maxValue)
 				result[0]=value;
-				result[1]=i;
-				maxValue = value;
+			result[1]=i;
+			maxValue = value;
 		}
 		return result;
 	}
 	int findState(Coordinator co) {
 		double accume=0.0;
 		for (int i=0; i<co.getMyCampaigns().size() ; i++) { // I had to add setters and getters for MyCampaigns.
-			accume+=((1.0)*(co.getMyCampaigns().get(i).impsTogo()))/(co.getMyCampaigns().get(i).getReachImps());
+			if (co.getMyCampaigns().get(i).getReachImps()!=0)
+				accume+=((1.0)*(co.getMyCampaigns().get(i).impsTogo()))/(co.getMyCampaigns().get(i).getReachImps());
 		}
 		if (accume<range0) return 1;
 		if (accume<range1) return 2;
 		if (accume<range2) return 3;
 		if (accume<range3) return 4;
 		return 5;
-		
+
 	}
-	
+
 	double findReinforcement(AdNetworkReport anp, Coordinator co, int day) {
 		int misses=0, hits=0;
 		boolean hitForCampaign=false;
@@ -208,12 +209,12 @@ public class UCSbidder {
 		}
 		return (((double)misses)/(misses+hits))*activeCampagins;
 	}
-	
+
 	boolean relevantCampaign(CampaignData cd, int day) {
 		if (cd.impsTogo()>0 && cd.getDayEnd()>=day) return true;
 		return false;
 	}
-	
+
 	boolean matchSegment(CampaignData ms, AdNetworkKey k) {
 		Set<MarketSegment> s=ms.getTargetSegment();
 		for (MarketSegment m : s) {
@@ -238,7 +239,7 @@ public class UCSbidder {
 		}
 		return true;
 	}
-	
+
 	int findFinalState(double reinforcement) {
 		if (reinforcement<finalRange0) return stateG;
 		if (reinforcement<finalRange1) return stateH;
@@ -246,7 +247,7 @@ public class UCSbidder {
 		if (reinforcement<finalRange3) return stateJ;
 		return stateJ;
 	}
-	
+
 	void setQ(int s, int a, double value) {
 		Q[s][a] = value;
 	}
