@@ -58,7 +58,7 @@ public class UCSbidder {
 	int[][] actions = new int[][] { actionsFromA, actionsFromB, actionsFromC,
 			actionsFromD, actionsFromE, actionsFromF };
 	int[][] R = new int[statesCount][statesCount]; // reward lookup
-	double[][] Q = new double[statesCount][possibleActions]; // Q learning
+	double[][] Q = new double[statesCount][statesCount]; // Q learning
 	static List<Double> amountpaid; // the ith entry represents the amount paid on the ith day.
 	static List<Integer> placeReached; // the ith entry represents the UCS place we got on the ith day.
 	private static UCSbidder instance = null;
