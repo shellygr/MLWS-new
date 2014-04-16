@@ -12,6 +12,10 @@ public class PublisherStats {
 		this.textOrientation = textOrientation;
 	}
 	
+	public double getAdTypeOrientation() {
+		return videoOrientation / textOrientation;
+	}
+	
 	public long getPopularity() {
 		return popularity;
 	}

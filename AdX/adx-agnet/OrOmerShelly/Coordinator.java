@@ -12,13 +12,12 @@ import java.util.Random;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import OrOmerShelly.oos.bidders.CampaignBidder;
-import OrOmerShelly.oos.bidders.ImpressionBidder;
-import OrOmerShelly.oos.bidders.UCSbidder;
+import OrOmerShelly.bidders.CampaignBidder;
+import OrOmerShelly.bidders.ImpressionBidder;
+import OrOmerShelly.bidders.UCSbidder;
 
 import edu.umich.eecs.tac.props.BankStatus;
 
-import se.sics.tasim.props.SimulationStatus;
 import tau.tac.adx.ads.properties.AdType;
 import tau.tac.adx.demand.CampaignStats;
 import tau.tac.adx.devices.Device;
@@ -26,11 +25,8 @@ import tau.tac.adx.props.AdxBidBundle;
 import tau.tac.adx.props.AdxQuery;
 import tau.tac.adx.props.PublisherCatalog;
 import tau.tac.adx.props.PublisherCatalogEntry;
-import tau.tac.adx.report.adn.AdNetworkKey;
 import tau.tac.adx.report.adn.AdNetworkReport;
-import tau.tac.adx.report.adn.AdNetworkReportEntry;
 import tau.tac.adx.report.adn.MarketSegment;
-import tau.tac.adx.report.demand.AdNetBidMessage;
 import tau.tac.adx.report.demand.AdNetworkDailyNotification;
 import tau.tac.adx.report.demand.CampaignOpportunityMessage;
 import tau.tac.adx.report.demand.CampaignReport;
@@ -40,7 +36,6 @@ import tau.tac.adx.report.demand.campaign.auction.CampaignAuctionReport;
 import tau.tac.adx.report.publisher.AdxPublisherReport;
 import tau.tac.adx.report.publisher.AdxPublisherReportEntry;
 import weka.classifiers.functions.LinearRegression;
-import weka.classifiers.functions.SimpleLinearRegression;
 
 public class Coordinator {
 	private final Logger log = Logger
@@ -48,9 +43,8 @@ public class Coordinator {
 
 	private static Coordinator instance = null;
 
-	public OOSAgent messenger;
 	public ImpressionBidder impressionBidder = ImpressionBidder.getInstance();
-	public CampaignBidder campaignBidder = CampaignBidder.getInstance(); // The singleton instance 
+	public CampaignBidder campaignBidder = CampaignBidder.getInstance();
 	public UCSbidder ucsbidder = UCSbidder.getInstance();
 
 	/**
@@ -64,12 +58,10 @@ public class Coordinator {
 	 * {@link AdNetworkDailyNotification}.
 	 */
 	private final Queue<CampaignReport> campaignReports = new LinkedList<CampaignReport>();
-	private PublisherCatalog publisherCatalog;
-	private InitialCampaignMessage initialCampaignMessage;
-	private AdNetworkDailyNotification adNetworkDailyNotification;
-	private final Queue<AdNetworkDailyNotification> adNetworkDailyNotificationsHistory; // TODO: split ucs level history
+	private PublisherCatalog publisherCatalog = null;
+	private InitialCampaignMessage initialCampaignMessage = null;
+	private AdNetworkDailyNotification adNetworkDailyNotification = null;
 	private final int FIRST_DAY_OF_BID_BUNDLE_CALCULATION = 0;
-	private final int FIRST_DAY_OF_AD_NETWORK_DAILY_NOTIFICATION = 1;
 	private final int FIRST_DAY_OF_PUBLISHERS_REPORT = 1;
 	/*
 	 * we maintain a list of queries - each characterized by the web site (the
@@ -86,14 +78,13 @@ public class Coordinator {
 	 * We maintain a collection (mapped by the campaign id) of the campaigns won
 	 * by our agent.
 	 */
-	private Map<Integer, CampaignData> myCampaigns; // TODO: also campaigns that already ended? YES!!!
+	private Map<Integer, CampaignData> myCampaigns = new HashMap<Integer, CampaignData>(); // TODO: also campaigns that already ended? YES!!!
 	// TODO: add a flag to campaigns - active or not
 
 	/*
 	 * the bidBundle to be sent daily to the AdX
 	 */
 	private AdxBidBundle bidBundle;
-	private Queue<AdxBidBundle> bidBundleHistory;
 
 	/*
 	 * The current bid level for the user classification service
@@ -106,10 +97,8 @@ public class Coordinator {
 	double ucsTargetLevel;
 
 	double currentUcsLevel;
-	Queue<Double> ucsLevelHistory;
 
 	double qualityScore;
-	Queue<Double> qualityScoreHistory;
 
 	Map<String, PublisherStats> publisherDailyStats = new HashMap<String, PublisherStats>();
 
@@ -129,15 +118,11 @@ public class Coordinator {
 	 * which bids regarding campaign opportunities may be sent in subsequent
 	 * days) are also reported in the initial campaign message
 	 */
-	public void handleInitialCampaignMessage(
-			InitialCampaignMessage campaignMessage) {
+	public void handleInitialCampaignMessage(InitialCampaignMessage campaignMessage) {
+		
 		log.info(campaignMessage.toString());
-
 		day = 0;
-
 		initialCampaignMessage = campaignMessage;
-		messenger.demandAgentAddress = campaignMessage.getDemandAgentAddress();
-		messenger.adxAgentAddress = campaignMessage.getAdxAgentAddress();
 
 		CampaignData campaignData = new CampaignData(initialCampaignMessage);
 		campaignData.setBudget(initialCampaignMessage.getReachImps() / 1000.0); // TODO: Shelly - rethink on this calculation
@@ -243,9 +228,7 @@ public class Coordinator {
 	 * (on day n) related bids (attempting to win the campaign). The allocation
 	 * (the winner) is announced to the competing agents during day n + 1.
 	 */
-	public void handleICampaignOpportunityMessage(
-			CampaignOpportunityMessage com) {
-
+	public double getBidForCampaign(CampaignOpportunityMessage com) {
 		day = com.getDay();
 
 		pendingCampaign = new CampaignData(com);
@@ -267,7 +250,12 @@ public class Coordinator {
 		double cmpBidUnits = campaignBidder.getBid(pendingCampaign, qualityScore);  // TODO: Or; here we determine the bid.
 
 		log.info("Day " + day + ": Campaign total budget bid: " + cmpBidUnits);
+		
+		return cmpBidUnits;
+	}
+	
 
+	public double getBidForUcs() {
 		/*
 		 * Adjust ucs bid s.t. target level is achieved. Note: The bid for the
 		 * user classification service is piggybacked
@@ -286,13 +274,9 @@ public class Coordinator {
 		} else {
 			log.info("Day " + day + ": Initial ucs bid is " + ucsBid);
 		}
-
-		/* Note: Campaign bid is in millis */
-		AdNetBidMessage bids = new AdNetBidMessage(ucsBid, pendingCampaign.getId(),  // here we send a bid for campaign oppor. and ucs combined.
-				(long)cmpBidUnits);
-		messenger.sendMessageOnBidsAndUcs(bids);
+		
+		return ucsBid;
 	}
-
 
 	/** Updates the bank balance **/
 	public void handleBankStatus(BankStatus content) {
@@ -310,11 +294,9 @@ public class Coordinator {
 	public void handleAdNetworkDailyNotification(
 			AdNetworkDailyNotification notificationMessage) {
 
-		if (day > FIRST_DAY_OF_AD_NETWORK_DAILY_NOTIFICATION) {
-			adNetworkDailyNotificationsHistory.add(adNetworkDailyNotification); // Add last notification to history
-			qualityScoreHistory.add(qualityScore);
-			ucsLevelHistory.add(currentUcsLevel);
-		}
+//		if (day > FIRST_DAY_OF_AD_NETWORK_DAILY_NOTIFICATION) {
+//			adNetworkDailyNotificationsHistory.add(adNetworkDailyNotification); // Add last notification to history
+//		}
 
 		adNetworkDailyNotification = notificationMessage;
 
@@ -406,27 +388,10 @@ public class Coordinator {
 
 	}
 
-
-	/**
-	 * The SimulationStatus message received on day n indicates that the
-	 * calculation time is up and the agent is requested to send its bid bundle
-	 * to the AdX.
-	 */
-	public void handleSimulationStatus(SimulationStatus simulationStatus) {
-		log.info("Day " + day + " : Simulation Status Received");
-		calculateAndSendBidBundle();
-		log.info("Day " + day + " ended. Starting next day");
-		++day;
-	}
-
-	// TODO define a static default bid bundle as a protection against exceptions
-	private void calculateAndSendBidBundle() {
+	public AdxBidBundle calculateBidBundle() {
 		boolean hadExceptionInClassifier = false;
 
-		if (day > FIRST_DAY_OF_BID_BUNDLE_CALCULATION) {
-			log.info("Adding last day's bid bundle to bidBundleHistory");
-			bidBundleHistory.add(bidBundle);
-		} else {
+		if (day == FIRST_DAY_OF_BID_BUNDLE_CALCULATION) {
 			try {
 				impressionBidder.setPublisherCatalog(publisherCatalog);
 				impressionBidder.init(new LinearRegression(), myCampaigns.entrySet().iterator().next().getValue(), day + 1);
@@ -437,7 +402,7 @@ public class Coordinator {
 			}
 		}
 
-		impressionBidder.updateDay(day);
+		impressionBidder.updateDay(day + 1);
 		impressionBidder.setMyActiveCampaigns(getMyActiveCampaigns(day + 1)); // relevantDay is day of bid which is day+1
 
 		if (day != FIRST_DAY_OF_BID_BUNDLE_CALCULATION) {
@@ -446,6 +411,8 @@ public class Coordinator {
 
 		if (day >= FIRST_DAY_OF_PUBLISHERS_REPORT) {
 			impressionBidder.updatePublisherStats(publisherDailyStats);		
+		} else {
+			impressionBidder.updatePublisherStats(new HashMap<String, PublisherStats>());
 		}
 
 		try {
@@ -465,7 +432,10 @@ public class Coordinator {
 			bidBundle = impressionBidder.getDefaultBidBundle(queries);
 		}
 
-		messenger.sendBidAndAds(bidBundle); // Must not fail.		
+		
+		++day;
+		
+		return bidBundle;
 	}
 
 
@@ -541,46 +511,15 @@ public class Coordinator {
 	/**
 	 * 
 	 * @param AdNetworkReport
+	 * @throws Exception 
 	 */
-	public void handleAdNetworkReport(AdNetworkReport adnetReport) {
-		// TODO: Shelly - read class notes - why commented out? 
-		// This is a map per AdNetQuery of wins/costs/bids result for impression auction - go over this and use it
+	public void handleAdNetworkReport(AdNetworkReport adnetReport) throws Exception {
 		ucsbidder.updateUCS(adnetReport, this, this.getMyCampaigns());
 		log.info("Day "+ day + " : AdNetworkReport = " + adnetReport);
-
-
-		for (AdNetworkKey adnetKey : adnetReport.keys()) {
-			AdNetworkReportEntry adnetEntry = adnetReport.getAdNetworkReportEntry(adnetKey);
-			int wins = adnetEntry.getWinCount();
-			int bids = adnetEntry.getBidCount();
-			double cost = adnetEntry.getCost();
-			
-			if (wins > 0) { // TODO each adNetKey is containing 3 different market segment: Age-Income, Age-Gender, Gender-Income
-				double secondPriceBid = cost / wins;
-				String publisher = adnetKey.getPublisher();
-				Set<MarketSegment> marketSegment = getMarketSegmentFromAdNetKey(adnetKey);
-				Device device = adnetKey.getDevice();
-				AdType adType = adnetKey.getAdType();
-				double campaignsLastPriority = getCampaignsLastPriority(adnetKey.getCampaignId());
-				impressionBidder.updateInstance(publisher, marketSegment, device, adType, campaignsLastPriority, secondPriceBid);
-			}
-			// TODO: get for a certain campaign id all wins and losses and calculate revenues.
-			// if won, update instance with the second prize paid.
-		}
-		// TODO impressionBidder.completeLastIntsancesAndUpdate();
+		
+		impressionBidder.updateByAdNetReport(adnetReport);
 	}
 
-
-	private Set<MarketSegment> getMarketSegmentFromAdNetKey(
-			AdNetworkKey adnetKey) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	private float getCampaignsLastPriority(int campaignId) {
-		return impressionBidder.getCampaignPriority(myCampaigns.get(campaignId));
-	}
 
 
 	public void initSimulation() {
@@ -602,15 +541,11 @@ public class Coordinator {
 
 
 	/* Infrastructure */	
-	public Coordinator(OOSAgent sampleAdNetwork) {
-		this.messenger = sampleAdNetwork;
-		this.adNetworkDailyNotificationsHistory = new LinkedList<AdNetworkDailyNotification>();
-		this.bidBundleHistory = new LinkedList<AdxBidBundle>();
-	}
+	public Coordinator() { }
 
-	public static Coordinator getInstance(OOSAgent oosAgent) {
+	public static Coordinator getInstance() {
 		if (instance == null) {
-			instance = new Coordinator(oosAgent);
+			instance = new Coordinator();
 		}
 
 		return instance;
@@ -621,9 +556,17 @@ public class Coordinator {
 		return myCampaigns;
 	}
 
-
 	public void setMyCampaigns(Map<Integer, CampaignData> myCampaigns) {
 		this.myCampaigns = myCampaigns;
 	}
+
+	public int getPendingCampaignId() {
+		return pendingCampaign.getId();
+	}
+
+	public int getDay() {
+		return day;
+	}
+
 
 }

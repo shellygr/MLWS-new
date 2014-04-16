@@ -1,4 +1,4 @@
-package OrOmerShelly.oos.bidders;
+package OrOmerShelly.bidders;
 
 import java.util.Set;
 

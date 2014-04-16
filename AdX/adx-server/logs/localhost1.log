@@ -1,17 +1,17 @@
-09/04 22:55:34 INFO file.FileDatabase|infodb: database opened as C:\users\user\git\MLWS-new\AdX\adx-server\infodb
-09/04 22:55:34 INFO common.BlockingViewerServer|viewer server started at *:4042
-09/04 19:55:35 INFO sim.Admin|adding manager for simulation type tac13adx
-09/04 19:55:35 INFO server.TACTGateway|TACT Server started at *:6502
-09/04 19:55:39 INFO server.TACTChannel|user sample logged in as sample@tact-1 with version 0.9.6 from 127.0.0.1
-09/04 19:55:39 INFO sim.Admin|created simulation 30
-09/04 19:56:00 FINE sim.Admin|Entering log for simulation 29
+15/04 15:51:38 INFO file.FileDatabase|infodb: database opened as C:\users\user\My Documents\GitHub\MLWS-new\AdX\adx-server\infodb
+15/04 15:51:38 INFO common.BlockingViewerServer|viewer server started at *:4042
+15/04 12:51:39 INFO sim.Admin|adding manager for simulation type tac13adx
+15/04 12:51:39 INFO server.TACTGateway|TACT Server started at *:6502
+15/04 12:51:39 INFO server.TACTChannel|user sample logged in as sample@tact-1 with version 0.9.6 from 127.0.0.1
+15/04 12:51:39 INFO sim.Admin|created simulation 58
+15/04 12:52:00 FINE sim.Admin|Entering log for simulation 56
 ************************************************************
-* Entering log for simulation 29
+* Entering log for simulation 56
 ************************************************************
 
 
-09/04 20:06:00 SEVERE common.SimServer|could not generate results for simulation 29
-java.io.IOException: could not parse simulation log 29
+15/04 13:02:00 SEVERE common.SimServer|could not generate results for simulation 56
+java.io.IOException: could not parse simulation log 56
 	at edu.umich.eecs.tac.is.TACAAResultManager.generateResult(TACAAResultManager.java:47)
 	at se.sics.tasim.is.common.ResultManager.generateResult(ResultManager.java:62)
 	at se.sics.tasim.is.common.SimServer.generateResults(SimServer.java:2459)

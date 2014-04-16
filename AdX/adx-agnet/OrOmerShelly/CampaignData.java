@@ -59,6 +59,14 @@ public class CampaignData {
 				+ " coefs: (v=" + videoCoef + ", m=" + mobileCoef + ")"
 				+ " budget: " + budget;
 	}
+	
+	public float getCampaignPriority(int dayBiddingFor) throws IllegalArgumentException {
+		if (dayBiddingFor >= getDayEnd()) {
+			throw new IllegalArgumentException("Trying to calculate priority for a campaign after it has ended!");
+		}
+		
+		return (float)impsTogo() / ((float)(getDayEnd() - dayBiddingFor));
+	}
 
 	public int impsTogo() {
 		return (int) Math.max(0, reachImps - stats.getTargetedImps());

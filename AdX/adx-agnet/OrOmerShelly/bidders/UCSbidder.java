@@ -1,4 +1,4 @@
-package OrOmerShelly.oos.bidders;
+package OrOmerShelly.bidders;
 
 import java.util.List;
 import java.util.Map;
@@ -147,7 +147,7 @@ public class UCSbidder {
 		/*
 		 */
 		double reinforecement=findReinforcement(anp, co, co.day);
-		int nextState=-1;
+		int nextState=findState(co);
 		
 		double q = Q(state, action);
 		double maxQ = maxQ(nextState)[0];
@@ -173,7 +173,7 @@ public class UCSbidder {
 	}
 	int findState(Coordinator co) {
 		double accume=0.0;
-		for (int i=0; i<co.getMyCampaigns().size() ; i++) { // I had to add setters and getters for MyCampaigns.
+		for (Integer i : co.getMyCampaigns().keySet()) { // I had to add setters and getters for MyCampaigns.
 			accume+=((1.0)*(co.getMyCampaigns().get(i).impsTogo()))/(co.getMyCampaigns().get(i).getReachImps());
 		}
 		if (accume<range0) return 1;

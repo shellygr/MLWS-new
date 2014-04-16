@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import tau.tac.adx.report.adn.MarketSegment;
-import OrOmerShelly.oos.bidders.CampaignBidder;
+import OrOmerShelly.bidders.CampaignBidder;
 
 public class MyCampaigns {
 

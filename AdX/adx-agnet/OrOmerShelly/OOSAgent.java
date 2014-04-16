@@ -31,7 +31,7 @@ public class OOSAgent extends Agent {
 	private final Logger log = Logger
 			.getLogger(OOSAgent.class.getName());
 	
-	private Coordinator coordinator = Coordinator.getInstance(this);
+	private Coordinator coordinator = Coordinator.getInstance();
 
 	/*
 	 * Basic simulation information. An agent should receive the {@link
@@ -58,9 +58,9 @@ public class OOSAgent extends Agent {
 			//log.fine(message.getContent().getClass().toString());
 			
 			if (content instanceof InitialCampaignMessage) {
-				coordinator.handleInitialCampaignMessage((InitialCampaignMessage) content); // ownership: Or; who determines the budget?
+				handleInitialCampaignMessage((InitialCampaignMessage) content); // ownership: Or; who determines the budget?
 			} else if (content instanceof CampaignOpportunityMessage) {
-				coordinator.handleICampaignOpportunityMessage((CampaignOpportunityMessage) content); // ownership: Or
+				handleICampaignOpportunityMessage((CampaignOpportunityMessage) content); // ownership: Or
 			} else if (content instanceof CampaignReport) {
 				coordinator.handleCampaignReport((CampaignReport) content); 				// ownership: Shelly (possibly Or)
 			} else if (content instanceof AdNetworkDailyNotification) {
@@ -68,7 +68,7 @@ public class OOSAgent extends Agent {
 			} else if (content instanceof AdxPublisherReport) {
 				coordinator.handleAdxPublisherReport((AdxPublisherReport) content); 		// ownership: Shelly
 			} else if (content instanceof SimulationStatus) {
-				coordinator.handleSimulationStatus((SimulationStatus) content);				// might be relevant for performance
+				handleSimulationStatus((SimulationStatus) content);				// might be relevant for performance
 			} else if (content instanceof PublisherCatalog) {
 				coordinator.handlePublisherCatalog((PublisherCatalog) content);				// ownership: Shelly
 			} else if (content instanceof AdNetworkReport) {
@@ -83,13 +83,60 @@ public class OOSAgent extends Agent {
 				log.info("UNKNOWN Message Received: " + content);
 			}
 
-		} catch (NullPointerException e) {
+		} catch (Exception e) {
 			this.log.log(Level.SEVERE,
 					"Exception thrown while trying to parse message: " + e + " : " + Arrays.asList(e.getStackTrace()));
 			return;
 		}
 	}
+	
+	/**
+	 * On day 0, a campaign (the "initial campaign") is allocated to each
+	 * competing agent. The campaign starts on day 1. The address of the
+	 * server's AdxAgent (to which bid bundles are sent) and DemandAgent (to
+	 * which bids regarding campaign opportunities may be sent in subsequent
+	 * days) are also reported in the initial campaign message
+	 */
+	protected void handleInitialCampaignMessage(
+			InitialCampaignMessage campaignMessage) {
+		demandAgentAddress = campaignMessage.getDemandAgentAddress();
+		adxAgentAddress = campaignMessage.getAdxAgentAddress();
+		
+		coordinator.handleInitialCampaignMessage(campaignMessage);
+	}
+	
+	/**
+	 * On day n ( > 0) a campaign opportunity is announced to the competing
+	 * agents. The campaign starts on day n + 2 or later and the agents may send
+	 * (on day n) related bids (attempting to win the campaign). The allocation
+	 * (the winner) is announced to the competing agents during day n + 1.
+	 */
+	protected void handleICampaignOpportunityMessage(CampaignOpportunityMessage com) {
+		double bidForCampaign = coordinator.getBidForCampaign(com);
+		int campaignBiddingForId = coordinator.getPendingCampaignId();
+		double ucsBid = coordinator.getBidForUcs();
+		
+		AdNetBidMessage bids = new AdNetBidMessage(ucsBid, campaignBiddingForId,  // here we send a bid for campaign oppor. and ucs combined.
+				Math.round(bidForCampaign));
+		sendMessageOnBidsAndUcs(bids);
+	}
+	
+	/**
+	 * The SimulationStatus message received on day n indicates that the
+	 * calculation time is up and the agent is requested to send its bid bundle
+	 * to the AdX.
+	 */
+	public void handleSimulationStatus(SimulationStatus simulationStatus) {
+		log.info("Day " + coordinator.getDay() + " : Simulation Status Received");
+		AdxBidBundle bidBundle = coordinator.calculateBidBundle();
+		log.info("Day " + (coordinator.getDay() - 1) + " ended. Started next day");
+		
+		if (bidBundle != null) {
+			sendMessage(adxAgentAddress, bidBundle);
+		}
+	}
 
+	
 	/**
 	 * Processes the start information.
 	 * 
@@ -98,15 +145,6 @@ public class OOSAgent extends Agent {
 	 */
 	protected void handleStartInfo(StartInfo startInfo) {
 		this.startInfo = startInfo;
-	}
-
-	/**
-	 * Send BidBundle message
-	 */
-	public void sendBidAndAds(AdxBidBundle bidBundle) {
-		if (bidBundle != null) {
-			sendMessage(adxAgentAddress, bidBundle);
-		}
 	}
 
 	/**

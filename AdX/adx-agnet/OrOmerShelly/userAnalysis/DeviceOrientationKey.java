@@ -1,4 +1,4 @@
-package OrOmerShelly;
+package OrOmerShelly.userAnalysis;
 
 import tau.tac.adx.devices.Device;
 

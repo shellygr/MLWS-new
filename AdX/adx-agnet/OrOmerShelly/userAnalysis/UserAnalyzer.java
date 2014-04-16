@@ -1,4 +1,4 @@
-package OrOmerShelly;
+package OrOmerShelly.userAnalysis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,6 +6,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import OrOmerShelly.ImpressionParameters;
+import OrOmerShelly.ImpressionParamtersDistributionKey;
+import OrOmerShelly.PublisherStats;
 
 import tau.tac.adx.ads.properties.AdType;
 import tau.tac.adx.devices.Device;
@@ -306,8 +310,8 @@ public class UserAnalyzer {
 					}
 					
 					weight *= deviceOrientationMap.get(new DeviceOrientationKey(publisherName, device))  / 100;
-					weight *= ((double)(adType == AdType.text ? publisherStats.getTextOrientation() : publisherStats.getVideoOrientation()) / publisherStats.getPopularity());
-					weight *= popularityMap.get(publisherName) / 100;
+					weight *= ((double)(adType == AdType.text ? 1.0 : (double)publisherStats.getVideoOrientation() / publisherStats.getTextOrientation()));
+				//	weight *= popularityMap.get(publisherName) / 100;
 															
 					ImpressionParamtersDistributionKey key = new ImpressionParamtersDistributionKey(impParams, weight);
 					weights.add(key);					
@@ -368,6 +372,10 @@ public class UserAnalyzer {
 		}
 		
 		return weight;
+	}
+
+	public double getDeviceWeight(String publisherName, Device device) {
+		return deviceOrientationMap.get(new DeviceOrientationKey(publisherName, device))  / 100;
 	}
 	
 }

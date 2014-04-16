@@ -1,12 +1,12 @@
-09/04 20:07:14 INFO file.FileDatabase|infodb: database opened as C:\users\user\git\MLWS-new\AdX\adx-server\infodb
-09/04 20:07:14 INFO common.BlockingViewerServer|viewer server started at *:4042
-09/04 17:07:14 INFO sim.Admin|adding manager for simulation type tac13adx
-09/04 17:07:14 INFO server.TACTGateway|TACT Server started at *:6502
-09/04 17:07:15 INFO server.TACTChannel|user sample logged in as sample@tact-1 with version 0.9.6 from 127.0.0.1
-09/04 17:07:15 INFO sim.Admin|created simulation 24
-09/04 17:08:00 FINE sim.Admin|Entering log for simulation 23
+12/04 02:02:12 INFO file.FileDatabase|infodb: database opened as C:\users\user\My Documents\GitHub\MLWS-new\AdX\adx-server\infodb
+12/04 02:02:12 INFO common.BlockingViewerServer|viewer server started at *:4042
+11/04 23:02:12 INFO sim.Admin|adding manager for simulation type tac13adx
+11/04 23:02:12 INFO server.TACTGateway|TACT Server started at *:6502
+11/04 23:02:12 INFO server.TACTChannel|user sample logged in as sample@tact-1 with version 0.9.6 from 127.0.0.1
+11/04 23:02:12 INFO sim.Admin|created simulation 52
+11/04 23:03:00 FINE sim.Admin|Entering log for simulation 50
 ************************************************************
-* Entering log for simulation 23
+* Entering log for simulation 50
 ************************************************************
 
 
