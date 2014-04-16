@@ -424,7 +424,7 @@ public class ImpressionBidder {
 			CampaignData campaign = findInActiveCampaigns(adnetKey.getCampaignId());
 			if (campaign == null) {
 				log.warning("Could not find campaign ID " + adnetKey.getCampaignId() + " in active campaigns list");
-				return;
+				continue;
 			}
 			
 			int wins = adnetEntry.getWinCount();
