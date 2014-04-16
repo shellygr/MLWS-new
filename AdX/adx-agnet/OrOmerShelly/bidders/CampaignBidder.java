@@ -1,10 +1,19 @@
 package OrOmerShelly.bidders;
 
 import java.util.Set;
+import java.util.logging.Logger;
+
+import OrOmerShelly.Coordinator;
 
 import tau.tac.adx.report.adn.MarketSegment;
 
 public class CampaignBidder {
+	
+	private final Logger log = Logger
+			.getLogger(Coordinator.class.getName());
+	
+	private static double R_CAMPAIGN_MIN = 0.0001;
+	private static double R_CAMPAIGN_MAX = 0.001;
 	
 	private static Set<MarketSegment> pendingCampaignTarget;
 	
@@ -37,7 +46,7 @@ public class CampaignBidder {
 		0.258585859, // 24- high old
 		0,0 }; 
 	
-	private static final double ALPHA = 0.5;
+	private static final double ALPHA = 0.1;
 	private static final double BETA = 100;
 	private static final double GAMMA = 1;
 	
@@ -83,9 +92,18 @@ public class CampaignBidder {
 		double duration = pendingCampaign.getDayEnd() - pendingCampaign.getDayStart() +1;
 		double targetAudienceScore = getAudienceScore(pendingCampaign.getTargetSegment());
 		
+		/* minimum/maximum bid: */
+		double minBid = reach * R_CAMPAIGN_MIN / qualityScore;
+		double maxBid = reach * R_CAMPAIGN_MAX * qualityScore;
 		
-		//return 1;
-		return ALPHA * qualityScore * ( reach / duration ) * 1 / (1 + BETA*targetAudienceScore);
+		double bid = ALPHA * qualityScore * ( reach / duration ) * 1 / (1 + BETA*targetAudienceScore);
+		
+		log.info("getBid: bid="+bid+" quality="+qualityScore+" minBid="+minBid+" maxbid="+maxBid+" targetAudienceScore="+targetAudienceScore);
+		
+		bid = Math.min(bid, maxBid);
+		bid = Math.max(bid, minBid);
+			
+		return bid;
 	}
 	
 	
