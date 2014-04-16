@@ -154,6 +154,7 @@ public class UCSbidder {
 		double maxQ = maxQ(nextstate)[0];
 		double value = q + alpha * (reinforecement + gamma * maxQ - q);
 		setQ(state, action, value);
+		state=nextstate;
 		//int r = R(state, action);
 
 	}
@@ -176,7 +177,6 @@ public class UCSbidder {
 	int findState(Coordinator co) {
 		double accume=0.0;
 		for (Integer i : co.getMyCampaigns().keySet())
-		//for (int i=0; i<co.getMyCampaigns().size() ; i++) { // I had to add setters and getters for MyCampaigns.
 			if (co.getMyCampaigns().get(i).getReachImps()!=0)
 				accume+=((1.0)*(co.getMyCampaigns().get(i).impsTogo()))/(co.getMyCampaigns().get(i).getReachImps());
 		if (accume<range0) return 1;
