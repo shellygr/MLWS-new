@@ -165,19 +165,20 @@ public class UCSbidder {
 			int nextState = actionsFromState[i];
 			double value = Q[s][nextState];
 
-			if (value > maxValue)
+			if (value > maxValue) {
 				result[0]=value;
-			result[1]=i;
-			maxValue = value;
+				result[1]=i;
+				maxValue = value;
+		}
 		}
 		return result;
 	}
 	int findState(Coordinator co) {
 		double accume=0.0;
-		for (int i=0; i<co.getMyCampaigns().size() ; i++) { // I had to add setters and getters for MyCampaigns.
+		for (Integer i : co.getMyCampaigns().keySet())
+		//for (int i=0; i<co.getMyCampaigns().size() ; i++) { // I had to add setters and getters for MyCampaigns.
 			if (co.getMyCampaigns().get(i).getReachImps()!=0)
 				accume+=((1.0)*(co.getMyCampaigns().get(i).impsTogo()))/(co.getMyCampaigns().get(i).getReachImps());
-		}
 		if (accume<range0) return 1;
 		if (accume<range1) return 2;
 		if (accume<range2) return 3;
