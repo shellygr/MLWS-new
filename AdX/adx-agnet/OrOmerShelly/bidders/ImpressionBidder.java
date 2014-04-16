@@ -421,7 +421,12 @@ public class ImpressionBidder {
 		
 		for (AdNetworkKey adnetKey : adnetReport.keys()) {
 			AdNetworkReportEntry adnetEntry = adnetReport.getAdNetworkReportEntry(adnetKey);
-			CampaignData campaign = myActiveCampaigns.get(adnetKey.getCampaignId()); // ERROR TODO Change to a map or add map functionality
+			CampaignData campaign = findInActiveCampaigns(adnetKey.getCampaignId());
+			if (campaign == null) {
+				log.warning("Could not find campaign ID " + adnetKey.getCampaignId() + " in active campaigns list");
+				return;
+			}
+			
 			int wins = adnetEntry.getWinCount();
 			int bids = adnetEntry.getBidCount();
 			double cost = adnetEntry.getCost();
@@ -435,6 +440,10 @@ public class ImpressionBidder {
 			} else {
 				if (bids > 0) {
 					// Lost all bids - meaning we should have increased our bid
+					if (bidBundle == null) {
+						log.warning("Bid bundle is null? Error");
+					}
+					
 					double lastBid = bidBundle.getBid(new AdxQuery(adnetKey.getPublisher(), campaign.getTargetSegment(), adnetKey.getDevice(), adnetKey.getAdType()));
 					globalHasUpdatedAny = updateWithDifferentBid(adnetKey, campaign, lastBid*(2+(Math.random()-0.5))); // increase bid by 1.5 to 2.5 factor
 				} // bids==0, wins==0 -> not interesting for us.
@@ -447,6 +456,16 @@ public class ImpressionBidder {
 		
 	}
 	
+	private CampaignData findInActiveCampaigns(int campaignId) {
+		for (CampaignData campaign : myActiveCampaigns) { // Not more than 58-60 campaigns to search
+			if (campaign.getId() == campaignId) {
+				return campaign;
+			}
+		}
+		
+		return null;
+	}
+
 	private boolean updateWithDifferentBid(AdNetworkKey adnetKey, CampaignData campaign, double correctedBid) {
 		String publisher = adnetKey.getPublisher();
 
