@@ -57,10 +57,9 @@ public class UCSbidder {
 	int[] actionsFromF = new int[] { stateG, stateH, stateI, stateJ, stateK };
 	int[][] actions = new int[][] { actionsFromA, actionsFromB, actionsFromC,
 			actionsFromD, actionsFromE, actionsFromF };
-	int[][] R = new int[statesCount][statesCount]; // reward lookup
-	double[][] Q = new double[statesCount][statesCount]; // Q learning
-	static List<Double> amountpaid; // the ith entry represents the amount paid on the ith day.
-	static List<Integer> placeReached; // the ith entry represents the UCS place we got on the ith day.
+	double[][] Q = new double[statesCount][possibleActions]; // Q learning
+	//static List<Double> amountpaid; // the ith entry represents the amount paid on the ith day.
+	//static List<Integer> placeReached; // the ith entry represents the UCS place we got on the ith day.
 	private static UCSbidder instance = null;
 
 	protected UCSbidder() {
@@ -77,15 +76,19 @@ public class UCSbidder {
 	}
 
 	public double getBid(Coordinator co){
-		/*
-		 * That's the point where we do the core of the Sadna.
-		 * I think I'll use Q-learning (http://en.wikipedia.org/wiki/Q-learning),
-		 * unless somebody has a better idea!
-		 */
-
-
-
-		return bid(co);
+		int state=findState(co);
+		if (state==stateB) {
+			this.action=0;
+			this.state=stateB;
+			this.amountPaidYesterday=0;
+			return 0;
+		}
+		int action=(int) Math.round((maxQ(state))[1]);
+		if (this.action==0) this.action=1;
+		this.action=action;
+		this.state=state;
+		this.amountPaidYesterday=prices[action];
+		return prices[action];
 	}
 	double bid(Coordinator co) {
 		/*
@@ -104,35 +107,12 @@ public class UCSbidder {
 		// Select random initial state
 		//int state = rand.nextInt(statesCount);
 		int state=findState(co);
-		int action=(int) Math.round(maxQ(state)[1]);
+		int action=(int) Math.round((maxQ(state))[1]);
+		if (this.action==0) this.action=1;
 		this.action=action;
 		this.state=state;
 		return prices[action];
 
-		/*while (state != stateC) // goal state
-		{
-			// Select one among all possible actions for the current state
-			int[] actionsFromState = actions[state];
-
-			// Selection strategy is random in this example
-			int index = rand.nextInt(actionsFromState.length);
-			int action = actionsFromState[index];
-
-			// Action outcome is set to deterministic in this example
-			// Transition probability is 1
-			int nextState = action; // data structure
-
-			// Using this possible action, consider to go to the next state
-			double q = Q(state, action);
-			double maxQ = maxQ(nextState);
-			int r = R(state, action);
-
-			double value = q + alpha * (r + gamma * maxQ - q);
-			setQ(state, action, value);
-
-			// Set the next state as the current state
-			state = nextState;
-		} */
 	}
 
 
@@ -141,36 +121,36 @@ public class UCSbidder {
 	 * store a history.
 	 */
 	double Q(int s, int a) {
-		return Q[s][a];
+		return this.Q[s][a];
 	}
-	public void updateUCS(AdNetworkReport anp, Coordinator co, Map<Integer, CampaignData> myCampaigns) {
+	public void updateUCS(AdNetworkReport anp, Coordinator co) {
 		/*
 		 */
+		if (state==stateB) return;
 		double reinforecement=findReinforcement(anp, co, co.day);
 
-		nextstate=findState(co);
+		nextstate=findFinalState(reinforecement);
 
 		double q = Q(state, action);
-		double maxQ = maxQ(nextstate)[0];
+		double maxQ = maxQ(state)[0];
 		double value = q + alpha * (reinforecement + gamma * maxQ - q);
 		setQ(state, action, value);
 		state=nextstate;
-		//int r = R(state, action);
 
 	}
 	public  double[] maxQ(int s) {
 		double[] result=new double[2];
 		int[] actionsFromState = actions[s];
-		double maxValue = Double.MIN_VALUE;
-		for (int i = 0; i < actionsFromState.length; i++) {
-			int nextState = actionsFromState[i];
-			double value = Q[s][nextState];
+		double maxValue = Q[s][0];
+		for (int i = 1; i < actionsFromState.length; i++) {
+			//int nextState = actionsFromState[i];
+			double value = Q[s][i];
 
-			if (value > maxValue) {
+			if (value >= maxValue) {
 				result[0]=value;
 				result[1]=i;
 				maxValue = value;
-		}
+			}
 		}
 		return result;
 	}
@@ -178,7 +158,7 @@ public class UCSbidder {
 		double accume=0.0;
 		for (Integer i : co.getMyCampaigns().keySet())
 			if (co.getMyCampaigns().get(i).getReachImps()!=0)
-				accume+=((1.0)*(co.getMyCampaigns().get(i).impsTogo()))/(co.getMyCampaigns().get(i).getReachImps());
+				accume+=((double)(co.getMyCampaigns().get(i).impsTogo()))/(co.getMyCampaigns().get(i).getReachImps());
 		if (accume<range0) return 1;
 		if (accume<range1) return 2;
 		if (accume<range2) return 3;
@@ -209,7 +189,9 @@ public class UCSbidder {
 		for (int i : co.getMyCampaigns().keySet()) {
 			if (co.getMyCampaigns().get(i).getDayEnd()>=co.day) activeCampagins++;
 		}
-		return (((double)misses)/(misses+hits))*activeCampagins;
+		if (misses!=0)
+			return ((misses+hits)/((((double)(misses))*activeCampagins)*amountPaidYesterday))-0.4;
+		return 1.5*hits;
 	}
 
 	boolean relevantCampaign(CampaignData cd, int day) {
@@ -251,7 +233,7 @@ public class UCSbidder {
 	}
 
 	void setQ(int s, int a, double value) {
-		Q[s][a] = value;
+		this.Q[s][a] = value;
 	}
 
 
