@@ -94,7 +94,7 @@ public class ImpressionClassifier {
 		// Video / Mobile - are worth more according to mobileCoeff, videoCoeff. So take them into account.
 		for (PublisherCatalogEntry publisherCatalogEntry : publisherCatalog.getPublishers()) {
 			String publisherName = publisherCatalogEntry.getPublisherName();
-			log.info(rname + ": Generating default instances for publisher - " + publisherName);
+		//	log.info(rname + ": Generating default instances for publisher - " + publisherName);
 
 			double median = userAnalyzer.calcMedianOfMarketSegmentsWeights(publisherName);
 			double publishersMarketSegmentWeight = userAnalyzer.getMarketSegmentWeight(currentCampaign.getTargetSegment(), publisherName);
@@ -103,7 +103,7 @@ public class ImpressionClassifier {
 			
 			PublisherStats publisherStats = publishersStats.get(publisherName);
 			if (publisherStats == null) {
-				log.info(rname + ": Getting averaged publisher stats as there is no record for publisher " + publisherName);
+				//log.info(rname + ": Getting averaged publisher stats as there is no record for publisher " + publisherName);
 				publisherStats = userAnalyzer.getAveragedPublisherStatsForPublisher(publisherName);
 			}
 						
@@ -135,7 +135,7 @@ public class ImpressionClassifier {
 					indicesToFill[5] = PRIORITY_ATTR_INDEX;
 					indicesToFill[6] = BID_ATTR_CLASS_VALUE_INDEX;
 					
-					log.info(rname + ": Adding instance - " + Arrays.toString(attributes));
+				//	log.info(rname + ": Adding instance - " + Arrays.toString(attributes));
 					
 					Instance defaultInstance = new SparseInstance(1, attributes, indicesToFill, 1); 
 					defaultInstances.add(defaultInstance);
@@ -263,16 +263,16 @@ public class ImpressionClassifier {
 	}
 
 	public double classifyEnriched(double budget, float priority) throws Exception {
-		log.info("First instance: " + lastInstance.toString() + " Class value = " + lastInstance.classValue());
+	//	log.info("First instance: " + lastInstance.toString() + " Class value = " + lastInstance.classValue());
 		Instance campaignInstnace = enrichInstance(budget, // TODO Remaining budget, not whole budget
 				priority);
 		
-		log.info("Enriched instance: " + campaignInstnace.toString());
+	//	log.info("Enriched instance: " + campaignInstnace.toString());
 		dataset.add(campaignInstnace);	
 		
 		double enrichedClassificationResult = classifier.classifyInstance(campaignInstnace); // TODO why 0?
 		campaignInstnace.setClassValue(enrichedClassificationResult);
-		log.info("Classified instance: " + campaignInstnace.toString() + " Class value = " + campaignInstnace.classValue());
+	//	log.info("Classified instance: " + campaignInstnace.toString() + " Class value = " + campaignInstnace.classValue());
 		
 		return enrichedClassificationResult;
 	}

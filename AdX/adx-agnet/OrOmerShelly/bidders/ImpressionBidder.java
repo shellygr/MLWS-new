@@ -151,9 +151,11 @@ public class ImpressionBidder {
 			return;
 		}
 		
+		log.info("fill bid bundle for day " + dayBiddingFor);
+		
 		for (PublisherCatalogEntry publisherCatalogEntry : publisherCatalog.getPublishers()) {
 			String publisherName = publisherCatalogEntry.getPublisherName();
-			log.info(rname + ": Filling bid bundle for " + publisherName);
+			//log.info(rname + ": Filling bid bundle for " + publisherName);
 			
 			List<ImpressionParamtersDistributionKey> impressionDistribution = userAnalyzer.calcImpressionDistribution(publisherName);
 			
@@ -190,13 +192,13 @@ public class ImpressionBidder {
 				List<CampaignData> relevantCampaigns = filterCampaigns(impParams);
 				
 				if (exists(relevantCampaigns)) {
-					log.info(rname + ": Prioritizing over relevant campaigns...");
+				//	log.info(rname + ": Prioritizing over relevant campaigns...");
 					prioritizeCampaigns(relevantCampaigns);
-					log.info(rname + ": Priority result is = " + relevantCampaigns);
+					//log.info(rname + ": Priority result is = " + relevantCampaigns);
 					
-					log.info(rname + ": Updating campaign weight vector...");
+					//log.info(rname + ": Updating campaign weight vector...");
 					campaignVectorNormalizationFactor = updateCampaignVector(campaignWeightVector, relevantCampaigns);
-					log.info(rname + ": Updated campaign vector is = " + campaignWeightVector);
+					//log.info(rname + ": Updated campaign vector is = " + campaignWeightVector);
 					
 					log.info(rname + ": Initial bid is: " + bid);
 					bid = calcBid(bid, relevantCampaigns, publisherName, impParams.getMarketSegments(), campaignWeightVector);
@@ -209,17 +211,17 @@ public class ImpressionBidder {
 			// Unknown market segment imp params...
 			for (Device device : Device.values()) {
 				for (AdType adType : AdType.values()) {
-					log.info(rname + ": Market segment is unknown, bidding only for urgent campaigns");
+				//	log.info(rname + ": Market segment is unknown, bidding only for urgent campaigns");
 					
 					List<CampaignData> urgentCampaigns = getUrgentCampaigns();
-					log.info(rname + ": Urgent campaigns = " + urgentCampaigns);
+					//log.info(rname + ": Urgent campaigns = " + urgentCampaigns);
 					if (urgentCampaigns.size() == 0) {
-						log.info("No urgent campaigns.");
+				//		log.info("No urgent campaigns.");
 					}
 					
-					log.info(rname + ": Updating campaign weight vector...");
+					//log.info(rname + ": Updating campaign weight vector...");
 					campaignVectorNormalizationFactor = updateCampaignVector(campaignWeightVector, urgentCampaigns);
-					log.info(rname + ": Updated campaign vector is = " + campaignWeightVector);
+				//	log.info(rname + ": Updated campaign vector is = " + campaignWeightVector);
 					
 					bid = calcBidForUnknown(urgentCampaigns, publisherName, device, adType);
 					log.info(rname + ": Bid for unknown market segment and urgent campaigns is "  + bid);
@@ -267,7 +269,7 @@ public class ImpressionBidder {
 
 	private double calcBidForUnknown(List<CampaignData> urgentCampaigns, String publisherName, Device device, AdType adType) throws Exception {
 		double sumBids = 0;
-		log.info("calcBidForUnknown: UrgentCampaigns = " + urgentCampaigns);
+		//log.info("calcBidForUnknown: UrgentCampaigns = " + urgentCampaigns);
 		
 		// Minimal should be last...
 		float leastPriority = urgentCampaigns.get(urgentCampaigns.size()-1).getCampaignPriority(dayBiddingFor);
@@ -360,7 +362,7 @@ public class ImpressionBidder {
 				if (relevantAd == impressionAdType && relevantDevice == impressionDevice) { // TODO sanity on that... could be probability!!
 					// Campaign should contain a common market segment with the impressio
 					if (marketSegments.containsAll(impressionMarketSegments)) { 
-						log.info(rname + ": equal! Adding campaign");
+						//log.info(rname + ": equal! Adding campaign");
 						filteredCampaigns.add(campaign);
 						addedCampaign = true;
 					}
@@ -442,6 +444,7 @@ public class ImpressionBidder {
 					// Lost all bids - meaning we should have increased our bid
 					if (bidBundle == null) {
 						log.warning("Bid bundle is null? Error");
+						break;
 					}
 					
 					double lastBid = bidBundle.getBid(new AdxQuery(adnetKey.getPublisher(), campaign.getTargetSegment(), adnetKey.getDevice(), adnetKey.getAdType()));
