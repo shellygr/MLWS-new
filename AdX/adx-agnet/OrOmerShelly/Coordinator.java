@@ -300,11 +300,6 @@ public class Coordinator {
 
 		adNetworkDailyNotification = notificationMessage;
 
-		campaignBidder.updateCampaignes(notificationMessage.getCampaignId(),
-				notificationMessage.getWinner(),
-				notificationMessage.getPrice()
-				); // [orsa:] collect data for ML
-
 		log.info("Day " + day + ": Daily notification for campaign "
 				+ adNetworkDailyNotification.getCampaignId());
 
@@ -322,8 +317,6 @@ public class Coordinator {
 
 			campaignAllocatedTo = " WON at cost "
 					+ notificationMessage.getCost();
-
-			campaignBidder.updateWonPendingCampaign();
 		}
 
 		qualityScore = notificationMessage.getQualityScore();

@@ -3,7 +3,9 @@ package OrOmerShelly.bidders;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import OrOmerShelly.CampaignData;
 import OrOmerShelly.Coordinator;
+import OrOmerShelly.MyCampaigns;
 
 import tau.tac.adx.report.adn.MarketSegment;
 
@@ -14,11 +16,6 @@ public class CampaignBidder {
 	
 	private static double R_CAMPAIGN_MIN = 0.0001;
 	private static double R_CAMPAIGN_MAX = 0.001;
-	
-	private static Set<MarketSegment> pendingCampaignTarget;
-	
-	// this array tells for each target how many campaigns+1 we got for it. the reason for the + 1 is to avoid division by 0.						
-	private static int AudienceBindedCampaigns[] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 	
 	// keep the probabilities for each target
 	private static double AudienceProb[] = { 0, 0, 0, 0, 
@@ -46,11 +43,13 @@ public class CampaignBidder {
 		0.258585859, // 24- high old
 		0,0 }; 
 	
-	private static final double ALPHA = 0.1;
-	private static final double BETA = 100;
-	private static final double GAMMA = 1;
+	private static final double ALPHA = 0.001;
+	//private static final double BETA = 100;
+	//private static final double GAMMA = 1;
 	
 	private static CampaignBidder instance = null;
+	
+	private MyCampaigns myCampaigns;
 	   
 	/* input:
 		Reach - higher target-reach means higher costly campaign.
@@ -63,6 +62,7 @@ public class CampaignBidder {
 	*/
 	protected CampaignBidder() {
 	      // Exists only to defeat instantiation.
+		myCampaigns = MyCampaigns.getInstance();
 	}
 	   
 	public static CampaignBidder getInstance() {
@@ -70,7 +70,7 @@ public class CampaignBidder {
 		if(instance == null) {
 			instance = new CampaignBidder();
 	    }
-	    
+		
 		return instance;
 	}
 	
@@ -88,15 +88,17 @@ public class CampaignBidder {
 		 *  plus some more parameters and normalizations.
 		 */
 		
+		long dayStart = pendingCampaign.getDayStart();
+		long dayEnd = pendingCampaign.getDayEnd();
 		double reach = pendingCampaign.getReachImps();
-		double duration = pendingCampaign.getDayEnd() - pendingCampaign.getDayStart() +1;
-		double targetAudienceScore = getAudienceScore(pendingCampaign.getTargetSegment());
+		double duration = dayEnd - dayStart +1;
+		double targetAudienceScore = getAudienceScore(pendingCampaign.getTargetSegment(), dayStart, dayEnd);
 		
 		/* minimum/maximum bid: */
 		double minBid = reach * R_CAMPAIGN_MIN / qualityScore;
 		double maxBid = reach * R_CAMPAIGN_MAX * qualityScore;
 		
-		double bid = ALPHA * qualityScore * ( reach / duration ) * 1 / (1 + BETA*targetAudienceScore);
+		double bid = ALPHA * qualityScore * ( reach / duration ) * ( 1 / targetAudienceScore );
 		
 		log.info("getBid: bid="+bid+" quality="+qualityScore+" minBid="+minBid+" maxbid="+maxBid+" targetAudienceScore="+targetAudienceScore);
 		
@@ -107,43 +109,62 @@ public class CampaignBidder {
 	}
 	
 	
-	private double getAudienceScore(Set<MarketSegment> targetSegment) {
+	private static int compareTargetSegments(Set<MarketSegment> targetA, Set<MarketSegment> targetB){
+		int score = 0;
 		
+		for (MarketSegment marketSegmentA : targetA) {
+			for (MarketSegment marketSegmentB : targetB) {
+				if (marketSegmentA.compareTo(marketSegmentB)==0){
+					score++;
+				}
+			}
+		}
+		
+		return score;
+	}
+	
+	private double getAudienceScore(Set<MarketSegment> targetSegment, long dayStart, long dayEnd) {
+		int score = 2;
 		/* map target segment into 'index' */
 		int index = getTargetIndex(targetSegment);
+		for (long day=dayStart; day<=dayEnd; day++) {
+			for (CampaignData campaignData : myCampaigns.getActiveCampaigns(day)) {
+				score+=compareTargetSegments(campaignData.getTargetSegment(),targetSegment);
+			} 
+		}
 		
 		/* 
 		 * the score will be the probability of the segment divided by the number of campaigns we already have for segments  
 		 */
-		return AudienceProb[index]/AudienceBindedCampaigns[index];
+		return AudienceProb[index]/(double)score;
 	}
 
 	/*
 	 * A method to update the bidder for every campaign bidding result , in order to 
 	 * store a history.
 	 */
-	public void updateCampaignes(int campaignId, String winner, double price ) {
-		
-	// todo: save the data - maybe also process some calculations.
-		
-		
-	
-	}
+//	public void updateCampaignes(int campaignId, String winner, double price ) {
+//		
+//	// todo: save the data - maybe also process some calculations.
+//		
+//		
+//	
+//	}
 
-	public void updateNewPendingCampaign(Set<MarketSegment> targetSegment) {
-		
-		pendingCampaignTarget = targetSegment;
-		
-	}
-	
-	public void updateWonPendingCampaign() {
-		
-		/* map target segment into 'index' */
-		int index = getTargetIndex(pendingCampaignTarget);
-		
-		++AudienceBindedCampaigns[index];
-		
-	}
+//	public void updateNewPendingCampaign(Set<MarketSegment> targetSegment) {
+//		
+//		pendingCampaignTarget = targetSegment;
+//		
+//	}
+//	
+//	public void updateWonPendingCampaign() {
+//		
+//		/* map target segment into 'index' */
+//		int index = getTargetIndex(pendingCampaignTarget);
+//		
+//		++AudienceBindedCampaigns[index];
+//		
+//	}
 	
 	private int getTargetIndex(Set<MarketSegment> targetSegment) {
 		int index=0;

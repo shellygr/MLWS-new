@@ -31,7 +31,7 @@ public class MyCampaigns {
 	
 	}
 	
-	public ArrayList<CampaignData> getActiveCampaigns(int day){
+	public ArrayList<CampaignData> getActiveCampaigns(long day){
 		
 		ArrayList<CampaignData> newArr = new ArrayList<CampaignData>();
 		for (CampaignData c : data) {
