@@ -514,7 +514,7 @@ public class Coordinator {
 	 * @throws Exception 
 	 */
 	public void handleAdNetworkReport(AdNetworkReport adnetReport) throws Exception {
-		ucsbidder.updateUCS(adnetReport, this, this.getMyCampaigns());
+		ucsbidder.updateUCS(adnetReport, this);
 		log.info("Day "+ day + " : AdNetworkReport = " + adnetReport);
 		
 		impressionBidder.updateByAdNetReport(adnetReport);
