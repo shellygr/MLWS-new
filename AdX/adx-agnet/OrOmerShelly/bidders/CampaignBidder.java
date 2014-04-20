@@ -43,7 +43,7 @@ public class CampaignBidder {
 		0.258585859, // 24- high old
 		0,0 }; 
 	
-	private static final double ALPHA = 0.001;
+	private static final double ALPHA = 0.0008;
 	//private static final double BETA = 100;
 	//private static final double GAMMA = 1;
 	
