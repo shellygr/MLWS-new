@@ -571,9 +571,9 @@ public class ImpressionBidder {
 		
 		// ms1, ms2, ms3 = The 3 pairs possible of market segment pairs for the user: Age-Income, Age-Gender, Gender-Income.
 		List<MarketSegment> msList = Arrays.asList((ms.toArray(new MarketSegment[3])));
-		ms1 = MarketSegment.compundMarketSegment(msList.get(0), msList.get(1));
-		ms2 = MarketSegment.compundMarketSegment(msList.get(0), msList.get(2));
-		ms3 = MarketSegment.compundMarketSegment(msList.get(1), msList.get(2));
+		ms1 = MarketSegment.compundMarketSegment2(msList.get(0), msList.get(1));
+		ms2 = MarketSegment.compundMarketSegment2(msList.get(0), msList.get(2));
+		ms3 = MarketSegment.compundMarketSegment2(msList.get(1), msList.get(2));
 
 		Device device = adnetKey.getDevice();
 		AdType adType = adnetKey.getAdType();

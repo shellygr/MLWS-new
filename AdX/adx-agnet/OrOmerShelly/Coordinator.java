@@ -323,17 +323,17 @@ public class Coordinator {
 				+ notificationMessage.getWinner();
 
 		if ((pendingCampaign.getId() == adNetworkDailyNotification.getCampaignId())
-				&& (notificationMessage.getCost() != 0)) {
+				&& (notificationMessage.getCostMillis() != 0)) {
 
 			/* add campaign to list of won campaigns */
-			pendingCampaign.setBudget(notificationMessage.getCost()/1000.0);
+			pendingCampaign.setBudget(notificationMessage.getCostMillis()/1000.0);
 			pendingCampaign.setCampaignQueries(getRelevantQueriesForCampaign(pendingCampaign));
 			
 			getMyCampaigns().put(pendingCampaign.getId(), pendingCampaign);
 
 			MyCampaigns.getInstance().addCampaign(pendingCampaign); // Blame: Or 
 			campaignAllocatedTo = " WON at cost (Millis)"
-					+ notificationMessage.getCost();
+					+ notificationMessage.getCostMillis();
 			
 			impressionBidder.updateForNewCampaign(pendingCampaign); // Should be run after campaign statistics have been set - and indeed notification comes after the report.
 		}

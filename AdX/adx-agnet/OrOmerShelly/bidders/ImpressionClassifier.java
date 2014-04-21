@@ -36,6 +36,8 @@ public class ImpressionClassifier {
 	
 	private final static int CAPACITY_OF_INSTANCES = 10000;
 	
+	private final int BID_REDUCTION_FACTOR = 2;
+	
 	// Map publisher, market segment, device, ad type and campaign to Instance index
 	private HashMap<InstanceIndexKey, Integer> lastInstancesIndicesMap = new HashMap<InstanceIndexKey, Integer>();
 	
@@ -120,7 +122,8 @@ public class ImpressionClassifier {
 										*campaignRelativePriority
 										*(publishersMarketSegmentWeight/median)
 										*(device == Device.mobile ? currentCampaign.getMobileCoef() : 1.0)
-										*(adType == AdType.text ? 1.0 : adTypeOrientation*currentCampaign.getVideoCoef()));	
+										*(adType == AdType.text ? 1.0 : adTypeOrientation*currentCampaign.getVideoCoef()))
+										/ BID_REDUCTION_FACTOR;	
 					
 					int[] indicesToFill = new int[3];
 					indicesToFill[0] = WEIGHT_OF_MARKET_SEGMENT_DEVICE_ATTR_INDEX;

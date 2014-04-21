@@ -316,7 +316,7 @@ public class UserAnalyzer {
 		}
 		
 		// Calculate for all 12 market segments and include device and ad-type
-		List<Set<MarketSegment>> allMarketSegments = MarketSegment.compundMarketSegments();
+		List<Set<MarketSegment>> allMarketSegments = MarketSegment.marketSegments();
 		for (Set<MarketSegment> marketSegment : allMarketSegments) {
 			for (Device device : Device.values()) {
 				for (AdType adType : AdType.values()) {
@@ -379,7 +379,7 @@ public class UserAnalyzer {
 	public double calcMedianOfMarketSegmentsWeights(String publisherName) {
 		List<Double> weights = new ArrayList<Double>(NUMBER_OF_MARKET_SEGMENTS);
 		
-		List<Set<MarketSegment>> allMarketSegments = MarketSegment.compundMarketSegments();
+		List<Set<MarketSegment>> allMarketSegments = MarketSegment.marketSegments();
 		for (Set<MarketSegment> marketSegment : allMarketSegments) {
 			double weight = 1.0;
 			
