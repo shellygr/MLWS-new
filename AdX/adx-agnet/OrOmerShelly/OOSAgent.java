@@ -1,6 +1,14 @@
 package OrOmerShelly;
 
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Random;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -9,21 +17,31 @@ import se.sics.tasim.aw.Agent;
 import se.sics.tasim.aw.Message;
 import se.sics.tasim.props.SimulationStatus;
 import se.sics.tasim.props.StartInfo;
+import tau.tac.adx.ads.properties.AdType;
+import tau.tac.adx.demand.CampaignStats;
+import tau.tac.adx.devices.Device;
 import tau.tac.adx.props.AdxBidBundle;
+import tau.tac.adx.props.AdxQuery;
 import tau.tac.adx.props.PublisherCatalog;
+import tau.tac.adx.props.PublisherCatalogEntry;
 import tau.tac.adx.report.adn.AdNetworkReport;
+import tau.tac.adx.report.adn.MarketSegment;
 import tau.tac.adx.report.demand.AdNetBidMessage;
 import tau.tac.adx.report.demand.AdNetworkDailyNotification;
 import tau.tac.adx.report.demand.CampaignOpportunityMessage;
 import tau.tac.adx.report.demand.CampaignReport;
+import tau.tac.adx.report.demand.CampaignReportKey;
 import tau.tac.adx.report.demand.InitialCampaignMessage;
 import tau.tac.adx.report.demand.campaign.auction.CampaignAuctionReport;
 import tau.tac.adx.report.publisher.AdxPublisherReport;
+import tau.tac.adx.report.publisher.AdxPublisherReportEntry;
+import edu.umich.eecs.tac.props.Ad;
 import edu.umich.eecs.tac.props.BankStatus;
 
 /**
  * 
  * @author Mariano Schain
+ * Test plug-in
  * 
  */
 public class OOSAgent extends Agent {
@@ -44,11 +62,24 @@ public class OOSAgent extends Agent {
 	 * The addresses of server entities to which the agent should send the daily
 	 * bids data
 	 */
-	public String demandAgentAddress;
-	public String adxAgentAddress;
+	private String demandAgentAddress;
+	private String adxAgentAddress;
 
 
-	public OOSAgent() {	}
+	/*
+	 * The current bid level for the user classification service
+	 */
+	double ucsBid;
+
+	/*
+	 * The targeted service level for the user classification service
+	 */
+	double ucsTargetLevel;
+
+
+	public OOSAgent() {	
+
+	}
 
 	@Override
 	protected void messageReceived(Message message) {
@@ -80,13 +111,16 @@ public class OOSAgent extends Agent {
 			} else if (content instanceof CampaignAuctionReport) {
 				coordinator.handleCampaignAuctionReport((CampaignAuctionReport) content);
 			} else {
-				log.info("UNKNOWN Message Received: " + content);
+				System.out.println("UNKNOWN Message Received: " + content);
 			}
 
-		} catch (Exception e) {
+		} catch (NullPointerException e) {
 			this.log.log(Level.SEVERE,
 					"Exception thrown while trying to parse message: " + e + " : " + Arrays.asList(e.getStackTrace()));
 			return;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	

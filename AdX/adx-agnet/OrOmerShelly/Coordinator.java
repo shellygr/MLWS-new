@@ -47,6 +47,12 @@ public class Coordinator {
 	public CampaignBidder campaignBidder = CampaignBidder.getInstance();
 	public UCSbidder ucsbidder = UCSbidder.getInstance();
 
+	/*
+	 * current day of simulation
+	 */
+	private String[] publisherNames;
+	private CampaignData currCampaign;
+	
 	/**
 	 * Messages received:
 	 * 
@@ -146,8 +152,23 @@ public class Coordinator {
 		this.publisherCatalog = publisherCatalog;
 		log.info("Got publisherCatalog: " + printPublisherCatalog(publisherCatalog));
 		generateAdxQuerySpace();
+		getPublishersNames();
 	}
 
+	/*genarates an array of the publishers names
+	 * */
+	private void getPublishersNames() {
+		if (null == publisherNames && publisherCatalog != null) {
+			ArrayList<String> names = new ArrayList<String>();
+			for (PublisherCatalogEntry pce : publisherCatalog) {
+				names.add(pce.getPublisherName());
+			}
+
+			publisherNames = new String[names.size()];
+			names.toArray(publisherNames);
+		}
+	}
+	
 	private String printPublisherCatalog(PublisherCatalog publisherCatalog) {
 		StringBuilder sb = new StringBuilder();
 		for (PublisherCatalogEntry entry : publisherCatalog) {
@@ -310,12 +331,12 @@ public class Coordinator {
 				&& (notificationMessage.getCost() != 0)) {
 
 			/* add campaign to list of won campaigns */
-			pendingCampaign.setBudget(notificationMessage.getCost());
+			pendingCampaign.setBudget(notificationMessage.getCost()/1000.0);
 			pendingCampaign.setCampaignQueries(getRelevantQueriesForCampaign(pendingCampaign));
 
 			getMyCampaigns().put(pendingCampaign.getId(), pendingCampaign);
-
-			campaignAllocatedTo = " WON at cost "
+			MyCampaigns.getInstance().addCampaign(pendingCampaign); // Blame: Or 
+			campaignAllocatedTo = " WON at cost (Millis)"
 					+ notificationMessage.getCost();
 		}
 

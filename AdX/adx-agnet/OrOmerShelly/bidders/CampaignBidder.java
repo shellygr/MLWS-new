@@ -17,31 +17,35 @@ public class CampaignBidder {
 	private static double R_CAMPAIGN_MIN = 0.0001;
 	private static double R_CAMPAIGN_MAX = 0.001;
 	
-	// keep the probabilities for each target
-	private static double AudienceProb[] = { 0, 0, 0, 0, 
-		
-		0.248282828, // 4 - young male
-		0.23959596,  // 5 - young female
-		0,			 // 6
-		0.237272727, // 7 - old male
-		0.274848485, // 8 - old female
-		0,			 // 9 
-		0.252121212, // 10- low male
-		0.258383838, // 11- low female
-		0.256969697, // 12- young low
-		0,			 // 13
-		0,			 // 14
-		0.253535354, // 15- old low
-		0,			 // 16
-		0,			 // 17
-		0,			 // 18
-		0.233434343, // 19- high male
-		0.256060606, // 20- high female
-		0.230909091, // 21- high young
-		0,			 // 22
-		0,			 // 23		
-		0.258585859, // 24- high old
-		0,0 }; 
+	// keep the probabilities for each target (according to 'AdExchangeGameSpecV13')
+	private static double AudienceProb[] = { 1, 
+		0.4956, // 1:  --M 
+		0.5044, // 2:  --F
+		0.4589, // 3:  -Y-
+		0.2353, // 4:  -YM
+		0.2236, // 5:  -YF
+		0.5411, // 6:  -O-
+		0.2603, // 7:  -OM
+		0.2808, // 8:  -OF
+		0.8012, // 9:  L--
+		0.3631, // 10: L-M
+		0.4381, // 11: L-F
+		0.3816, // 12: LY-
+		0.1836, // 13: LYM
+		0.1980, // 14: LYF
+		0.4196, // 15: LO-
+		0.1795, // 16: LOM
+		0.2401, // 17: LOF
+		0.1988, // 18: H--
+		0.1325, // 19: H-M
+		0.0663, // 20: H-F
+		0.0773, // 21: HY-
+		0.0517, // 22: HYM
+		0.0256, // 23: HYF
+		0.1215, // 24: HO-
+		0.0808, // 25: HOM
+		0.0407  // 26: HOF
+		 }; 
 	
 	private static final double MAX_BID = 100;
 
@@ -96,23 +100,29 @@ public class CampaignBidder {
 		double targetAudienceScore = getAudienceScore(pendingCampaign.getTargetSegment(), dayStart, dayEnd);
 		
 		/* minimum/maximum bid: */
-		double minBid = (qualityScore ==0 ? MAX_BID: reach * R_CAMPAIGN_MIN / qualityScore);
+		double minBid = (qualityScore == 0 ? MAX_BID : reach * R_CAMPAIGN_MIN / qualityScore);
 		double maxBid = reach * R_CAMPAIGN_MAX * qualityScore;
 		
 		double bid = qualityScore * ( reach / duration ) * ( 1 / targetAudienceScore );
 		
+		/* This part of the formula normalize the bid base to be between minBid and maxBid
+		 * and let us optimize ALPHA parameter in order to determine "how fast we raise our bids 
+		 */
 		bid = minBid + (maxBid - minBid)* (1 - Math.pow(ALPHA, bid));
 		
 		
 		log.info("getBid: bid="+bid+" quality="+qualityScore+" minBid="+minBid+" maxbid="+maxBid+" targetAudienceScore="+targetAudienceScore);
 		
-		bid = Math.min(bid, maxBid);
-		bid = Math.max(bid, minBid);
+		//bid = Math.min(bid, maxBid);
+		//bid = Math.max(bid, minBid);
 			
 		return bid;
 	}
 	
-	
+	/*
+	 * Scores the measure of commonality of 2 target segments. 
+	 * Each common market segment adds 1 to the score.
+	 */
 	private static int compareTargetSegments(Set<MarketSegment> targetA, Set<MarketSegment> targetB){
 		int score = 0;
 		
@@ -127,6 +137,10 @@ public class CampaignBidder {
 		return score;
 	}
 	
+	/*
+	 * we score the target segment according to it's general probability related to it's comulative 
+	 * score with our active campaigns at each of the days 'dayStart' to 'dayEnd'.   
+	 */
 	private double getAudienceScore(Set<MarketSegment> targetSegment, long dayStart, long dayEnd) {
 		int score = 1;
 		/* map target segment into 'index' */
@@ -143,33 +157,7 @@ public class CampaignBidder {
 		return AudienceProb[index]/(double)score;
 	}
 
-	/*
-	 * A method to update the bidder for every campaign bidding result , in order to 
-	 * store a history.
-	 */
-//	public void updateCampaignes(int campaignId, String winner, double price ) {
-//		
-//	// todo: save the data - maybe also process some calculations.
-//		
-//		
-//	
-//	}
-
-//	public void updateNewPendingCampaign(Set<MarketSegment> targetSegment) {
-//		
-//		pendingCampaignTarget = targetSegment;
-//		
-//	}
-//	
-//	public void updateWonPendingCampaign() {
-//		
-//		/* map target segment into 'index' */
-//		int index = getTargetIndex(pendingCampaignTarget);
-//		
-//		++AudienceBindedCampaigns[index];
-//		
-//	}
-	
+	/* maps a target segment to a one-to-one index between 0 to 26 */
 	private int getTargetIndex(Set<MarketSegment> targetSegment) {
 		int index=0;
 		for ( MarketSegment ms : targetSegment) {
@@ -198,6 +186,11 @@ public class CampaignBidder {
 			 
 			}
 		}
+		
+		if (index>26) {
+			return 0;
+		}
+		
 		return index;
 	}
 
