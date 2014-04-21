@@ -49,6 +49,7 @@ import se.sics.tasim.is.common.HttpPage;
 import se.sics.tasim.is.common.InfoServer;
 import se.sics.tasim.is.common.ScoreGenerator;
 import se.sics.tasim.is.common.SimServer;
+import tau.tac.adx.sim.TACAdxConstants;
 
 /**
  * @author Ben Cassell, based on GameScheduler by SICS
@@ -542,7 +543,7 @@ public class TACAAGameScheduler extends HttpPage {
 				for (int i = 0, n = scheduledGames.length; i < n; i++) {
 					int [] roles = new int [scheduledGames[i].length];
 					for(int j = 0; j < scheduledGames[i].length; j++)
-						roles[j] = 1;
+						roles[j] = TACAdxConstants.AD_NETOWRK_ROLE_ID;
 					for(int k = 0; k < 4; k++){
 						schedule.addSimulation(scheduledGames[i], roles);
 					}

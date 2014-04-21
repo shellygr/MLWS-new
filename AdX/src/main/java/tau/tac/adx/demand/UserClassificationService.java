@@ -11,5 +11,8 @@ public interface UserClassificationService {
 
 	public UserClassificationServiceAdNetData getAdNetData(String advertiser);
 
-	public void auction(int day);
+	public void auction(int day, boolean broadcast);
+	
+	public String logToString();
+
 }

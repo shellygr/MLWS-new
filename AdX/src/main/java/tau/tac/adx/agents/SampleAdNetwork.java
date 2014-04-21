@@ -162,7 +162,7 @@ public class SampleAdNetwork extends Agent {
 	}
 
 	private void hadnleCampaignAuctionReport(CampaignAuctionReport content) {
-		// ingoring
+		// ingoring - this message is obsolete
 	}
 
 	private void handleBankStatus(BankStatus content) {
@@ -209,7 +209,7 @@ public class SampleAdNetwork extends Agent {
 		adxAgentAddress = campaignMessage.getAdxAgentAddress();
 
 		CampaignData campaignData = new CampaignData(initialCampaignMessage);
-		campaignData.setBudget(initialCampaignMessage.getReachImps() / 1000.0);
+		campaignData.setBudget(initialCampaignMessage.getBudgetMillis()/1000.0);
 		currCampaign = campaignData;
 		genCampaignQueries(currCampaign);
 
@@ -243,27 +243,12 @@ public class SampleAdNetwork extends Agent {
 		 * therefore the total number of impressions may be treated as a reserve
 		 * (upper bound) price for the auction.
 		 */
-		long bid = 1;
+
 		Random random = new Random();
-		if (myCampaigns.size() > 3) {
-			System.out.println("!!!!!!!!!!!!!Have 3 campaigns!!!!!!!!!!!!!");
-			bid = random.nextInt(1300) + 2000;
-		} else {
-			for (CampaignData campaign : myCampaigns.values()) {
-				if (campaign.impsTogo() > 0) {
-					System.out.println("!!!!!!!!!!!!!Campaign has more imps to go:"
-							+ Integer.toString(campaign.impsTogo())
-							+ "!!!!!!!!!!!!!");
-					bid = random.nextInt(1300) + 2000;
-					break;
-				}
+		long cmpimps = com.getReachImps();
+		long cmpBidMillis = random.nextInt((int)cmpimps);
 
-			}
-		}
-
-		double cmpBidUnits = bid / 1000.0;
-
-		System.out.println("Day " + day + ": Campaign total budget bid: " + cmpBidUnits);
+		System.out.println("Day " + day + ": Campaign total budget bid (millis): " + cmpBidMillis);
 
 		/*
 		 * Adjust ucs bid s.t. target level is achieved. Note: The bid for the
@@ -272,22 +257,14 @@ public class SampleAdNetwork extends Agent {
 
 		if (adNetworkDailyNotification != null) {
 			double ucsLevel = adNetworkDailyNotification.getServiceLevel();
-
-			/* UCS Bid should not exceed 0.2 */
-			if (myCampaigns.size() > 3) {
-				ucsBid = 0;
-			} else {
-				ucsBid = 0.2;
-			}
-
+			ucsBid = 0.1 + random.nextDouble()/10.0;			
 			System.out.println("Day " + day + ": ucs level reported: " + ucsLevel);
 		} else {
 			System.out.println("Day " + day + ": Initial ucs bid is " + ucsBid);
 		}
 
 		/* Note: Campaign bid is in millis */
-		AdNetBidMessage bids = new AdNetBidMessage(ucsBid, pendingCampaign.id,
-				bid);
+		AdNetBidMessage bids = new AdNetBidMessage(ucsBid, pendingCampaign.id, cmpBidMillis);
 		sendMessage(demandAgentAddress, bids);
 	}
 
@@ -309,22 +286,22 @@ public class SampleAdNetwork extends Agent {
 				+ notificationMessage.getWinner();
 
 		if ((pendingCampaign.id == adNetworkDailyNotification.getCampaignId())
-				&& (notificationMessage.getCost() != 0)) {
+				&& (notificationMessage.getCostMillis() != 0)) {
 
 			/* add campaign to list of won campaigns */
-			pendingCampaign.setBudget(notificationMessage.getCost());
+			pendingCampaign.setBudget(notificationMessage.getCostMillis()/1000.0);
 			currCampaign = pendingCampaign;
 			genCampaignQueries(currCampaign);
 			myCampaigns.put(pendingCampaign.id, pendingCampaign);
 
-			campaignAllocatedTo = " WON at cost "
-					+ notificationMessage.getCost();
+			campaignAllocatedTo = " WON at cost (Millis)"
+					+ notificationMessage.getCostMillis();
 		}
 
 		System.out.println("Day " + day + ": " + campaignAllocatedTo
 				+ ". UCS Level set to " + notificationMessage.getServiceLevel()
 				+ " at price " + notificationMessage.getPrice()
-				+ " Qualit Score is: " + notificationMessage.getQualityScore());
+				+ " Quality Score is: " + notificationMessage.getQualityScore());
 	}
 
 	/**
@@ -352,13 +329,15 @@ public class SampleAdNetwork extends Agent {
 
 		int dayBiddingFor = day + 1;
 
-		/* A fixed random bid, for all queries of the campaign */
+		Random random = new Random();
+
+		/* A random bid, fixed for all queries of the campaign */
 		/*
 		 * Note: bidding per 1000 imps (CPM) - no more than average budget
 		 * revenue per imp
 		 */
 
-		double rbid = 10000.0;
+		double rbid = 10.0*random.nextDouble();
 
 		/*
 		 * add bid entries w.r.t. each active campaign with remaining contracted
@@ -370,7 +349,7 @@ public class SampleAdNetwork extends Agent {
 
 		if ((dayBiddingFor >= currCampaign.dayStart)
 				&& (dayBiddingFor <= currCampaign.dayEnd)
-				&& (currCampaign.impsTogo() > 0)&& day%2!=1) {
+				&& (currCampaign.impsTogo() > 0)) {
 
 			int entCount = 0;
 
@@ -402,7 +381,7 @@ public class SampleAdNetwork extends Agent {
 			}
 
 			double impressionLimit = currCampaign.impsTogo();
-			double budgetLimit = 1000 * currCampaign.budget;
+			double budgetLimit = currCampaign.budget;
 			bidBundle.setCampaignDailyLimit(currCampaign.id,
 					(int) impressionLimit, budgetLimit);
 

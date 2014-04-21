@@ -4,9 +4,8 @@
 package tau.tac.adx.sim;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.Set;
+import java.util.Random;
 
 import se.sics.tasim.aw.TimeListener;
 import tau.tac.adx.Adx;
@@ -22,7 +21,7 @@ import tau.tac.adx.bids.BidInfo;
 import tau.tac.adx.demand.UserClassificationService;
 import tau.tac.adx.demand.UserClassificationServiceAdNetData;
 import tau.tac.adx.props.AdxQuery;
-import tau.tac.adx.publishers.reserve.ReservePriceManager;
+import tau.tac.adx.publishers.reserve.UserAdTypeReservePriceManager;
 import tau.tac.adx.report.adn.MarketSegment;
 
 import com.google.common.eventbus.EventBus;
@@ -46,6 +45,8 @@ public class SimpleAdxAuctioneer implements AdxAuctioneer, TimeListener {
 	 * {@link BidManager}.
 	 */
 	private final AdxBidManager bidManager;
+	
+	private final Random random;
 
 	/**
 	 * @param auctionManager
@@ -60,6 +61,7 @@ public class SimpleAdxAuctioneer implements AdxAuctioneer, TimeListener {
 			AdxBidManager bidManager, EventBus eventBus) {
 		this.auctionManager = auctionManager;
 		this.bidManager = bidManager;
+		this.random = new Random();
 		eventBus.register(this);
 	}
 
@@ -70,15 +72,15 @@ public class SimpleAdxAuctioneer implements AdxAuctioneer, TimeListener {
 	public AdxAuctionResult runAuction(AdxQuery query) {
 		Collection<BidInfo> bidInfoCollection = generateBidInfos(query);
 
-		ReservePriceManager reservePriceManager = AdxManager.getInstance()
+		UserAdTypeReservePriceManager reservePriceManager = AdxManager.getInstance()
 				.getPublisher(query.getPublisher()).getReservePriceManager();
-		Double reservePrice = reservePriceManager.generateReservePrice();
+		Double reservePrice = reservePriceManager.generateReservePrice(query);
 		AuctionData auctionData = new AuctionData(AuctionOrder.HIGHEST_WINS,
 				AuctionPriceType.GENERALIZED_SECOND_PRICE, bidInfoCollection,
 				reservePrice);
 		AdxAuctionResult auctionResult = auctionManager.runAuction(auctionData, query);
 		if (auctionResult.getAuctionState() == AuctionState.AUCTION_COPMLETED) {
-			reservePriceManager.addImpressionForPrice(reservePrice);
+			reservePriceManager.addImpressionForPrice(reservePrice, query);
 		}
 		return auctionResult;
 	}
@@ -103,7 +105,7 @@ public class SimpleAdxAuctioneer implements AdxAuctioneer, TimeListener {
 				.getInstance().getUserClassificationService();
 		UserClassificationServiceAdNetData adNetData = userClassificationService
 				.getAdNetData(advertiser);
-		if (adNetData.getServiceLevel() > 0) {
+		if (adNetData.getServiceLevel() <= random.nextDouble()) {
 			return query;
 		}
 		AdxQuery clone = query.clone();

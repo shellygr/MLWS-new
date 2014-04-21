@@ -804,10 +804,17 @@ public class TACAdxSimulation extends Simulation implements AdxAgentRepository,
 	
 	public void sendCampaignAuctionReport(
 			CampaignAuctionReport campaignAuctionReport) {
-		sendToRole(AD_NETOWRK_ROLE_ID, campaignAuctionReport);
 		getEventWriter().dataUpdated(TACAdxConstants.DU_CAMPAIGN_AUCTION_REPORT,
 				campaignAuctionReport);
 	}
+
+	
+	/* competing agents are not notified regarding private auction details!
+	public void sendToAgentCampaignAuctionReport(String agentName,
+			CampaignAuctionReport campaignAuctionReport) {
+		sendMessage(agentName, campaignAuctionReport);
+	}
+	*/
 
 	public void broadcastClicks(String advertiser, int clicks) {
 		getEventWriter().dataUpdated(agentIndex(advertiser),

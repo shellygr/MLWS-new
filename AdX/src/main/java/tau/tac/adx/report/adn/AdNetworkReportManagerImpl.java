@@ -27,6 +27,7 @@ package tau.tac.adx.report.adn;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import tau.tac.adx.bids.BidInfo;
@@ -86,8 +87,9 @@ public class AdNetworkReportManagerImpl implements AdNetworkReportManager {
 	 */
 	@Subscribe
 	public void auctionPerformed(AuctionMessage message) {
-		for (String participant : message.getAuctionResult().getParticipants()) {
-			AdNetworkReport report = adNetworkReports.get(participant);
+		for (BidInfo bidInfo : message.getAuctionResult().getBidInfos()) {
+			String participant = bidInfo.getBidder().getName();
+			AdNetworkReport report = adNetworkReports.get(participant );
 			if (report == null) {
 				report = new AdNetworkReport();
 				adNetworkReports.put(participant, report);
@@ -99,8 +101,14 @@ public class AdNetworkReportManagerImpl implements AdNetworkReportManager {
 				hasWon = winningBidInfo.getBidder().getName()
 						.equals(participant);
 			}
-			report.addBid(message.getAuctionResult(), message.getQuery(),
-					message.getUser(), hasWon);
+			if (!bidInfo.getCampaign().getAdvertiser()
+					.equals(bidInfo.getBidder().getName())) {
+				log.log(Level.SEVERE, bidInfo.getBidder().getName()
+						+ " placed a bid for campaign  #"
+						+ bidInfo.getCampaign().getId() + " which belongs to "
+						+ bidInfo.getCampaign().getAdvertiser());
+			}
+			report.addBid(message, bidInfo.getCampaign().getId(), hasWon);
 		}
 	}
 
@@ -114,5 +122,12 @@ public class AdNetworkReportManagerImpl implements AdNetworkReportManager {
 					entry.getValue());
 		}
 		adNetworkReports.clear();
+	}
+	
+	/**
+	 * @return the adNetworkReports
+	 */
+	public Map<String, AdNetworkReport> getAdNetworkReports() {
+		return adNetworkReports;
 	}
 }

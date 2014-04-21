@@ -17,14 +17,16 @@ public class UserClassificationServiceImpl implements UserClassificationService 
 	private final static double UCS_PROB = 0.9;
 
 	private final Map<String, UserClassificationServiceAdNetData> advertisersData = new HashMap<String, UserClassificationServiceAdNetData>();
+	private final Map<String, UserClassificationServiceAdNetData> tomorrowsAdvertisersData = new HashMap<String, UserClassificationServiceAdNetData>();
 
 	@Override
 	public void updateAdvertiserBid(String advertiser, double ucsBid, int day) {
-		UserClassificationServiceAdNetData advData = advertisersData
+		UserClassificationServiceAdNetData advData = tomorrowsAdvertisersData
 				.get(advertiser);
 		if (advData == null) {
 			advData = new UserClassificationServiceAdNetData();
-			advertisersData.put(advertiser, advData);
+			advData.setAuctionResult(0,1.0,1);
+			tomorrowsAdvertisersData.put(advertiser, advData);
 		}
 		advData.setBid(ucsBid, day);
 	}
@@ -35,8 +37,12 @@ public class UserClassificationServiceImpl implements UserClassificationService 
 	}
 
 	@Override
-	public void auction(int day) {
-		int advCount = advertisersData.size();
+	public void auction(int day, boolean broadcast) {
+		advertisersData.clear();
+		for (String advertiser : tomorrowsAdvertisersData.keySet()){
+			advertisersData.put(advertiser, tomorrowsAdvertisersData.get(advertiser).clone());
+		}
+		int advCount = tomorrowsAdvertisersData.size();
 
 		if (advCount > 0) {
 			String[] advNames = new String[advCount + 1];
@@ -45,15 +51,15 @@ public class UserClassificationServiceImpl implements UserClassificationService 
 
 			int i = 0;
 
-			for (String advName : advertisersData.keySet()) {
+			for (String advName : tomorrowsAdvertisersData.keySet()) {
 				advNames[i] = new String(advName);
-				bids[i] = advertisersData.get(advName).bid;
+				bids[i] = tomorrowsAdvertisersData.get(advName).bid;
 				indices[i] = i;
 				i++;
 			}
 
 			advNames[advCount] = "Zero";
-			bids[advCount] = 0;
+			bids[advCount] = Double.NEGATIVE_INFINITY;
 			indices[advCount] = advCount;
 
 			hardSort(bids, indices);
@@ -61,15 +67,26 @@ public class UserClassificationServiceImpl implements UserClassificationService 
 			double ucsProb = 1.0;
 			double levelPrice = 0;
 			for (int j = 0; j < advCount; j++) {
-				UserClassificationServiceAdNetData advData = advertisersData
-						.get(advNames[indices[j]]);
-				levelPrice = ucsProb * bids[indices[j + 1]];
-				advData.setAuctionResult(levelPrice, ucsProb, day);
-				AdxManager.getInstance().getSimulation()
-						.broadcastUCSWin(advNames[j], levelPrice);
+				String advertiser = advNames[indices[j]];
+				UserClassificationServiceAdNetData advData = tomorrowsAdvertisersData
+						.get(advertiser);
+				levelPrice = ucsProb * bids[indices[j+1]];
+				advData.setAuctionResult(levelPrice, ucsProb, day + 1);
+				if (broadcast){
+					AdxManager.getInstance().getSimulation()
+							.broadcastUCSWin(advertiser, levelPrice);
+				}
 				ucsProb = ucsProb * UCS_PROB;
 			}
 		}
 	}
-
+	
+	@Override
+	public String logToString() {
+		String ret = new String("");
+		for (String adv : advertisersData.keySet()) {
+			ret = ret + adv + advertisersData.get(adv).logToString();			
+		}
+		return ret;
+	}
 }
