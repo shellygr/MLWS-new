@@ -43,9 +43,10 @@ public class CampaignBidder {
 		0.258585859, // 24- high old
 		0,0 }; 
 	
-	private static final double ALPHA = 0.0008;
-	//private static final double BETA = 100;
-	//private static final double GAMMA = 1;
+	private static final double MAX_BID = 100;
+
+	private static final double BETA = 800; // Optimize where: 0 <= BETA < 1000
+	private static final double ALPHA = (BETA + 999000) / 1000000; // do NOT change
 	
 	private static CampaignBidder instance = null;
 	
@@ -95,10 +96,13 @@ public class CampaignBidder {
 		double targetAudienceScore = getAudienceScore(pendingCampaign.getTargetSegment(), dayStart, dayEnd);
 		
 		/* minimum/maximum bid: */
-		double minBid = reach * R_CAMPAIGN_MIN / qualityScore;
+		double minBid = (qualityScore ==0 ? MAX_BID: reach * R_CAMPAIGN_MIN / qualityScore);
 		double maxBid = reach * R_CAMPAIGN_MAX * qualityScore;
 		
-		double bid = ALPHA * qualityScore * ( reach / duration ) * ( 1 / targetAudienceScore );
+		double bid = qualityScore * ( reach / duration ) * ( 1 / targetAudienceScore );
+		
+		bid = minBid + (maxBid - minBid)* (1 - Math.pow(ALPHA, bid));
+		
 		
 		log.info("getBid: bid="+bid+" quality="+qualityScore+" minBid="+minBid+" maxbid="+maxBid+" targetAudienceScore="+targetAudienceScore);
 		
@@ -124,7 +128,7 @@ public class CampaignBidder {
 	}
 	
 	private double getAudienceScore(Set<MarketSegment> targetSegment, long dayStart, long dayEnd) {
-		int score = 2;
+		int score = 1;
 		/* map target segment into 'index' */
 		int index = getTargetIndex(targetSegment);
 		for (long day=dayStart; day<=dayEnd; day++) {

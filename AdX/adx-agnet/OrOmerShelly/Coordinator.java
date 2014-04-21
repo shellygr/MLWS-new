@@ -98,7 +98,7 @@ public class Coordinator {
 
 	double currentUcsLevel;
 
-	double qualityScore;
+	double qualityScore = 1;
 
 	Map<String, PublisherStats> publisherDailyStats = new HashMap<String, PublisherStats>();
 
