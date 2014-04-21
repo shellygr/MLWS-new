@@ -34,7 +34,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/orsa/Dev/MLWS-new/AdX/adx-agnet/lib/adx-1.2.4.jar"/>
 	<classpathentry kind="lib" path="adx-agnet/lib/ajt-2.9.jar"/>
 	<classpathentry kind="lib" path="adx-agnet/lib/commons-lang3-3.1.jar"/>
 	<classpathentry kind="lib" path="adx-agnet/lib/commons-math-1.2.jar"/>
@@ -43,5 +42,6 @@
 	<classpathentry kind="lib" path="adx-agnet/lib/libsvm.jar"/>
 	<classpathentry kind="lib" path="adx-agnet/lib/oosagent.jar"/>
 	<classpathentry kind="lib" path="adx-agnet/lib/weka.jar"/>
+	<classpathentry kind="lib" path="adx-agnet/lib/adx-1.2.4.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
