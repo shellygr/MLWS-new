@@ -49,7 +49,7 @@ public class CampaignBidder {
 	
 	private static final double MAX_BID = 100;
 
-	private static final double BETA = 800; // Optimize where: 0 <= BETA < 1000
+	private static final double BETA = 960; // Optimize where: 0 <= BETA < 1000
 	private static final double ALPHA = (BETA + 999000) / 1000000; // do NOT change
 	
 	private static CampaignBidder instance = null;
@@ -115,7 +115,6 @@ public class CampaignBidder {
 		
 		//bid = Math.min(bid, maxBid);
 		//bid = Math.max(bid, minBid);
-			
 		return bid;
 	}
 	
