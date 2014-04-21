@@ -1,6 +1,7 @@
 package OrOmerShelly.userAnalysis;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,7 +20,8 @@ public class UserAnalyzer {
 
 	private final static int NUMBER_OF_MARKET_SEGMENTS = 12;
 	private final static int USER_POPULATION_SIZE = 10000;
-	
+
+	/* Names of publishers as they appear in the game */
 	private final static String YAHOO = "yahoo";
 	private final static String CNN = "cnn";
 	private final static String NYTIMES = "nyt";
@@ -39,13 +41,17 @@ public class UserAnalyzer {
 	private final static String CNET = "cnet";
 	private final static String WEATHER = "weather";
 	
+	// Updated from upper classes
 	private Map<String, PublisherStats> publishersStats;
 		
-	// Private static member - Map publisher name + audience orientation to probabilities
+	// Private static members - Map publisher name + audience orientation to probabilities
 	private static HashMap<AudienceOrientationKey, Double> audienceOrientationMap = getAudienceOrientation();
 	private static HashMap<DeviceOrientationKey, Double> deviceOrientationMap = getDeviceOrientation();
 	private static HashMap<String, Double> popularityMap = getPopularity();
 	
+	/*
+	 * Build device orientation map according to the specification document.
+	 */
 	private static HashMap<DeviceOrientationKey, Double> getDeviceOrientation() {
 		HashMap<DeviceOrientationKey, Double> map = new HashMap<DeviceOrientationKey, Double>();
 		
@@ -106,6 +112,9 @@ public class UserAnalyzer {
 		return map;
 	}
 
+	/*
+	 * Build popularity map according to the specification document.
+	 */
 	private static HashMap<String, Double> getPopularity() {
 		HashMap<String, Double> map = new HashMap<String, Double>();
 		map.put(YAHOO, 16.0);
@@ -129,9 +138,13 @@ public class UserAnalyzer {
 		return map;
 	}
 
+	/*
+	 * Build audience orientation map according to the specification document.
+	 */
 	private static HashMap<AudienceOrientationKey, Double> getAudienceOrientation() {
 		List<AudienceOrientationRecord> orientationsCollection = new LinkedList<AudienceOrientationRecord>();
-		// Assuming no below age 18 users, as they do not appear in User Popoulation Probabilities table. Therefore remaining part is given to "OLD" market segment.
+		
+		// Assuming no below age 18 users, as they do not appear in User Population Probabilities table. Therefore remaining part is given to "OLD" market segment.
 		
 		// Note: Calculations are "not pretty" to allow easy verification with the table.
 		
@@ -288,11 +301,16 @@ public class UserAnalyzer {
 		return map;
 	}
 
+	/**
+	 * Calculates impression parameters distribution for all possible impression parameters, and for the given publisher.
+	 * @param publisherName
+	 * @return List of impression parameters and their weight.
+	 */
 	public List<ImpressionParamtersDistributionKey> calcImpressionDistribution(String publisherName) {
 		List<ImpressionParamtersDistributionKey> weights = new ArrayList<ImpressionParamtersDistributionKey>();
 		PublisherStats publisherStats = (publishersStats == null ? null : publishersStats.get(publisherName));
 		
-		// Ad type orientation may be unknown. Therefore, if not stats are available for the publisher, average on what you already have.
+		// Ad type orientation may be unknown. Therefore, if no statistics are available for the publisher, average on what already has.
 		if (publisherStats == null) {
 			publisherStats = getAveragedPublisherStatsForPublisher(publisherName);
 		}
@@ -311,7 +329,6 @@ public class UserAnalyzer {
 					
 					weight *= deviceOrientationMap.get(new DeviceOrientationKey(publisherName, device))  / 100;
 					weight *= ((double)(adType == AdType.text ? 1.0 : (double)publisherStats.getVideoOrientation() / publisherStats.getTextOrientation()));
-				//	weight *= popularityMap.get(publisherName) / 100;
 															
 					ImpressionParamtersDistributionKey key = new ImpressionParamtersDistributionKey(impParams, weight);
 					weights.add(key);					
@@ -322,6 +339,12 @@ public class UserAnalyzer {
 		return weights;
 	}
 
+	/**
+	 * Returns a default or averaged publisher statistics for the publisher, depending on the available data.
+	 * If no data available, then assumes that video/text ratio is 1.
+	 * @param publisherName
+	 * @return A PublisherStats object which is predicted based on the available information.
+	 */
 	public PublisherStats getAveragedPublisherStatsForPublisher(String publisherName) {
 		double sumText = 0.0;
 		double sumVideo = 0.0;
@@ -347,6 +370,12 @@ public class UserAnalyzer {
 		return new PublisherStats(Math.round(popularity), Math.round(avgVideo * popularity), Math.round(avgText * popularity));
 	}
 
+	/**
+	 * Calculates median of market segments weights for the publisher.
+	 * Calculates all weights and sorts the list, so median can be taken.
+	 * @param publisherName
+	 * @return The median of the market segments weights for the publisher.
+	 */
 	public double calcMedianOfMarketSegmentsWeights(String publisherName) {
 		List<Double> weights = new ArrayList<Double>(NUMBER_OF_MARKET_SEGMENTS);
 		
@@ -361,9 +390,16 @@ public class UserAnalyzer {
 			weights.add(weight);
 		}
 		
+		Collections.sort(weights);
 		return weights.get(NUMBER_OF_MARKET_SEGMENTS/2 - 1);		
 	}
 
+	/**
+	 * Gets a weight of a specific market segment for the given publisher.
+	 * @param targetSegment
+	 * @param publisherName
+	 * @return The weight of targetSegment for the publisher.
+	 */
 	public double getMarketSegmentWeight(Set<MarketSegment> targetSegment, String publisherName) {
 		double weight = 1.0;
 		
@@ -374,8 +410,21 @@ public class UserAnalyzer {
 		return weight;
 	}
 
+	/**
+	 * Gets a weight of a specific device for the given publisher.
+	 * @param publisherName
+	 * @param device
+	 * @return The weight of device for the publisher.
+	 */
 	public double getDeviceWeight(String publisherName, Device device) {
 		return deviceOrientationMap.get(new DeviceOrientationKey(publisherName, device))  / 100;
+	}
+
+	/* Infrastructure */
+	
+	/* Getters / Setters */
+	public void setPublisherStats(Map<String, PublisherStats> publishersStats) {
+		this.publishersStats = publishersStats;
 	}
 	
 }

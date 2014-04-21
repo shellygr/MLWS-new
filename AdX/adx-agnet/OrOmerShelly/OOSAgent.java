@@ -17,7 +17,6 @@ import tau.tac.adx.report.demand.AdNetworkDailyNotification;
 import tau.tac.adx.report.demand.CampaignOpportunityMessage;
 import tau.tac.adx.report.demand.CampaignReport;
 import tau.tac.adx.report.demand.InitialCampaignMessage;
-import tau.tac.adx.report.demand.campaign.auction.CampaignAuctionReport;
 import tau.tac.adx.report.publisher.AdxPublisherReport;
 import edu.umich.eecs.tac.props.BankStatus;
 
@@ -68,7 +67,7 @@ public class OOSAgent extends Agent {
 			} else if (content instanceof AdxPublisherReport) {
 				coordinator.handleAdxPublisherReport((AdxPublisherReport) content); 		// ownership: Shelly
 			} else if (content instanceof SimulationStatus) {
-				handleSimulationStatus((SimulationStatus) content);				// might be relevant for performance
+				handleSimulationStatus((SimulationStatus) content);				
 			} else if (content instanceof PublisherCatalog) {
 				coordinator.handlePublisherCatalog((PublisherCatalog) content);				// ownership: Shelly
 			} else if (content instanceof AdNetworkReport) {
@@ -77,8 +76,6 @@ public class OOSAgent extends Agent {
 				handleStartInfo((StartInfo) content);
 			} else if (content instanceof BankStatus) {
 				coordinator.handleBankStatus((BankStatus) content);
-			} else if (content instanceof CampaignAuctionReport) {
-				coordinator.handleCampaignAuctionReport((CampaignAuctionReport) content);
 			} else {
 				log.info("UNKNOWN Message Received: " + content);
 			}

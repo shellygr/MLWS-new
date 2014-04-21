@@ -62,12 +62,12 @@ public class CampaignData {
 	
 	public float getCampaignPriority(int dayBiddingFor) throws IllegalArgumentException {
 		if (dayBiddingFor >= getDayEnd()) {
-			throw new IllegalArgumentException("Trying to calculate priority for a campaign after it has ended!");
+			throw new IllegalArgumentException("Trying to calculate priority for a campaign after it has ended! Campaign:" + this);
 		}
 		
 		return (float)impsTogo() / ((float)(getDayEnd() - dayBiddingFor));
 	}
-
+	
 	public int impsTogo() {
 		return (int) Math.max(0, reachImps - stats.getTargetedImps());
 	}
@@ -81,6 +81,27 @@ public class CampaignData {
 				&& currentDay <= getDayEnd()
 				&& currentDay >= getDayStart());
 	}
+	
+	/**
+	 * Returns all relevant queries as a string.
+	 * @param relevantQueries
+	 * @return String of all relevant queries.
+	 */
+	public String printQueries() {
+		if (campaignQueries == null) {
+			return "null";
+		}
+
+		StringBuilder sb = new StringBuilder("[");
+		for (int i = 0 ; i < campaignQueries.length; i++) {
+			sb.append(campaignQueries[i].toString() + ", ");
+		}
+
+		sb.append("]");
+
+		return sb.toString();
+	}
+
 
 	void setStats(CampaignStats s) {
 		stats.setValues(s);

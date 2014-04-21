@@ -38,40 +38,49 @@ import edu.umich.eecs.tac.props.Ad;
 
 public class ImpressionBidder {
 
-	private static ImpressionBidder instance = null;
+	private static boolean DEBUG = false; // Debug flag
 	
-	private final Logger log = Logger
-			.getLogger(ImpressionBidder.class.getName());
-	
+	private static ImpressionBidder instance = null; // Singleton pattern
+
+	private final Logger log = Logger.getLogger(ImpressionBidder.class.getName()); // Logger
 
 	private PublisherCatalog publisherCatalog;
 	private Map<String, PublisherStats> publishersStats = new HashMap<String, PublisherStats>();
 	private UserAnalyzer userAnalyzer;
 	private ImpressionClassifier concreteClassifier;
-	
+
 	private final static double CPM = 1000.0;
-	
-	private List<CampaignData> myActiveCampaigns; // mutable!!!
+
+	private List<CampaignData> myActiveCampaigns;
 
 	@SuppressWarnings("unused")
-	private double bankBalance;
-	
+	private double bankBalance; // May be used to set limits?
+
 	private AdxBidBundle bidBundle;
 	private AdxBidBundle previousBidBundle;
 
-	private int dayBiddingFor; // TODO: check exactly which day should be given: current day or day bidding for (that is currentDay + 1)?
-	
-	public void init(Classifier newClassifier, CampaignData currentCampaign, int day) throws Exception { // Called one time during the game or when a classifier changes
+	private int dayBiddingFor;
+
+	public void init(Classifier newClassifier, CampaignData currentCampaign, int day) throws Exception { // Called one time during the game - when beginning
 		this.dayBiddingFor = day;
-		concreteClassifier.init(newClassifier, currentCampaign);
+		concreteClassifier.setDayBiddingFor(day);
+		newClassifier.setDebug(DEBUG);
+		//newClassifier.setOptions(Utils.splitOptions("-N 2")); // For SMOReg
+		//newClassifier.setOptions(Utils.splitOptions("-B 500")); // For RBFNetwork
+		concreteClassifier.init(newClassifier, currentCampaign, 1.0); // Runs only after initial campaign - so have only one campaign, so relative priority is 1.0
 	}
 
 	// TODO: set daily limits for campaign and overall - do not want to get a minus in bankBalance?
 
-	public AdxBidBundle getDefaultBidBundle(AdxQuery[] queries) { // Based on SampleAdNetwork
-		
+	/**
+	 * Based on SampleAdNetwork - will be used if an exception occurs in the real bid bundle calculation.
+	 * @param queries
+	 * @return bidBundle
+	 */
+	public AdxBidBundle getDefaultBidBundle(AdxQuery[] queries) { 
+
 		bidBundle = new AdxBidBundle();
-		
+
 		for (CampaignData campaign : myActiveCampaigns) {
 
 			/* A fixed random bid, for all queries of the campaign */
@@ -80,12 +89,12 @@ public class ImpressionBidder {
 			 * revenue per imp
 			 */
 
-			Random rnd = new Random(); // TODO: Shelly; he we set the bids for impressions
+			Random rnd = new Random();
 			double avgCmpRevenuePerImp = campaign.getBudget() / campaign.getReachImps();
 			double randomDouble = rnd.nextDouble();
 			double rbid = CPM * randomDouble * avgCmpRevenuePerImp;
 			log.info("Default bid bundle bid for " + campaign + " will be " + rbid + " where our rnd was " + randomDouble);
-			
+
 			/*
 			 * add bid entries w.r.t. each active campaign with remaining
 			 * contracted impressions.
@@ -105,19 +114,9 @@ public class ImpressionBidder {
 							.getMarketSegments();
 
 					for (@SuppressWarnings("unused") MarketSegment marketSegment : segmentsList) {
-						// TODO: this is very different from the git repository!!!
-						//if (campaign.getTargetSegment() == marketSegment) {
-						/*
-						 * among matching entries with the same campaign id,
-						 * the AdX randomly chooses an entry according to
-						 * the designated weight. by setting a constant
-						 * weight 1, we create a uniform probability over
-						 * active campaigns
-						 */
 						++entCount;
 						bidBundle.addQuery(queries[i], rbid, new Ad(null),
 								campaign.getId(), 1);
-						//}
 					}
 
 					if (segmentsList.size() == 0) {
@@ -135,268 +134,327 @@ public class ImpressionBidder {
 						+ " Bid Bundle entries for Campaign id " + campaign.getId());
 			}
 		}
-		
+
 		return bidBundle;
 	}
-	
-	// TODO: Optimisation: sort myActiveCampaigns in Coordinator so prioritizing will be more efficient! 
+
+	/**
+	 * Main bid bundle calculation method.
+	 * Expects an initialised myActiveCampaigns, publisherCatalog 
+	 * @throws Exception
+	 */
 	public void fillBidBundle() throws Exception {
-		
-		String rname = "fillBidBundle";
 
 		bidBundle = new AdxBidBundle();
-		
+
 		if (myActiveCampaigns == null || myActiveCampaigns.size() == 0) {
 			log.info("No reason to fill bid bundle at all - no active campaigns");
 			return;
 		}
-		
-		log.info("fill bid bundle for day " + dayBiddingFor);
-		
+
+		log.info("Fill bid bundle for day " + dayBiddingFor);
+
 		for (PublisherCatalogEntry publisherCatalogEntry : publisherCatalog.getPublishers()) {
 			String publisherName = publisherCatalogEntry.getPublisherName();
-			//log.info(rname + ": Filling bid bundle for " + publisherName);
-			
-			List<ImpressionParamtersDistributionKey> impressionDistribution = userAnalyzer.calcImpressionDistribution(publisherName);
-			
-			Collections.sort(impressionDistribution, 
-					new Comparator<ImpressionParamtersDistributionKey>() {
-				@Override
-				public int compare(ImpressionParamtersDistributionKey o1,
-						ImpressionParamtersDistributionKey o2) {
-					return o1.getWeight().compareTo(o2.getWeight());
-				}
-			});
 
-			Map<Integer, Float> campaignWeightVector = new HashMap<Integer, Float>();
-			int campaignVectorNormalizationFactor = 0;
-			double bid = 0.0;
-			for (ImpressionParamtersDistributionKey impressionWithWeight : impressionDistribution) {
-				ImpressionParameters impParams = impressionWithWeight.getImpParams();
-				
-				// Initial bid calculates what does the impression worth
+			// Calculate bids for known market segments.
+			calcKnownBidBundleRecord(publisherName);
+
+			// Calculate bids for unknown market segment.
+			calcUnknownBidBundleRecord(publisherName);
+		}
+	}
+
+	/**
+	 * Adds to bid bundle all bids for records related to this publisher.
+	 * @param publisherName
+	 * @throws Exception
+	 */
+	private void calcKnownBidBundleRecord(String publisherName) throws Exception {
+		// Calculate the distribution of the different market segments, device and ad-types for this publisher.
+		List<ImpressionParamtersDistributionKey> impressionDistribution = userAnalyzer.calcImpressionDistribution(publisherName);
+		
+		Map<Integer, Float> campaignWeightVector = new HashMap<Integer, Float>(); // Will map each campaign ID to its weight in the bid.
+		int campaignVectorNormalizationFactor = 1; // Weight given to bid bundle in integers, so we will multiply the probability by the same normalisation factor used to create the weights vector.
+		double bid = 0.0;
+		
+		for (ImpressionParamtersDistributionKey impressionWithWeight : impressionDistribution) {
+			ImpressionParameters impParams = impressionWithWeight.getImpParams();
+			List<CampaignData> relevantCampaigns = filterCampaigns(impParams); // Filter campaigns relevant to the market segment.
+
+			if (exists(relevantCampaigns)) {
+				// Initial bid calculates what does the impression worth.
 				try {
-					bid = initialBid(impParams, publisherName, impressionWithWeight.getWeight());
+					bid = Math.max(0, initialBid(impressionWithWeight.getWeight()));
 				} catch (Exception e) {
 					log.warning("Failed to get initial bid: " + e + " Stack: " + Arrays.asList(e.getStackTrace()));
 					try {
-						bid = getLastBidAveraged(impParams, publisherName);
-						log.warning(rname + ": Failed to classifiy initial bid. Returning last bid averaged = " + bid);
+						bid = getLastBid(impParams, publisherName);
+						log.warning("Failed to classifiy initial bid. Returning last bid averaged = " + bid);
 					} catch (Exception e2) {
 						log.warning("Failed to get last bid averaged - maybe there's no last bid: " + Arrays.asList(e2.getStackTrace()));
 						throw e2;
 					}
 				}
-				
-				// Now we will calculate what does the impression worth *for us*.
-				List<CampaignData> relevantCampaigns = filterCampaigns(impParams);
-				
-				if (exists(relevantCampaigns)) {
-				//	log.info(rname + ": Prioritizing over relevant campaigns...");
-					prioritizeCampaigns(relevantCampaigns);
-					//log.info(rname + ": Priority result is = " + relevantCampaigns);
-					
-					//log.info(rname + ": Updating campaign weight vector...");
-					campaignVectorNormalizationFactor = updateCampaignVector(campaignWeightVector, relevantCampaigns);
-					//log.info(rname + ": Updated campaign vector is = " + campaignWeightVector);
-					
-					log.info(rname + ": Initial bid is: " + bid);
-					bid = calcBid(bid, relevantCampaigns, publisherName, impParams.getMarketSegments(), campaignWeightVector);
-					log.info(rname + ": New bid is = " + bid);
-				}
 
-				addToBidBundle(publisherName, impParams, CPM*bid, campaignWeightVector, campaignVectorNormalizationFactor); // Question: do we bid per impression or per 1000 impressions?
+				// Now we will calculate what does the impression worth *for us*.
+				//prioritizeCampaigns(relevantCampaigns); // Prioritise campaigns
+				campaignVectorNormalizationFactor = updateCampaignVector(campaignWeightVector, relevantCampaigns); // Update campaign weight vector
+
+				if (DEBUG) log.info("Initial bid is: " + bid + " for publisher " + publisherName + " and market segment " + impParams.getMarketSegments());
+				bid = Math.max(0, calcBid(bid, relevantCampaigns, publisherName, impParams.getMarketSegments(), campaignWeightVector, impParams.getDevice(), impParams.getAdType()));
+				if (DEBUG) log.info("Final bid is = " + bid + " for publisher " + publisherName + " and market segment " + impParams.getMarketSegments());
+
+				if (bid > 0) { 
+					addToBidBundle(publisherName, impParams, CPM*bid, campaignWeightVector, campaignVectorNormalizationFactor); // Question: do we bid per impression or per 1000 impressions?
+				}
 			}
-			
-			// Unknown market segment imp params...
+		}
+	}
+
+	/**
+	 * Adds to bid bundle all bids for records related to this publisher which have an "Unknown" market segment.
+	 * @param publisherName
+	 * @throws Exception
+	 */
+	private void calcUnknownBidBundleRecord(String publisherName) throws Exception {
+		Map<Integer, Float> campaignWeightVector = new HashMap<Integer, Float>();
+		int campaignVectorNormalizationFactor = 1;
+		double bid = 0.0;
+	
+		List<CampaignData> urgentCampaigns = getUrgentCampaigns(); // Only for urgent campaigns -that's all campaigns but prioritised already
+		if (urgentCampaigns.size() != 0) { // Probably won't fail here as we have tested that case already, but to be on the safe side, we repeat.
 			for (Device device : Device.values()) {
 				for (AdType adType : AdType.values()) {
-				//	log.info(rname + ": Market segment is unknown, bidding only for urgent campaigns");
-					
-					List<CampaignData> urgentCampaigns = getUrgentCampaigns();
-					//log.info(rname + ": Urgent campaigns = " + urgentCampaigns);
-					if (urgentCampaigns.size() == 0) {
-				//		log.info("No urgent campaigns.");
-					}
-					
-					//log.info(rname + ": Updating campaign weight vector...");
-					campaignVectorNormalizationFactor = updateCampaignVector(campaignWeightVector, urgentCampaigns);
-				//	log.info(rname + ": Updated campaign vector is = " + campaignWeightVector);
-					
-					bid = calcBidForUnknown(urgentCampaigns, publisherName, device, adType);
-					log.info(rname + ": Bid for unknown market segment and urgent campaigns is "  + bid);
-					
+					campaignVectorNormalizationFactor = updateCampaignVector(campaignWeightVector, urgentCampaigns); // Update the campaign weight vector
+
+					bid = Math.max(0, calcBidForUnknown(urgentCampaigns, publisherName, device, adType));
+					if (DEBUG) log.info("Bid for unknown market segment and urgent campaigns is " + bid);
+
 					addToBidBundle(publisherName, new ImpressionParameters(new HashSet<MarketSegment>(), device, adType), bid, campaignWeightVector, campaignVectorNormalizationFactor);
 				}
 			}
-
 		}
 	}
-	
+
+	/**
+	 * Updates the campaignWeightVector map with weights of all relevantCampaigns as if it was a probability vector.
+	 * @param campaignWeightVector
+	 * @param relevantCampaigns
+	 * @return the normalisation factor used to create the vector.
+	 */
 	private int updateCampaignVector(Map<Integer, Float> campaignWeightVector, List<CampaignData> relevantCampaigns) {
 		float sumCampaignPriorities = 0;
 		for (CampaignData relevantCampaign : relevantCampaigns) {
 			sumCampaignPriorities += relevantCampaign.getCampaignPriority(dayBiddingFor);
 		}
-		
+
 		for (CampaignData relevantCampaign : relevantCampaigns) {
 			campaignWeightVector.put(relevantCampaign.getId(), relevantCampaign.getCampaignPriority(dayBiddingFor)/sumCampaignPriorities);
 		}
-		
+
 		return Math.round(sumCampaignPriorities);
 	}
-	
-	private double initialBid(ImpressionParameters impParams, String publisherName, Double weight) throws Exception {
-		concreteClassifier.generateFirstInstance(impParams, publisherName, weight);
+
+	/**
+	 * Get the initial bid from the concrete classifier, based on the impression parameters, the publisher and the weight of these impression parameters.
+	 * @param weight
+	 * @return Initial bid for the BidBundle.
+	 * @throws Exception
+	 */
+	private double initialBid(Double weight) throws Exception {
+		concreteClassifier.generateFirstInstance(weight);
 		return concreteClassifier.classifyLastInstance();
 	}
 
-	private double getLastBidAveraged(ImpressionParameters impParams, String publisherName) {
+	/**
+	 * Will return the last bid used for these impression parameters and publisher.
+	 * As the bid bundle itself may be persistent (according to the code) this may be redundant.
+	 * @param impParams
+	 * @param publisherName
+	 * @return The previous bid for the same bid bundle record.
+	 */
+	private double getLastBid(ImpressionParameters impParams, String publisherName) {
 		Set<MarketSegment> marketSegments = impParams.getMarketSegments();
 		Device device = impParams.getDevice();
 		AdType adType = impParams.getAdType();
-			
+
 		return previousBidBundle.getBid(new AdxQuery(publisherName, marketSegments, device, adType));	
 	}
 
+	/**
+	 * Adds a bid to the relevant BidBundle record, with all campaigns that will participate, and their weights.
+	 * @param publisherName
+	 * @param impParams
+	 * @param bid
+	 * @param campaignWeightVector
+	 * @param normalizationFactor
+	 */
 	private void addToBidBundle(String publisherName, ImpressionParameters impParams, double bid, Map<Integer, Float> campaignWeightVector, int normalizationFactor) {
 		for (Integer campaignId : campaignWeightVector.keySet()) {
 			AdxQuery query = new AdxQuery(publisherName, impParams.getMarketSegments(), impParams.getDevice(), impParams.getAdType());
 			bidBundle.addQuery(query, bid, new Ad(null), campaignId, Math.round(campaignWeightVector.get(campaignId)*normalizationFactor));
 		}
-		
 	}
 
+	/**
+	 * Given urgentCampaigns, calculate the bid to be used for all of them in the "Unknown" record of the bid bundle.
+	 * This is simply the arithmetic average of all bids to these campaigns for "Unknown" market segment.
+	 * @param urgentCampaigns
+	 * @param publisherName
+	 * @param device
+	 * @param adType
+	 * @return The bid for all urgent campaigns.
+	 * @throws Exception
+	 */
 	private double calcBidForUnknown(List<CampaignData> urgentCampaigns, String publisherName, Device device, AdType adType) throws Exception {
 		double sumBids = 0;
-		//log.info("calcBidForUnknown: UrgentCampaigns = " + urgentCampaigns);
-		
-		// Minimal should be last...
+
+		// Minimal should be last according to the priority.
 		float leastPriority = urgentCampaigns.get(urgentCampaigns.size()-1).getCampaignPriority(dayBiddingFor);
-		
+
 		for (CampaignData urgentCampaign : urgentCampaigns) {
 			concreteClassifier.generateUnknownInstance(publisherName, device, adType, urgentCampaign, leastPriority);
 			double bidForCampaign = concreteClassifier.classifyLastInstance();
 			sumBids += bidForCampaign;
 		}
-		
+
 		return sumBids/urgentCampaigns.size();	
 	}
 
+	/**
+	 * @return all campaigns sorted by how urgent they are.
+	 */
 	private List<CampaignData> getUrgentCampaigns() {
 		prioritizeCampaigns(myActiveCampaigns);
 		return myActiveCampaigns;
 	}
 
-	// TODO should we consider daily limits?
-	private double calcBid(double currentBid, List<CampaignData> relevantCampaigns, String publisherName, Set<MarketSegment> marketSegment, Map<Integer, Float> campaignWeightVector) throws Exception {
-		// TODO: Generate a bid for each of the campaign based on the campaign data and the initial bid
+	// TODO should we consider daily limits? Not setting this until we run a good demo simulation.
+	/**
+	 * Calculates the bid for all relevant campaigns, based on the initial bid.
+	 * @param currentBid
+	 * @param relevantCampaigns
+	 * @param publisherName
+	 * @param marketSegment
+	 * @param campaignWeightVector
+	 * @param device
+	 * @param adType
+	 * @return Final bid for this record - based on all available relevant data - averaged by the priorities of the campaigns - priority serves as a weight. 
+	 * @throws Exception
+	 */
+	private double calcBid(double currentBid, List<CampaignData> relevantCampaigns, String publisherName, Set<MarketSegment> marketSegment, Map<Integer, Float> campaignWeightVector, Device device, AdType adType) throws Exception {
 		List<Double> bidsForRelevantCampaigns = new ArrayList<Double>(relevantCampaigns.size());
+		if (DEBUG) log.info("Calc bid: relevant campaigns size: " + relevantCampaigns.size());
+		
+		// Will add the bids in the same order as the campaigns are sorted. This is required for average bids.
 		for (CampaignData relevantCampaign : relevantCampaigns) {
-			
-			double currentBidForInstance = concreteClassifier.classifyEnriched(relevantCampaign.getBudget(), campaignWeightVector.get(relevantCampaign.getId()));
-
+			double currentBidForInstance = concreteClassifier.classifyEnriched(campaignWeightVector.get(relevantCampaign.getId()), publisherName, marketSegment, device, adType, relevantCampaign.getId());
 			bidsForRelevantCampaigns.add(currentBidForInstance);
-			
 		}
-		// TODO: average all bids using weighted average with the priorities OR take the max bid
+
 		return averageBids(bidsForRelevantCampaigns, relevantCampaigns);
 	}
-	
+
+	/**
+	 * Calculates a weighted average of the bids for the relevant campaigns with the priorities (= weights) of these campaigns.
+	 * Assumption: Lists have equal size and each i-th place in both is a pair match - the campaign and its bid.
+	 * @param bidsForRelevantCampaigns
+	 * @param relevantCampaigns
+	 * @return Weighted average of bids by the campaigns' priorities.
+	 * @throws Exception
+	 */
 	private double averageBids(List<Double> bidsForRelevantCampaigns,
 			List<CampaignData> relevantCampaigns) throws Exception {
-		double sum = 0;
-		double sumPriorities = 0;
+		double sum = 0.0;
+		double sumPriorities = 0.0;
+		
 		if (bidsForRelevantCampaigns.size() != relevantCampaigns.size()) {
 			log.severe("The sizes of the list of bids for relevant campaigns and the size of the list of the relevant campaigns should be equal!");
 			throw new Exception("Not enough/Too many Bids for relevant campaigns");
 		}
-		
+
 		for (int i = 0 ; i < bidsForRelevantCampaigns.size() ; i++) {
 			double bid = bidsForRelevantCampaigns.get(i);
 			double priority = relevantCampaigns.get(i).getCampaignPriority(dayBiddingFor);
-			
+
 			sum += bid*priority;
 			sumPriorities += priority;
 		}
-		
+
 		return sum/sumPriorities;
 	}
 
-
-
+	/**
+	 * Returns the relevant campaigns list sorted by decreasing priority.
+	 * @param relevantCampaigns
+	 */
 	private void prioritizeCampaigns(List<CampaignData> relevantCampaigns) {
 		Collections.sort(relevantCampaigns, new Comparator<CampaignData>() {
 			@Override
 			public int compare(CampaignData campaign1, CampaignData campaign2) {
 				Float priorityCampaign1 = campaign1.getCampaignPriority(dayBiddingFor);
 				Float priorityCampaign2 = campaign2.getCampaignPriority(dayBiddingFor);
-				return priorityCampaign1.compareTo(priorityCampaign2);
+				return priorityCampaign2.compareTo(priorityCampaign1);
 			}
 		});		
 	}
 
+	/**
+	 * Filter campaigns relevant to the impression parameters given.
+	 * @param impParams
+	 * @return List of campaigns that match the impression parameters.
+	 */
 	private List<CampaignData> filterCampaigns(ImpressionParameters impParams) {
-		String rname = "filterCampaigns";
-		
 		List<CampaignData> filteredCampaigns = new ArrayList<CampaignData>();
 		AdType impressionAdType = impParams.getAdType();
 		Device impressionDevice =  impParams.getDevice();
 		Set<MarketSegment> impressionMarketSegments = impParams.getMarketSegments();
-		
+
 		for (CampaignData campaign : myActiveCampaigns) {
 			boolean addedCampaign = false;
-			
-			// Step1: is the campaign fulfilled?
+
+			// Step1: Is the campaign fulfilled? Generally should return yes as myActiveCampaigns is initialised. Safety double-check.
 			if (isFulfilled(campaign)) {
 				continue;
 			}
-			
-			// Step2: does the campaign fit the impressions characteristics and market segment?
+
+			// Step2: Does the campaign fit the impressions characteristics and market segment?
 			Set<MarketSegment> marketSegments = campaign.getTargetSegment();
 			AdxQuery[] relevantQueries = campaign.getCampaignQueries();
 			for (AdxQuery query : relevantQueries) {
 				AdType relevantAd = query.getAdType();
 				Device relevantDevice = query.getDevice();
-				
-				if (relevantAd == impressionAdType && relevantDevice == impressionDevice) { // TODO sanity on that... could be probability!!
-					// Campaign should contain a common market segment with the impressio
+
+				if (relevantAd == impressionAdType && relevantDevice == impressionDevice) {
+					// Campaign should contain a common market segment with the impression parameters.
 					if (marketSegments.containsAll(impressionMarketSegments)) { 
-						//log.info(rname + ": equal! Adding campaign");
 						filteredCampaigns.add(campaign);
 						addedCampaign = true;
 					}
 				}
-				
-				if (addedCampaign) {
+
+				if (addedCampaign) { // Already added the campaign.
 					break;
 				}
 			}
 		}
-		
+
 		return filteredCampaigns;
 	}
 
-	@SuppressWarnings("unused")
-	private String printQueries(AdxQuery[] relevantQueries) {
-		if (relevantQueries == null) {
-			return "null";
-		}
-		
-		StringBuilder sb = new StringBuilder("[");
-		for (int i = 0 ; i < relevantQueries.length; i++) {
-			sb.append(relevantQueries[i].toString() + ", ");
-		}
-		
-		sb.append("]");
-		
-		return sb.toString();
-	}
-
+	/**
+	 * @param campaign
+	 * @return True if the campaign is already fulfilled.
+	 */
 	private boolean isFulfilled(CampaignData campaign) {
-		return campaign.impsTogo() == 0;
+		return campaign.impsTogo() == 0; // impsTogo() >= 0.
 	}
 
+	/**
+	 * @param campaigns
+	 * @return True if the list of campaigns is not empty.
+	 */
 	private boolean exists(List<CampaignData> campaigns) {
 		if (campaigns == null || campaigns.size() == 0) {
 			return false;
@@ -404,123 +462,211 @@ public class ImpressionBidder {
 
 		return true;	
 	}
-	
+
+	/**
+	 * Updates the publisher statistics received for both the bidder and the classifier.
+	 * @param publisherDailyStats
+	 */
 	public void updatePublisherStats(Map<String, PublisherStats> publisherDailyStats) {
 		for (String publisherName : publisherDailyStats.keySet()) {
 			publishersStats.put(publisherName, publisherDailyStats.get(publisherName));
 		}
-		
+
 		concreteClassifier.setPublishersStats(publishersStats);
+		userAnalyzer.setPublisherStats(publishersStats);
 	}
-	
+
+	/**
+	 * Updates the relevant day for bidding in both the bidder and the classifier.
+	 * @param day
+	 */
 	public void updateDay(int day) {
 		this.dayBiddingFor = day;
 		concreteClassifier.setDayBiddingFor(day);
 	}
 
+	/**
+	 * Updates the classifier with corrected bids, in light of the received AdNetworkReport.
+	 * Note: In this context, myActiveCampaigns is relevant to the last simulation status
+	 * @param adnetReport
+	 * @throws Exception
+	 */
 	public void updateByAdNetReport(AdNetworkReport adnetReport) throws Exception {
-		boolean globalHasUpdatedAny = false;
-		
+		boolean globalHasUpdatedAny = false; // Has updated any instance in the dataset?
+
+		if (DEBUG) log.info("Current instnaces : " + concreteClassifier.printLastInstancesMap());
+
 		for (AdNetworkKey adnetKey : adnetReport.keys()) {
 			AdNetworkReportEntry adnetEntry = adnetReport.getAdNetworkReportEntry(adnetKey);
 			CampaignData campaign = findInActiveCampaigns(adnetKey.getCampaignId());
-			if (campaign == null) {
-				log.warning("Could not find campaign ID " + adnetKey.getCampaignId() + " in active campaigns list");
+			if (campaign == null) { // Only updated if this campaign appears in the last day's active campaigns list.
 				continue;
 			}
-			
+
 			int wins = adnetEntry.getWinCount();
 			int bids = adnetEntry.getBidCount();
 			double cost = adnetEntry.getCost();
-			
+
 			if (wins > 0) { 
-				/*	Each adNetKey is containing 3 different market segment: Age-Income, Age-Gender, Gender-Income. 
-				 *	Pick only those that match the campaign. If none matched, do nothing as it is mistake of UCS.	*/
-				double secondPriceBid = cost / wins;
+				double secondPriceBid = cost / wins; // The second price bid we paid is what we paid overall divided by the number of wins we had.
+				
 				// Adding a small random (0-0.1) + ratio of losses/bids to avoid the case where opponents also increase bids!
-				globalHasUpdatedAny = updateWithDifferentBid(adnetKey, campaign, secondPriceBid*(1+((bids-wins)/bids+0.1*Math.random()))); 
+				double correctedBid =  secondPriceBid * (1 + ( ((bids - wins) / bids) + (0.1 * Math.random()) )); 
+				
+				globalHasUpdatedAny |= updateWithDifferentBid(adnetKey, campaign, correctedBid); 
 			} else {
 				if (bids > 0) {
 					// Lost all bids - meaning we should have increased our bid
 					if (bidBundle == null) {
-						log.warning("Bid bundle is null? Error");
-						break;
+						log.severe("Bid bundle is null - Severe error - probably has nothing to update as no last bid will be available");
+						return;
 					}
-					
+
 					double lastBid = bidBundle.getBid(new AdxQuery(adnetKey.getPublisher(), campaign.getTargetSegment(), adnetKey.getDevice(), adnetKey.getAdType()));
-					globalHasUpdatedAny = updateWithDifferentBid(adnetKey, campaign, lastBid*(2+(Math.random()-0.5))); // increase bid by 1.5 to 2.5 factor
-				} // bids==0, wins==0 -> not interesting for us.
+					globalHasUpdatedAny |= updateWithDifferentBid(adnetKey, campaign, lastBid*(2+(Math.random()-0.5))); // increase bid by 1.5 to 2.5 factor
+				} // bids==0, wins==0 -> Not interesting - we gave no bids.
 			}
 		}
-		
+
 		if (globalHasUpdatedAny) {
+			log.info("Retraining the classifier with updated instances");
 			concreteClassifier.updateClassifier();
 		}
-		
 	}
-	
+
+	/**
+	 * Search for the given campaign ID it's actual data structure in the myActiveCampaigns list.
+	 * @param campaignId
+	 * @return The CampaignData object of the campaign with id campaignId if it's active and null otherwise.
+	 */
 	private CampaignData findInActiveCampaigns(int campaignId) {
-		for (CampaignData campaign : myActiveCampaigns) { // Not more than 58-60 campaigns to search
+		for (CampaignData campaign : myActiveCampaigns) { // Not more than 58-60 campaigns to search - so no major performance degradation compared to a map.
 			if (campaign.getId() == campaignId) {
 				return campaign;
 			}
 		}
-		
+
 		return null;
 	}
 
+	/**
+	 * Update one or more instances of our dataset with the corrected bid.
+	 * @param adnetKey
+	 * @param campaign
+	 * @param correctedBid
+	 * @return True if any instances were actually updated.
+	 */
+	/*	Each adNetKey is containing 3 different market segment: Age-Income, Age-Gender, Gender-Income. 
+	 *	Pick only those that match the campaign. If none matched, do nothing as it is mistake of UCS - not something our bidder can learn something of.	*/
 	private boolean updateWithDifferentBid(AdNetworkKey adnetKey, CampaignData campaign, double correctedBid) {
-		String publisher = adnetKey.getPublisher();
+		String publisher = adnetKey.getPublisher(); // Publisher data
 
+		// User data
 		Age age = adnetKey.getAge();
 		Income income = adnetKey.getIncome();
 		Gender gender = adnetKey.getGender();
-		
+
 		Set<MarketSegment> ms, ms1, ms2, ms3;
-		ms = MarketSegment.extractSegment(new AdxUser(age, gender, income, 0 , 0));
+		ms = MarketSegment.extractSegment(new AdxUser(age, gender, income, 0 , 0)); // Set containing all the user's market segments.
+		
+		// ms1, ms2, ms3 = The 3 pairs possible of market segment pairs for the user: Age-Income, Age-Gender, Gender-Income.
 		List<MarketSegment> msList = Arrays.asList((ms.toArray(new MarketSegment[3])));
 		ms1 = MarketSegment.compundMarketSegment(msList.get(0), msList.get(1));
 		ms2 = MarketSegment.compundMarketSegment(msList.get(0), msList.get(2));
 		ms3 = MarketSegment.compundMarketSegment(msList.get(1), msList.get(2));
-		
+
 		Device device = adnetKey.getDevice();
 		AdType adType = adnetKey.getAdType();
-		double campaignsLastPriority = campaign.getCampaignPriority(dayBiddingFor); // -1 or not?
-		
+
 		Set<MarketSegment> targetSegment = campaign.getTargetSegment();
 		boolean hasUpdatedAny = false;
-		
+
+		// Target segment should completely match the market segment given in the key (after splitting it to pairs).
 		if (targetSegment.containsAll(ms1)) {
-			concreteClassifier.updateInstance(publisher, ms1, device, adType, campaignsLastPriority, correctedBid);
+			concreteClassifier.updateInstance(publisher, ms1, device, adType, campaign.getId(), correctedBid);
 			hasUpdatedAny = true;
 		}
-		
+
 		if (targetSegment.containsAll(ms2)) {
-			concreteClassifier.updateInstance(publisher, ms2, device, adType, campaignsLastPriority, correctedBid);
+			concreteClassifier.updateInstance(publisher, ms2, device, adType, campaign.getId(), correctedBid);
 			hasUpdatedAny = true;
 		}
-		
+
 		if (targetSegment.containsAll(ms3)) {
-			concreteClassifier.updateInstance(publisher, ms3, device, adType, campaignsLastPriority, correctedBid);
+			concreteClassifier.updateInstance(publisher, ms3, device, adType, campaign.getId(), correctedBid);
 			hasUpdatedAny = true;
 		}
-		
+
 		if (hasUpdatedAny) {
-			log.info("For publisher "  + publisher + " and market segment " + targetSegment + " we have updated the impression bidder with corrected bid " + correctedBid);
+			if (DEBUG) log.info("For publisher "  + publisher + " and market segment " + targetSegment + " we have updated the impression bidder with corrected bid " + correctedBid);
 			return true;
 		}
-		
-		log.info("For publisher " + publisher + " and market segment " + ms + " it was a guess, so we did not update anything. UCS - on your watch!");
+
+		if (DEBUG) log.info("For publisher " + publisher + " and market segment " + ms + " it was a guess, so we did not update anything. UCS - on your watch!");
 		return false;
 	}
 	
-	
+	/**
+	 * Generate default instances and insert them to the dataset.
+	 * @param pendingCampaign
+	 */
+	public void updateForNewCampaign(CampaignData pendingCampaign) {
+		try {
+			double campaignRelativePriority = calaculateRelativePriority(pendingCampaign); // Should know the current relative priority of the campaign in order to give a suggested bid.
+			concreteClassifier.updateForNewCampaign(pendingCampaign, campaignRelativePriority);
+		} catch (Exception e) {
+			log.warning("Failed to update concrete classifier for new Campaign" + Arrays.asList(e.getStackTrace()));
+		}		
+	}
+
+	/**
+	 * @param pendingCampaign
+	 * @return Relative priority of the pending won campaign, relative to other active campaigns.
+	 * Note:	We run in context of previous simulation status, so should purge the campaigns that are not active in the upcoming day.
+	 * 			Right now, dayBiddingFor is initialised to the last day when simulation status message was received. So increase by 1.
+	 */
+	private double calaculateRelativePriority(CampaignData pendingCampaign) {
+		List<CampaignData> activeCampaigns = purgeInactive(myActiveCampaigns, dayBiddingFor + 1);
+		activeCampaigns.add(pendingCampaign);
+		//prioritizeCampaigns(activeCampaigns);
+		HashMap<Integer,Float> campaignWeightVector = new HashMap<Integer, Float>();
+		updateCampaignVector(campaignWeightVector, activeCampaigns);
+		return campaignWeightVector.get(pendingCampaign.getId());
+	}
+
+	/**
+	 * Filters inactive campaigns from the campaigns list, according to the given day.
+	 * @param campaigns
+	 * @param day
+	 * @return Filtered list of campaigns, containing only campaigns active in day.
+	 * Note: Assumes that the impsTogo() for the day are known already, if not, results may not be actually correct when the day comes.
+	 */
+	private List<CampaignData> purgeInactive(List<CampaignData> campaigns, int day) {
+		List<CampaignData> activeCampaigns = new ArrayList<CampaignData>();
+		
+		for (CampaignData campaign : campaigns) {
+			if (campaign.isActive(day)) {
+				activeCampaigns.add(campaign);
+			}
+		}
+		
+		return activeCampaigns;
+	}
+
+
 	/* Infrastructure */
+
+	/*
+	 * Constructor
+	 */
 	protected ImpressionBidder() {	
 		userAnalyzer = new UserAnalyzer();
 		concreteClassifier = new ImpressionClassifier(userAnalyzer);
 	}
 
+	/*
+	 * Singleton pattern
+	 */
 	public static ImpressionBidder getInstance() {
 		if (instance == null) {
 			instance = new ImpressionBidder();
@@ -529,6 +675,11 @@ public class ImpressionBidder {
 		return instance;
 	}
 
+	
+	/*
+	 * Getters / Setters
+	 */
+	
 	public PublisherCatalog getPublisherCatalog() {
 		return publisherCatalog;
 	}
@@ -561,9 +712,4 @@ public class ImpressionBidder {
 	public void setPreviousBidBundle(AdxBidBundle previousBidBundle) {
 		this.previousBidBundle = previousBidBundle;
 	}
-
-
-	
-
-
 }

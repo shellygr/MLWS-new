@@ -32,10 +32,9 @@ import tau.tac.adx.report.demand.CampaignOpportunityMessage;
 import tau.tac.adx.report.demand.CampaignReport;
 import tau.tac.adx.report.demand.CampaignReportKey;
 import tau.tac.adx.report.demand.InitialCampaignMessage;
-import tau.tac.adx.report.demand.campaign.auction.CampaignAuctionReport;
 import tau.tac.adx.report.publisher.AdxPublisherReport;
 import tau.tac.adx.report.publisher.AdxPublisherReportEntry;
-import weka.classifiers.functions.LinearRegression;
+import weka.classifiers.meta.RegressionByDiscretization;
 
 public class Coordinator {
 	private final Logger log = Logger
@@ -63,8 +62,9 @@ public class Coordinator {
 	private AdNetworkDailyNotification adNetworkDailyNotification = null;
 	private final int FIRST_DAY_OF_BID_BUNDLE_CALCULATION = 0;
 	private final int FIRST_DAY_OF_PUBLISHERS_REPORT = 1;
+	
 	/*
-	 * we maintain a list of queries - each characterized by the web site (the
+	 * we maintain a list of queries - each characterised by the web site (the
 	 * publisher), the device type, the ad type, and the user market segment
 	 */
 	private AdxQuery[] queries;
@@ -78,8 +78,7 @@ public class Coordinator {
 	 * We maintain a collection (mapped by the campaign id) of the campaigns won
 	 * by our agent.
 	 */
-	private Map<Integer, CampaignData> myCampaigns = new HashMap<Integer, CampaignData>(); // TODO: also campaigns that already ended? YES!!!
-	// TODO: add a flag to campaigns - active or not
+	private Map<Integer, CampaignData> myCampaigns = new HashMap<Integer, CampaignData>();
 
 	/*
 	 * the bidBundle to be sent daily to the AdX
@@ -125,7 +124,7 @@ public class Coordinator {
 		initialCampaignMessage = campaignMessage;
 
 		CampaignData campaignData = new CampaignData(initialCampaignMessage);
-		campaignData.setBudget(initialCampaignMessage.getReachImps() / 1000.0); // TODO: Shelly - rethink on this calculation
+		campaignData.setBudget(initialCampaignMessage.getReachImps() / 1000.0);
 
 		/*
 		 * The initial campaign is already allocated to our agent so we add it
@@ -148,6 +147,9 @@ public class Coordinator {
 		generateAdxQuerySpace();
 	}
 
+	/*
+	 * Prints the publisherCatalog.
+	 */
 	private String printPublisherCatalog(PublisherCatalog publisherCatalog) {
 		StringBuilder sb = new StringBuilder();
 		for (PublisherCatalogEntry entry : publisherCatalog) {
@@ -161,12 +163,12 @@ public class Coordinator {
 
 	/**
 	 * A user visit to a publisher's web-site results in an impression
-	 * opportunity (a query) that is characterized by the the publisher, the
+	 * opportunity (a query) that is characterised by the the publisher, the
 	 * market segment the user may belongs to, the device used (mobile or
 	 * desktop) and the ad type (text or video).
 	 * 
 	 * An array of all possible queries is generated here, based on the
-	 * publisher names reported at game initialization in the publishers catalog
+	 * publisher names reported at game initialisation in the publishersCatalog
 	 * message
 	 */
 	private void generateAdxQuerySpace() {
@@ -247,7 +249,7 @@ public class Coordinator {
 		//
 		//		double cmpBidUnits = cmpBid / 1000.0;
 
-		double cmpBidUnits = 1000 * campaignBidder.getBid(pendingCampaign, qualityScore);  // TODO: Or; here we determine the bid.
+		double cmpBidUnits = 1000 * campaignBidder.getBid(pendingCampaign, qualityScore);
 
 		log.info("Day " + day + ": Campaign total budget bid: " + cmpBidUnits);
 		
@@ -257,7 +259,7 @@ public class Coordinator {
 
 	public double getBidForUcs() {
 		/*
-		 * Adjust ucs bid s.t. target level is achieved. Note: The bid for the
+		 * Adjust UCS bid s.t. target level is achieved. Note: The bid for the
 		 * user classification service is piggybacked
 		 */
 
@@ -291,13 +293,7 @@ public class Coordinator {
 	 * reported. The reported Campaign starts in day n+1 or later and the user
 	 * classification service level is applicable starting from day n+1.
 	 */
-	public void handleAdNetworkDailyNotification(
-			AdNetworkDailyNotification notificationMessage) {
-
-//		if (day > FIRST_DAY_OF_AD_NETWORK_DAILY_NOTIFICATION) {
-//			adNetworkDailyNotificationsHistory.add(adNetworkDailyNotification); // Add last notification to history
-//		}
-
+	public void handleAdNetworkDailyNotification(AdNetworkDailyNotification notificationMessage) {
 		adNetworkDailyNotification = notificationMessage;
 
 		log.info("Day " + day + ": Daily notification for campaign "
@@ -312,11 +308,13 @@ public class Coordinator {
 			/* add campaign to list of won campaigns */
 			pendingCampaign.setBudget(notificationMessage.getCost());
 			pendingCampaign.setCampaignQueries(getRelevantQueriesForCampaign(pendingCampaign));
-
+			
 			getMyCampaigns().put(pendingCampaign.getId(), pendingCampaign);
-
+			
 			campaignAllocatedTo = " WON at cost "
 					+ notificationMessage.getCost();
+			
+			impressionBidder.updateForNewCampaign(pendingCampaign); // Should be run after campaign statistics have been set - and indeed notification comes after the report.
 		}
 
 		qualityScore = notificationMessage.getQualityScore();
@@ -329,7 +327,9 @@ public class Coordinator {
 				+ " Quality Score is: " + notificationMessage.getQualityScore());
 	}
 
-
+	/*
+	 * For a campaign, returns an array of its relevant queries.
+	 */
 	private AdxQuery[] getRelevantQueriesForCampaign(CampaignData campaign) {
 		if (publisherCatalog == null) {
 			log.severe("Can't get relevant queries for campaign");
@@ -378,36 +378,49 @@ public class Coordinator {
 		}
 
 		return querySet.toArray(new AdxQuery[querySet.size()]);
-
 	}
 
+	/**
+	 * Calculate the bid bundle for the day.
+	 * @return BidBundle
+	 */
 	public AdxBidBundle calculateBidBundle() {
+		// If had an exception, we will revert to a default BidBundle, based on the sample.
 		boolean hadExceptionInClassifier = false;
 
+		// On the 1st day, we should initialise the classifier.
 		if (day == FIRST_DAY_OF_BID_BUNDLE_CALCULATION) {
 			try {
 				impressionBidder.setPublisherCatalog(publisherCatalog);
-				impressionBidder.init(new LinearRegression(), myCampaigns.entrySet().iterator().next().getValue(), day + 1);
+				
+				// Some previous classifiers tried...
+				//impressionBidder.init(new LinearRegression(), myCampaigns.entrySet().iterator().next().getValue(), day + 1);
+				//impressionBidder.init(new SMOreg(), myCampaigns.entrySet().iterator().next().getValue(), day + 1);
+				//impressionBidder.init(new PaceRegression(), myCampaigns.entrySet().iterator().next().getValue(), day + 1);
+				
+				// Chosen classifier
+				impressionBidder.init(new RegressionByDiscretization(), myCampaigns.entrySet().iterator().next().getValue(), day + 1);
 				log.info("Initialized ImpressionBidder");
 			} catch (Exception e) {
 				hadExceptionInClassifier = true;
 				log.severe("Exception in initializing classifier: " + e + " - " + Arrays.asList(e.getStackTrace()));
 			}
-		}
-
-		impressionBidder.updateDay(day + 1);
-		impressionBidder.setMyActiveCampaigns(getMyActiveCampaigns(day + 1)); // relevantDay is day of bid which is day+1
-
-		if (day != FIRST_DAY_OF_BID_BUNDLE_CALCULATION) {
+		} else {
+			// After the 1st day, we set the impression bidder with the last bid bundle, which may be referenced.
 			impressionBidder.setPreviousBidBundle(bidBundle);
 		}
+
+		impressionBidder.updateDay(day + 1); // Updating bidder with the day we're bidding for.
+		impressionBidder.setMyActiveCampaigns(getMyActiveCampaigns(day + 1)); // relevantDay is day of bid which is day+1.
 
 		if (day >= FIRST_DAY_OF_PUBLISHERS_REPORT) {
 			impressionBidder.updatePublisherStats(publisherDailyStats);		
 		} else {
+			// Before the first day (that is, day 0), we initialise the publisher statistics.
 			impressionBidder.updatePublisherStats(new HashMap<String, PublisherStats>());
 		}
 
+		// Main BidBundle calculation is done here.
 		try {
 			if (!hadExceptionInClassifier) {
 				impressionBidder.fillBidBundle();
@@ -418,27 +431,31 @@ public class Coordinator {
 			log.severe("Exception in running classifier: " + e + " - " + Arrays.asList(e.getStackTrace()));
 		}
 
+		// Cleanup - notifying on success or calling the default bid bundle to our aid.
 		if (!hadExceptionInClassifier) {
 			log.info("Day " + day + ": Sending BidBundle");
 		} else {
 			log.warning("BidBundle is null! Getting default BidBundle");
 			bidBundle = impressionBidder.getDefaultBidBundle(queries);
 		}
-
 		
-		++day;
+		++day; // Day updates only after the bid bundle was calculated. Bidder still not updated, until next simulation status message.
 		
 		return bidBundle;
 	}
 
-
+	/*
+	 * Returns the active campaigns as a list, according to the given relevantDay.
+	 * Note: impsTogo are only relevant for this day, as they are calculated with respect to this day.
+	 * 		 We do not know how many impsTogo will be in the relevantDay. But if today we still have impsTogo > 0, we consider it active.
+	 */
 	private List<CampaignData> getMyActiveCampaigns(int relevantDay) {
 		List<CampaignData> activeCampaigns = new ArrayList<CampaignData>();
 
 		log.info("Fetching active campaigns from: " + myCampaigns.values());
 		for (CampaignData campaign : myCampaigns.values()) {
 			if (campaign.isActive(relevantDay)) { 
-				log.info("campaign " + campaign + " is active");
+				log.info("Campaign: " + campaign + " is active");
 				activeCampaigns.add(campaign);
 			}
 		}
@@ -471,10 +488,6 @@ public class Coordinator {
 		}
 	}
 
-	public void handleCampaignAuctionReport(CampaignAuctionReport campaignAuctionReport) {
-		log.info("Campaign auction report for day " + day + ": " + campaignAuctionReport.toMyString());
-	}
-
 	/**
 	 * Users and Publishers statistics: popularity and ad type orientation
 	 */
@@ -482,39 +495,42 @@ public class Coordinator {
 
 		log.info("Publishers Report: ");
 		for (PublisherCatalogEntry publisherKey : adxPublisherReport.keys()) {
-			AdxPublisherReportEntry entry = adxPublisherReport
-					.getEntry(publisherKey);
-			log.info(entry.toString());
+			AdxPublisherReportEntry entry = adxPublisherReport.getEntry(publisherKey);
 			PublisherStats publisherStats = fetchPublisherStats(entry);
+			
+			// Notification if is updated instead of new.
 			if (publisherDailyStats.containsKey(publisherKey.getPublisherName())) {
 				log.info("Updating statistics for: " + publisherKey.getPublisherName());
+			} else {
+				log.info("New publisher statistics received for: " + publisherKey.getPublisherName());
 			}
 
 			publisherDailyStats.put(publisherKey.getPublisherName(), publisherStats);
 		}
 	}
 
+	/*
+	 * Building a PublisherStats object from the AdxPublisherReportEntry.
+	 */
 	private PublisherStats fetchPublisherStats(AdxPublisherReportEntry entry) {
 		return new PublisherStats(entry.getPopularity(),
 				entry.getAdTypeOrientation().get(AdType.video),
 				entry.getAdTypeOrientation().get(AdType.text));
 	}
 
-
 	/**
-	 * 
+	 * Updates UCSBidder and ImpressionBidder. 
 	 * @param AdNetworkReport
 	 * @throws Exception 
 	 */
 	public void handleAdNetworkReport(AdNetworkReport adnetReport) throws Exception {
-		ucsbidder.updateUCS(adnetReport, this);
-		log.info("Day "+ day + " : AdNetworkReport = " + adnetReport);
-		
+		ucsbidder.updateUCS(adnetReport, this);		
 		impressionBidder.updateByAdNetReport(adnetReport);
 	}
 
-
-
+	/**
+	 * Initialises simulation.
+	 */
 	public void initSimulation() {
 		randomGenerator = new Random();
 		day = 0;
@@ -522,11 +538,14 @@ public class Coordinator {
 		ucsTargetLevel = 0.5 + (randomGenerator.nextInt(5) + 1) / 10.0;
 
 		/* initial bid between 0.1 and 0.2 */
-		ucsBid = 0.1 + 0.1*randomGenerator.nextDouble(); //TODO: Omer; check this out - the ucs bit for the first day.
+		ucsBid = 0.1 + 0.1*randomGenerator.nextDouble(); // TODO: Omer; check this out - the ucs bit for the first day.
 
 		setMyCampaigns(new HashMap<Integer, CampaignData>());
 	}
 
+	/**
+	 * Finalises simulation.
+	 */
 	public void finiSimulation() {
 		campaignReports.clear();
 		bidBundle = null;
@@ -534,8 +553,11 @@ public class Coordinator {
 
 
 	/* Infrastructure */	
+	
+	/* Constructor */
 	public Coordinator() { }
 
+	/* Singleton pattern */
 	public static Coordinator getInstance() {
 		if (instance == null) {
 			instance = new Coordinator();
@@ -544,7 +566,7 @@ public class Coordinator {
 		return instance;
 	}
 
-
+	/* Getters / Setters */
 	public Map<Integer, CampaignData> getMyCampaigns() {
 		return myCampaigns;
 	}
@@ -560,6 +582,5 @@ public class Coordinator {
 	public int getDay() {
 		return day;
 	}
-
 
 }

@@ -12,15 +12,19 @@ public class InstanceIndexKey {
 	private Set<MarketSegment> marketSegment;
 	private Device device;
 	private AdType adType;
-	private double priority;
+	private int campaignId;
 	
 	public InstanceIndexKey(String publisher,
-			Set<MarketSegment> marketSegment, Device device, AdType adType, double priority) {
+			Set<MarketSegment> marketSegment, Device device, AdType adType, int campaignId) {
 		this.publisher = publisher;
 		this.marketSegment = marketSegment;
 		this.device = device;
 		this.adType = adType;
-		this.priority = priority;
+		this.campaignId = campaignId;
+	}
+	
+	public String toString() {
+		return "\nPublisher = " + publisher + "; MarketSegment = " + marketSegment + "; Device = " + device + "; AdType = " + adType + "; Priority = " + campaignId + "\t";
 	}
 
 	public String getPublisher() {
@@ -55,12 +59,12 @@ public class InstanceIndexKey {
 		this.adType = adType;
 	}
 
-	public double getPriority() {
-		return priority;
+	public int getPriority() {
+		return campaignId;
 	}
 
-	public void setPriority(double priority) {
-		this.priority = priority;
+	public void setPriority(int campaignId) {
+		this.campaignId = campaignId;
 	}
 
 	@Override
@@ -72,7 +76,7 @@ public class InstanceIndexKey {
 		result = prime * result
 				+ ((marketSegment == null) ? 0 : marketSegment.hashCode());
 		long temp;
-		temp = Double.doubleToLongBits(priority);
+		temp = Double.doubleToLongBits(campaignId);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result
 				+ ((publisher == null) ? 0 : publisher.hashCode());
@@ -97,8 +101,8 @@ public class InstanceIndexKey {
 				return false;
 		} else if (!marketSegment.equals(other.marketSegment))
 			return false;
-		if (Double.doubleToLongBits(priority) != Double
-				.doubleToLongBits(other.priority))
+		if (Double.doubleToLongBits(campaignId) != Double
+				.doubleToLongBits(other.campaignId))
 			return false;
 		if (publisher == null) {
 			if (other.publisher != null)
@@ -107,6 +111,8 @@ public class InstanceIndexKey {
 			return false;
 		return true;
 	}
+
+
 	
 	
 }
