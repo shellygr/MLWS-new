@@ -50,7 +50,7 @@ public class CampaignBidder {
 	private static final double MAX_BID = 100;
 
 	private static final double BETA = 960; // Optimize where: 0 <= BETA < 1000
-	private static final double ALPHA = (BETA + 999000) / 1000000; // do NOT change
+	private static final double ALPHA = (BETA + 9999000) / 10000000; // do NOT change
 	
 	private static CampaignBidder instance = null;
 	
