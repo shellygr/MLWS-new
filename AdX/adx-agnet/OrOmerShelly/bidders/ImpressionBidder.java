@@ -712,4 +712,9 @@ public class ImpressionBidder {
 	public void setPreviousBidBundle(AdxBidBundle previousBidBundle) {
 		this.previousBidBundle = previousBidBundle;
 	}
+
+	public void setDatasetAsNull() {
+		concreteClassifier.setDatasetAsNull();
+	}
+
 }

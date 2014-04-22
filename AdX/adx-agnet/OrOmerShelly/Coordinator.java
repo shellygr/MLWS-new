@@ -560,6 +560,8 @@ public class Coordinator {
 
 		/* initial bid between 0.1 and 0.2 */
 		ucsBid = 0.1 + 0.1*randomGenerator.nextDouble(); // TODO: Omer; check this out - the ucs bit for the first day.
+		
+		impressionBidder.setDatasetAsNull();
 
 		setMyCampaigns(new HashMap<Integer, CampaignData>());
 	}

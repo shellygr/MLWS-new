@@ -323,4 +323,8 @@ public class ImpressionClassifier {
 	public void setPublisherCatalog(PublisherCatalog publisherCatalog) {
 		this.publisherCatalog = publisherCatalog;
 	}
+
+	public void setDatasetAsNull() {
+		dataset = null;
+	}
 }
