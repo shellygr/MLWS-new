@@ -36,7 +36,7 @@ public class ImpressionClassifier {
 	
 	private final static int CAPACITY_OF_INSTANCES = 10000;
 	
-	private final int BID_REDUCTION_FACTOR = 2;
+	private final int BID_REDUCTION_FACTOR = 3;
 	
 	// Map publisher, market segment, device, ad type and campaign to Instance index
 	private HashMap<InstanceIndexKey, Integer> lastInstancesIndicesMap = new HashMap<InstanceIndexKey, Integer>();
