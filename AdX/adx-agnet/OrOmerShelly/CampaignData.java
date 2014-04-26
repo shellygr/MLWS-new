@@ -57,12 +57,18 @@ public class CampaignData {
 		return "Campaign ID " + id + ": " + "day " + dayStart + " to "
 				+ dayEnd + " " + targetSegment + ", reach: " + reachImps
 				+ " coefs: (v=" + videoCoef + ", m=" + mobileCoef + ")"
-				+ " budget: " + budget;
+				+ " budget: " + budget
+				+ " Stats: " + stats;
 	}
 	
 	public float getCampaignPriority(int dayBiddingFor) throws IllegalArgumentException {
-		if (dayBiddingFor >= getDayEnd()) {
+		if (dayBiddingFor > getDayEnd()) {
 			throw new IllegalArgumentException("Trying to calculate priority for a campaign after it has ended!");
+		}
+		
+		if (dayBiddingFor == getDayEnd()) {
+			System.out.println("Last day reached!");
+			return impsTogo() * 3;
 		}
 		
 		return (float)impsTogo() / ((float)(getDayEnd() - dayBiddingFor));
@@ -72,15 +78,36 @@ public class CampaignData {
 		return (int) Math.max(0, reachImps - stats.getTargetedImps());
 	}
 	
-	/* Campaign is defines as active if:
+	/* Campaign is defined as active if:
 	 * 1. It's not yet ended (days)
 	 * 2. It has impsTogo > 0
-	*/ 
-	public boolean isActive(int currentDay) { // currentDay depends on context
+	 */ 
+	public boolean isActive(int relevantDay) { // relevantDay depends on context
 		return (impsTogo() > 0
-				&& currentDay < getDayEnd()
-				&& currentDay >= getDayStart());
+				&& relevantDay < getDayEnd()
+				&& relevantDay >= getDayStart());
 	}
+	
+	/* Campaign is defined as not over but below threshold if:
+	 * 1. It's not yet ended (days)
+	 * 2. stats.getTargetedImps()/reachImps < (1 + extraReachThreshold)
+	 */
+	public boolean notOverButBelowThreshold(int relevantDay, double extraReachThreshold) {
+		if (relevantDay < getDayEnd()
+				&& relevantDay >= getDayStart()) {
+			if ( (stats.getTargetedImps()/reachImps) < (1 + extraReachThreshold) ) {
+				System.out.println(("Campaign " + id + " is below threshold, currently: " + stats.getTargetedImps()/reachImps));
+				System.out.println(this + " " + stats);
+				return true;
+			} else {
+				System.out.println(("Campaign " + id + " is above threshold, currently: " + stats.getTargetedImps()/reachImps) + " threshold is " + (1+extraReachThreshold));
+			}
+		}
+		
+		System.out.println(this + " " + stats);
+		return false;
+	}
+	
 	
 	/**
 	 	 * Returns all relevant queries as a string.
@@ -177,7 +204,7 @@ public class CampaignData {
 	public void setMobileCoef(double mobileCoef) {
 		this.mobileCoef = mobileCoef;
 	}
-	
+
 	
 	
 }

@@ -36,7 +36,8 @@ public class ImpressionClassifier {
 	
 	private final static int CAPACITY_OF_INSTANCES = 10000;
 	
-	private final int BID_REDUCTION_FACTOR = 3;
+	private final double BID_INCREASE_FACTOR = 12; // > 0 as we discovered very slow start. If too high, will be fixed by the learning from the AdnetReport.
+	private final double INITIAL_CAMPAIGN_FACTOR = 3.0;
 	
 	// Map publisher, market segment, device, ad type and campaign to Instance index
 	private HashMap<InstanceIndexKey, Integer> lastInstancesIndicesMap = new HashMap<InstanceIndexKey, Integer>();
@@ -59,17 +60,19 @@ public class ImpressionClassifier {
 	 */
 	public void init(Classifier newClassifier, CampaignData currentCampaign,  double campaignRelativePriority) throws Exception {
 		classifier = newClassifier;
-		dataset = getDefaultDataset(currentCampaign, campaignRelativePriority);
+		dataset = getDefaultDataset(currentCampaign, campaignRelativePriority, true);
 		trainClassifier();
 	}
 	
 	/**
 	 * Generates a default dataset with instances matching the current campaign and its current relative priority
+	 * If called for the initial campaign, will double the BID_INCREASE_FACTOR
 	 * @param currentCampaign
 	 * @param campaignRelativePriority
+	 * @param isInitial
 	 * @return
 	 */
-	public Instances getDefaultDataset(CampaignData currentCampaign, double campaignRelativePriority) {
+	public Instances getDefaultDataset(CampaignData currentCampaign, double campaignRelativePriority, boolean isInitial) {
 		String rname = "getDefaultDataset";
 		
 		/* Init attributes */
@@ -96,7 +99,16 @@ public class ImpressionClassifier {
 			// We will compare the target segment weight in the publisher to the median of all market segments weights.
 			double median = userAnalyzer.calcMedianOfMarketSegmentsWeights(publisherName);
 			double publishersMarketSegmentWeight = userAnalyzer.getMarketSegmentWeight(currentCampaign.getTargetSegment(), publisherName);
-
+			
+			// A campaign with a 3 target segments is harder to satisfy than a campaign with a single target segment.
+			double targetSegmentSizeFactor = 1.0;
+			switch (currentCampaign.getTargetSegment().size()) {
+				case 1: targetSegmentSizeFactor = 1.0; break;
+				case 2: targetSegmentSizeFactor = 2.0; break;
+				case 3: targetSegmentSizeFactor = 3.0; break;
+				default: targetSegmentSizeFactor = 1.0; break;
+			}
+			
 			// Taken from the SampleAdNetwork and serves as a basis for the bid here as well.
 			double avgCmpRevenuePerImp = budget / currentCampaign.getReachImps();
 			
@@ -119,11 +131,12 @@ public class ImpressionClassifier {
 					attributes[0] = publishersMarketSegmentWeight * publishersDeviceWeight;
 					attributes[1] = campaignRelativePriority;
 					attributes[2] = Math.max(0, avgCmpRevenuePerImp
-										*campaignRelativePriority
-										*(publishersMarketSegmentWeight/median)
+										*(1+campaignRelativePriority)
+										*(publishersMarketSegmentWeight/median) * targetSegmentSizeFactor
 										*(device == Device.mobile ? currentCampaign.getMobileCoef() : 1.0)
 										*(adType == AdType.text ? 1.0 : adTypeOrientation*currentCampaign.getVideoCoef()))
-										/ BID_REDUCTION_FACTOR;	
+										* BID_INCREASE_FACTOR
+										* (isInitial ? INITIAL_CAMPAIGN_FACTOR : 1);	
 					
 					int[] indicesToFill = new int[3];
 					indicesToFill[0] = WEIGHT_OF_MARKET_SEGMENT_DEVICE_ATTR_INDEX;
@@ -154,7 +167,7 @@ public class ImpressionClassifier {
 	 */
 	public void updateForNewCampaign(CampaignData currentCampaign, double campaignRelativePriority) throws Exception {
 		if (MAIN_DEBUG) log.info("Updating classifier for new campaign: " + currentCampaign);
-		Instances newInstances = getDefaultDataset(currentCampaign, campaignRelativePriority);
+		Instances newInstances = getDefaultDataset(currentCampaign, campaignRelativePriority, false);
 		@SuppressWarnings("unchecked")
 		Enumeration<Instance> enumerationNewInstances = (Enumeration<Instance>) newInstances.enumerateInstances();
 		

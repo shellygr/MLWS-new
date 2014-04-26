@@ -68,6 +68,9 @@ public class Coordinator {
 	private AdNetworkDailyNotification adNetworkDailyNotification = null;
 	private final int FIRST_DAY_OF_BID_BUNDLE_CALCULATION = 0;
 	private final int FIRST_DAY_OF_PUBLISHERS_REPORT = 1;
+	private final double EXTRA_REACH_THRESHOLD = 0.2;
+	
+	private final boolean DEBUG = true;
 	
 	/*
 	 * we maintain a list of queries - each characterised by the web site (the
@@ -432,7 +435,7 @@ public class Coordinator {
 		}
 
 		impressionBidder.updateDay(day + 1); // Updating bidder with the day we're bidding for.
-		impressionBidder.setMyActiveCampaigns(getMyActiveCampaigns(day + 1)); // relevantDay is day of bid which is day+1.
+		impressionBidder.setMyActiveCampaigns(getMyActiveCampaigns(day + 1, EXTRA_REACH_THRESHOLD)); // relevantDay is day of bid which is day+1.
 
 		if (day >= FIRST_DAY_OF_PUBLISHERS_REPORT) {
 			impressionBidder.updatePublisherStats(publisherDailyStats);		
@@ -462,7 +465,12 @@ public class Coordinator {
 		
 		++day; // Day updates only after the bid bundle was calculated. Bidder still not updated, until next simulation status message.
 		
+		if (DEBUG) printBidBundle();
 		return bidBundle;
+	}
+
+	private void printBidBundle() {
+		log.info(bidBundle.toString());		
 	}
 
 	/*
@@ -470,12 +478,12 @@ public class Coordinator {
 	 * Note: impsTogo are only relevant for this day, as they are calculated with respect to this day.
 	 * 		 We do not know how many impsTogo will be in the relevantDay. But if today we still have impsTogo > 0, we consider it active.
 	 */
-	private List<CampaignData> getMyActiveCampaigns(int relevantDay) {
+	private List<CampaignData> getMyActiveCampaigns(int relevantDay, double extraReachThreshold) {
 		List<CampaignData> activeCampaigns = new ArrayList<CampaignData>();
 
 		log.info("Fetching active campaigns from: " + myCampaigns.values());
 		for (CampaignData campaign : myCampaigns.values()) {
-			if (campaign.isActive(relevantDay)) { 
+			if (campaign.isActive(relevantDay) || (campaign.notOverButBelowThreshold(relevantDay, extraReachThreshold))) { 
 				log.info("Campaign: " + campaign + " is active");
 				activeCampaigns.add(campaign);
 			}

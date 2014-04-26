@@ -24,7 +24,7 @@ public class InstanceIndexKey {
 	}
 	
 	public String toString() {
-		return "\nPublisher = " + publisher + "; MarketSegment = " + marketSegment + "; Device = " + device + "; AdType = " + adType + "; Priority = " + campaignId + "\t";
+		return "\nPublisher = " + publisher + "; MarketSegment = " + marketSegment + "; Device = " + device + "; AdType = " + adType + "; CampaignId = " + campaignId + "\t";
 	}
 
 	public String getPublisher() {

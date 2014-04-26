@@ -70,8 +70,6 @@ public class ImpressionBidder {
 		concreteClassifier.init(newClassifier, currentCampaign, 1.0); // Runs only after initial campaign - so have only one campaign, so relative priority is 1.0
 	}
 
-	// TODO: set daily limits for campaign and overall - do not want to get a minus in bankBalance?
-
 	/**
 	 * Based on SampleAdNetwork - will be used if an exception occurs in the real bid bundle calculation.
 	 * @param queries
@@ -163,6 +161,22 @@ public class ImpressionBidder {
 			// Calculate bids for unknown market segment.
 			calcUnknownBidBundleRecord(publisherName);
 		}
+		
+		bidBundle.setCampaignDailySpendLimit(sumOfRemainingBudgets());
+	}
+
+	/*
+	 * Returns sum of remaining budgets (approximated) for the active campaigns.
+	 */
+	private double sumOfRemainingBudgets() {
+		double sum = 0;
+		
+		for (CampaignData campaign : myActiveCampaigns) {
+			sum += campaign.getBudget() - campaign.getStats().getCost();
+		}
+		
+		log.info("Sum of remaining budgets for campaigns (used as a daily spend limit): " + sum);
+		return sum;
 	}
 
 	/**
@@ -174,14 +188,15 @@ public class ImpressionBidder {
 		// Calculate the distribution of the different market segments, device and ad-types for this publisher.
 		List<ImpressionParamtersDistributionKey> impressionDistribution = userAnalyzer.calcImpressionDistribution(publisherName);
 		
-		Map<Integer, Float> campaignWeightVector = new HashMap<Integer, Float>(); // Will map each campaign ID to its weight in the bid.
-		int campaignVectorNormalizationFactor = 1; // Weight given to bid bundle in integers, so we will multiply the probability by the same normalisation factor used to create the weights vector.
 		double bid = 0.0;
 		
 		for (ImpressionParamtersDistributionKey impressionWithWeight : impressionDistribution) {
 			ImpressionParameters impParams = impressionWithWeight.getImpParams();
 			List<CampaignData> relevantCampaigns = filterCampaigns(impParams); // Filter campaigns relevant to the market segment.
 
+			Map<Integer, Float> campaignWeightVector = new HashMap<Integer, Float>(); // Will map each campaign ID to its weight in the bid.
+			int campaignVectorNormalizationFactor = 1; // Weight given to bid bundle in integers, so we will multiply the probability by the same normalisation factor used to create the weights vector.
+			
 			if (exists(relevantCampaigns)) {
 				// Initial bid calculates what does the impression worth.
 				try {
@@ -204,9 +219,10 @@ public class ImpressionBidder {
 				if (DEBUG) log.info("Initial bid is: " + bid + " for publisher " + publisherName + " and market segment " + impParams.getMarketSegments());
 				bid = Math.max(0, calcBid(bid, relevantCampaigns, publisherName, impParams.getMarketSegments(), campaignWeightVector, impParams.getDevice(), impParams.getAdType()));
 				if (DEBUG) log.info("Final bid is = " + bid + " for publisher " + publisherName + " and market segment " + impParams.getMarketSegments());
-
+				if (DEBUG) log.info("Campaign weight vector is: " + campaignWeightVector);
+				
 				if (bid > 0) { 
-					addToBidBundle(publisherName, impParams, CPM*bid, campaignWeightVector, campaignVectorNormalizationFactor); // Question: do we bid per impression or per 1000 impressions?
+					addToBidBundle(publisherName, impParams, bid, campaignWeightVector, campaignVectorNormalizationFactor); // Question: do we bid per impression or per 1000 impressions?
 				}
 			}
 		}
@@ -228,7 +244,7 @@ public class ImpressionBidder {
 				for (AdType adType : AdType.values()) {
 					campaignVectorNormalizationFactor = updateCampaignVector(campaignWeightVector, urgentCampaigns); // Update the campaign weight vector
 
-					bid = Math.max(0, calcBidForUnknown(urgentCampaigns, publisherName, device, adType));
+					bid = Math.max(0, calcBidForUnknown(urgentCampaigns, publisherName, device, adType, campaignWeightVector));
 					if (DEBUG) log.info("Bid for unknown market segment and urgent campaigns is " + bid);
 
 					addToBidBundle(publisherName, new ImpressionParameters(new HashSet<MarketSegment>(), device, adType), bid, campaignWeightVector, campaignVectorNormalizationFactor);
@@ -248,8 +264,11 @@ public class ImpressionBidder {
 		for (CampaignData relevantCampaign : relevantCampaigns) {
 			sumCampaignPriorities += relevantCampaign.getCampaignPriority(dayBiddingFor);
 		}
+		
+		if (DEBUG) log.info("Sum of campaign priorities is " + sumCampaignPriorities);
 
 		for (CampaignData relevantCampaign : relevantCampaigns) {
+			if (DEBUG) log.info("Campaign " + relevantCampaign.getId() + " priority is " + relevantCampaign.getCampaignPriority(dayBiddingFor));
 			campaignWeightVector.put(relevantCampaign.getId(), relevantCampaign.getCampaignPriority(dayBiddingFor)/sumCampaignPriorities);
 		}
 
@@ -304,10 +323,11 @@ public class ImpressionBidder {
 	 * @param publisherName
 	 * @param device
 	 * @param adType
+	 * @param campaignWeightVector 
 	 * @return The bid for all urgent campaigns.
 	 * @throws Exception
 	 */
-	private double calcBidForUnknown(List<CampaignData> urgentCampaigns, String publisherName, Device device, AdType adType) throws Exception {
+	private double calcBidForUnknown(List<CampaignData> urgentCampaigns, String publisherName, Device device, AdType adType, Map<Integer, Float> campaignWeightVector) throws Exception {
 		double sumBids = 0;
 
 		// Minimal should be last according to the priority.
@@ -315,11 +335,11 @@ public class ImpressionBidder {
 
 		for (CampaignData urgentCampaign : urgentCampaigns) {
 			concreteClassifier.generateUnknownInstance(publisherName, device, adType, urgentCampaign, leastPriority);
-			double bidForCampaign = concreteClassifier.classifyLastInstance();
+			double bidForCampaign = concreteClassifier.classifyLastInstance() * campaignWeightVector.get(urgentCampaign.getId());
 			sumBids += bidForCampaign;
 		}
 
-		return sumBids/urgentCampaigns.size();	
+		return (sumBids/urgentCampaigns.size()) / 50;	
 	}
 
 	/**
@@ -329,8 +349,6 @@ public class ImpressionBidder {
 		prioritizeCampaigns(myActiveCampaigns);
 		return myActiveCampaigns;
 	}
-
-	// TODO should we consider daily limits? Not setting this until we run a good demo simulation.
 	/**
 	 * Calculates the bid for all relevant campaigns, based on the initial bid.
 	 * @param currentBid
@@ -428,7 +446,7 @@ public class ImpressionBidder {
 
 				if (relevantAd == impressionAdType && relevantDevice == impressionDevice) {
 					// Campaign should contain a common market segment with the impression parameters.
-					if (marketSegments.containsAll(impressionMarketSegments)) { 
+					if (impressionMarketSegments.containsAll(marketSegments)) { 
 						filteredCampaigns.add(campaign);
 						addedCampaign = true;
 					}
@@ -495,11 +513,13 @@ public class ImpressionBidder {
 		boolean globalHasUpdatedAny = false; // Has updated any instance in the dataset?
 
 		if (DEBUG) log.info("Current instnaces : " + concreteClassifier.printLastInstancesMap());
-
+		if (DEBUG) log.info("AdnetReport: " + adnetReport);
+		
 		for (AdNetworkKey adnetKey : adnetReport.keys()) {
 			AdNetworkReportEntry adnetEntry = adnetReport.getAdNetworkReportEntry(adnetKey);
 			CampaignData campaign = findInActiveCampaigns(adnetKey.getCampaignId());
 			if (campaign == null) { // Only updated if this campaign appears in the last day's active campaigns list.
+				if (DEBUG) log.info("Skipping adnet report");
 				continue;
 			}
 
@@ -566,14 +586,19 @@ public class ImpressionBidder {
 		Income income = adnetKey.getIncome();
 		Gender gender = adnetKey.getGender();
 
-		Set<MarketSegment> ms, ms1, ms2, ms3;
+		Set<MarketSegment> ms, ms1, ms2, ms3, ms1_2, ms2_2, ms3_2;
 		ms = MarketSegment.extractSegment(new AdxUser(age, gender, income, 0 , 0)); // Set containing all the user's market segments.
 		
-		// ms1, ms2, ms3 = The 3 pairs possible of market segment pairs for the user: Age-Income, Age-Gender, Gender-Income.
+		// ms1, ms2, ms3 = For single market segments
+		// ms1_2, ms2_2, ms3_2 = The 3 pairs possible of market segment pairs for the user: Age-Income, Age-Gender, Gender-Income.
+		// ms is for the complete market segment
 		List<MarketSegment> msList = Arrays.asList((ms.toArray(new MarketSegment[3])));
-		ms1 = MarketSegment.compundMarketSegment2(msList.get(0), msList.get(1));
-		ms2 = MarketSegment.compundMarketSegment2(msList.get(0), msList.get(2));
-		ms3 = MarketSegment.compundMarketSegment2(msList.get(1), msList.get(2));
+		ms1 = MarketSegment.compundMarketSegment1(msList.get(0));
+		ms2 = MarketSegment.compundMarketSegment1(msList.get(1));
+		ms3 = MarketSegment.compundMarketSegment1(msList.get(2));
+		ms1_2 = MarketSegment.compundMarketSegment2(msList.get(0), msList.get(1));
+		ms2_2 = MarketSegment.compundMarketSegment2(msList.get(0), msList.get(2));
+		ms3_2 = MarketSegment.compundMarketSegment2(msList.get(1), msList.get(2));
 
 		Device device = adnetKey.getDevice();
 		AdType adType = adnetKey.getAdType();
@@ -582,18 +607,38 @@ public class ImpressionBidder {
 		boolean hasUpdatedAny = false;
 
 		// Target segment should completely match the market segment given in the key (after splitting it to pairs).
-		if (targetSegment.containsAll(ms1)) {
+		if (ms1.containsAll(targetSegment)) {
 			concreteClassifier.updateInstance(publisher, ms1, device, adType, campaign.getId(), correctedBid);
 			hasUpdatedAny = true;
 		}
-
-		if (targetSegment.containsAll(ms2)) {
+		
+		if (ms2.containsAll(targetSegment)) {
 			concreteClassifier.updateInstance(publisher, ms2, device, adType, campaign.getId(), correctedBid);
 			hasUpdatedAny = true;
 		}
-
-		if (targetSegment.containsAll(ms3)) {
+		
+		if (ms3.containsAll(targetSegment)) {
 			concreteClassifier.updateInstance(publisher, ms3, device, adType, campaign.getId(), correctedBid);
+			hasUpdatedAny = true;
+		}
+		
+		if (ms1_2.containsAll(targetSegment)) {
+			concreteClassifier.updateInstance(publisher, ms1_2, device, adType, campaign.getId(), correctedBid);
+			hasUpdatedAny = true;
+		}
+
+		if (ms2_2.containsAll(targetSegment)) {
+			concreteClassifier.updateInstance(publisher, ms2_2, device, adType, campaign.getId(), correctedBid);
+			hasUpdatedAny = true;
+		}
+
+		if (ms3_2.containsAll(targetSegment)) {
+			concreteClassifier.updateInstance(publisher, ms3_2, device, adType, campaign.getId(), correctedBid);
+			hasUpdatedAny = true;
+		}
+		
+		if (ms.containsAll(targetSegment)) {
+			concreteClassifier.updateInstance(publisher, ms, device, adType, campaign.getId(), correctedBid);
 			hasUpdatedAny = true;
 		}
 
