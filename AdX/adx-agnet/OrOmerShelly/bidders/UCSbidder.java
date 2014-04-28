@@ -195,7 +195,7 @@ public class UCSbidder {
 	}
 
 	boolean relevantCampaign(CampaignData cd, int day) {
-		if (cd.impsTogo()>0 && cd.getDayEnd()>=day) return true;
+		if (cd.getReachImps()/cd.getStats().getTargetedImps()<=1.1 && cd.getDayEnd()>=day) return true;
 		return false;
 	}
 
