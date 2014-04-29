@@ -50,7 +50,6 @@ public class Coordinator {
 	 * current day of simulation
 	 */
 	private String[] publisherNames;
-	private CampaignData currCampaign;
 	
 	/**
 	 * Messages received:

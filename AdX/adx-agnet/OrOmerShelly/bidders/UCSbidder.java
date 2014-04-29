@@ -1,15 +1,13 @@
 package OrOmerShelly.bidders;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import OrOmerShelly.CampaignData;
-import OrOmerShelly.Coordinator;
 
 import tau.tac.adx.report.adn.AdNetworkKey;
 import tau.tac.adx.report.adn.AdNetworkReport;
 import tau.tac.adx.report.adn.MarketSegment;
+import OrOmerShelly.CampaignData;
+import OrOmerShelly.Coordinator;
 
 public class UCSbidder {
 	/*

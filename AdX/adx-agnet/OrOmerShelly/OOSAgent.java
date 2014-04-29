@@ -1,14 +1,6 @@
 package OrOmerShelly;
 
 import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Random;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,24 +9,15 @@ import se.sics.tasim.aw.Agent;
 import se.sics.tasim.aw.Message;
 import se.sics.tasim.props.SimulationStatus;
 import se.sics.tasim.props.StartInfo;
-import tau.tac.adx.ads.properties.AdType;
-import tau.tac.adx.demand.CampaignStats;
-import tau.tac.adx.devices.Device;
 import tau.tac.adx.props.AdxBidBundle;
-import tau.tac.adx.props.AdxQuery;
 import tau.tac.adx.props.PublisherCatalog;
-import tau.tac.adx.props.PublisherCatalogEntry;
 import tau.tac.adx.report.adn.AdNetworkReport;
-import tau.tac.adx.report.adn.MarketSegment;
 import tau.tac.adx.report.demand.AdNetBidMessage;
 import tau.tac.adx.report.demand.AdNetworkDailyNotification;
 import tau.tac.adx.report.demand.CampaignOpportunityMessage;
 import tau.tac.adx.report.demand.CampaignReport;
-import tau.tac.adx.report.demand.CampaignReportKey;
 import tau.tac.adx.report.demand.InitialCampaignMessage;
 import tau.tac.adx.report.publisher.AdxPublisherReport;
-import tau.tac.adx.report.publisher.AdxPublisherReportEntry;
-import edu.umich.eecs.tac.props.Ad;
 import edu.umich.eecs.tac.props.BankStatus;
 
 /**
