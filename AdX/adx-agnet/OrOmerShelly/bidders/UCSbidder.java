@@ -41,7 +41,7 @@ public class UCSbidder {
 	final double finalRange1=2;
 	final double finalRange2=3;
 	final double finalRange3=4;
-	final double[] prices={0,0.2,0.4,0.6,0.8};
+	final double[] prices={0,1,2,3,4};
 	double alpha=0.1;
 	double gamma=0.9;
 	int state;
