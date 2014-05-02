@@ -133,7 +133,6 @@ public class UCSbidder {
 		double maxQ = maxQ(state)[0];
 		double value = q + alpha * (reinforecement + gamma * maxQ - q);
 		setQ(state, action, value);
-		state=nextstate;
 
 	}
 	public  double[] maxQ(int s) {
