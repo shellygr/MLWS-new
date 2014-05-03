@@ -42,6 +42,6 @@
 	<classpathentry kind="lib" path="adx-agnet/lib/libsvm.jar"/>
 	<classpathentry kind="lib" path="adx-agnet/lib/oosagent.jar"/>
 	<classpathentry kind="lib" path="adx-agnet/lib/weka.jar"/>
-	<classpathentry kind="lib" path="adx-agnet/lib/adx-1.2.7.jar"/>
+	<classpathentry kind="lib" path="/Users/orsa/Dev/MLWS-new/AdX/adx-agnet/lib/adx-1.2.8.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

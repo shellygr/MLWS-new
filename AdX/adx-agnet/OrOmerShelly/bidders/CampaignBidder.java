@@ -49,7 +49,8 @@ public class CampaignBidder {
 	
 	private static final double MAX_BID = 100;
 
-	private static final double BETA = 945; // Optimize where: 0 <= BETA < 1000
+	private static final double GAMMA = 2;
+	private static final double BETA = 959; // Optimize where: 0 <= BETA < 1000
 	private static final double ALPHA = (BETA + 9999000) / 10000000; // do NOT change
 	
 	private static CampaignBidder instance = null;
@@ -141,7 +142,7 @@ public class CampaignBidder {
 	 * score with our active campaigns at each of the days 'dayStart' to 'dayEnd'.   
 	 */
 	private double getAudienceScore(Set<MarketSegment> targetSegment, long dayStart, long dayEnd) {
-		int score = 1;
+		double score = GAMMA;
 		/* map target segment into 'index' */
 		int index = getTargetIndex(targetSegment);
 		for (long day=dayStart; day<=dayEnd; day++) {
@@ -153,7 +154,7 @@ public class CampaignBidder {
 		/* 
 		 * the score will be the probability of the segment divided by the number of campaigns we already have for segments  
 		 */
-		return AudienceProb[index]/(double)score;
+		return AudienceProb[index] * GAMMA / score;
 	}
 
 	/* maps a target segment to a one-to-one index between 0 to 26 */
