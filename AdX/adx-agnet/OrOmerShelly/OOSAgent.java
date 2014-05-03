@@ -44,8 +44,9 @@ public class OOSAgent extends Agent {
 	 * The addresses of server entities to which the agent should send the daily
 	 * bids data
 	 */
-	private String demandAgentAddress;
-	private String adxAgentAddress;
+	// Initialised to default of adxgame.org as to be able to join games in the middle. Maybe.
+	private String demandAgentAddress = "demand";
+	private String adxAgentAddress = "adxusers";
 
 
 	/*
@@ -116,6 +117,8 @@ public class OOSAgent extends Agent {
 		demandAgentAddress = campaignMessage.getDemandAgentAddress();
 		adxAgentAddress = campaignMessage.getAdxAgentAddress();
 		
+		log.info("DemandAgentAddress = " + demandAgentAddress);
+		log.info("adxAgentAddress = " + adxAgentAddress);
 		coordinator.handleInitialCampaignMessage(campaignMessage);
 	}
 	

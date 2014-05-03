@@ -101,7 +101,7 @@ public class Coordinator {
 	/*
 	 * The targeted service level for the user classification service
 	 */
-	double ucsTargetLevel;
+	double ucsCurrentLevel;
 
 	double currentUcsLevel;
 
@@ -289,12 +289,13 @@ public class Coordinator {
 			double ucsLevel = adNetworkDailyNotification.getServiceLevel();
 			double prevUcsBid = ucsBid;
 
+			ucsCurrentLevel = ucsLevel;
 			/* UCS Bid should not exceed 0.2 */
 			ucsBid = ucsbidder.getBid(this);
 
 			log.info("Day " + day + ": Adjusting ucs bid: was " + prevUcsBid
 					+ " level reported: " + ucsLevel + " target: "
-					+ ucsTargetLevel + " adjusted: " + ucsBid);
+					+ ucsCurrentLevel + " adjusted: " + ucsBid);
 		} else {
 			log.info("Day " + day + ": Initial ucs bid is " + ucsBid);
 		}
@@ -435,6 +436,7 @@ public class Coordinator {
 
 		impressionBidder.updateDay(day + 1); // Updating bidder with the day we're bidding for.
 		impressionBidder.setMyActiveCampaigns(getMyActiveCampaigns(day + 1, EXTRA_REACH_THRESHOLD)); // relevantDay is day of bid which is day+1.
+		impressionBidder.setCurrentUcsLevel(ucsCurrentLevel);
 
 		if (day >= FIRST_DAY_OF_PUBLISHERS_REPORT) {
 			impressionBidder.updatePublisherStats(publisherDailyStats);		
@@ -563,7 +565,7 @@ public class Coordinator {
 		randomGenerator = new Random();
 		day = 0;
 		bidBundle = new AdxBidBundle();
-		ucsTargetLevel = 0.5 + (randomGenerator.nextInt(5) + 1) / 10.0;
+		ucsCurrentLevel = 0.5 + (randomGenerator.nextInt(5) + 1) / 10.0;
 
 		/* initial bid between 0.1 and 0.2 */
 		ucsBid = 0.1 + 0.1*randomGenerator.nextDouble(); // TODO: Omer; check this out - the ucs bit for the first day.

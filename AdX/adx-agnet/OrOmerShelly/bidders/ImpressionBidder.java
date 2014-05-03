@@ -60,6 +60,8 @@ public class ImpressionBidder {
 	private AdxBidBundle previousBidBundle;
 
 	private int dayBiddingFor;
+	
+	private double ucsCurrentLevel = 0.0;
 
 	public void init(Classifier newClassifier, CampaignData currentCampaign, int day) throws Exception { // Called one time during the game - when beginning
 		this.dayBiddingFor = day;
@@ -159,7 +161,9 @@ public class ImpressionBidder {
 			calcKnownBidBundleRecord(publisherName);
 
 			// Calculate bids for unknown market segment.
-			calcUnknownBidBundleRecord(publisherName);
+			if (ucsCurrentLevel != 1.0) { // Only bidding for unknown if our today's UCS level is less than 1.
+				calcUnknownBidBundleRecord(publisherName);
+			}
 		}
 		
 		bidBundle.setCampaignDailySpendLimit(sumOfRemainingBudgets());
@@ -760,6 +764,10 @@ public class ImpressionBidder {
 
 	public void setDatasetAsNull() {
 		concreteClassifier.setDatasetAsNull();
+	}
+
+	public void setCurrentUcsLevel(double ucsCurrentLevel) {
+		this.ucsCurrentLevel = ucsCurrentLevel;
 	}
 
 }
