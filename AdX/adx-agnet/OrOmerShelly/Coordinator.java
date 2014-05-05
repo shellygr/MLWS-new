@@ -284,6 +284,11 @@ public class Coordinator {
 		 * Adjust UCS bid s.t. target level is achieved. Note: The bid for the
 		 * user classification service is piggybacked
 		 */
+		List<CampaignData> activeCampiagns = getMyActiveCampaigns(day + 1, EXTRA_REACH_THRESHOLD);
+		if (activeCampiagns == null || activeCampiagns.size() == 0){ 
+			log.info("Bidding 0 for UCS in day " + day);
+			return 0;
+		}
 
 		if (adNetworkDailyNotification != null) {
 			double ucsLevel = adNetworkDailyNotification.getServiceLevel();
