@@ -50,7 +50,8 @@ public class ImpressionBidder {
 	private ImpressionClassifier concreteClassifier;
 
 	private final static double CPM = 1000.0;
-
+	private final static double UNKNOWN_DECREASE_FACTOR = 50.0;
+	
 	private List<CampaignData> myActiveCampaigns;
 
 	@SuppressWarnings("unused")
@@ -343,7 +344,7 @@ public class ImpressionBidder {
 			sumBids += bidForCampaign;
 		}
 
-		return (sumBids/urgentCampaigns.size()) / 50;	
+		return (sumBids/urgentCampaigns.size()) / UNKNOWN_DECREASE_FACTOR;	
 	}
 
 	/**
