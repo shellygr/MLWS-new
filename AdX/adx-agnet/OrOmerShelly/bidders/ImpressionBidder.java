@@ -51,7 +51,7 @@ public class ImpressionBidder {
 
 	private final static double CPM = 1000.0;
 	private final static double UNKNOWN_DECREASE_FACTOR = 50.0;
-	
+	private final static int ALL_LOST_CORRECTION_FACTOR = 10;
 	private List<CampaignData> myActiveCampaigns;
 
 	@SuppressWarnings("unused")
@@ -542,13 +542,13 @@ public class ImpressionBidder {
 			} else {
 				if (bids > 0) {
 					// Lost all bids - meaning we should have increased our bid
-					if (bidBundle == null) {
+					if (bidBundle == null) { // Relevant only when wins == 0.
 						log.severe("Bid bundle is null - Severe error - probably has nothing to update as no last bid will be available");
 						return;
 					}
 
 					double lastBid = bidBundle.getBid(new AdxQuery(adnetKey.getPublisher(), campaign.getTargetSegment(), adnetKey.getDevice(), adnetKey.getAdType()));
-					globalHasUpdatedAny |= updateWithDifferentBid(adnetKey, campaign, lastBid*(2+(Math.random()-0.5))); // increase bid by 1.5 to 2.5 factor
+					globalHasUpdatedAny |= updateWithDifferentBid(adnetKey, campaign, lastBid*(ALL_LOST_CORRECTION_FACTOR+(Math.random()-0.5))); // increase bid by 9.5 to 10.5 factor
 				} // bids==0, wins==0 -> Not interesting - we gave no bids.
 			}
 		}

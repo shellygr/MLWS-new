@@ -36,8 +36,8 @@ public class ImpressionClassifier {
 	
 	private final static int CAPACITY_OF_INSTANCES = 10000;
 	
-	private final double BID_INCREASE_FACTOR = 60.0; // > 0 as we discovered very slow start. If too high, will be fixed by the learning from the AdnetReport.
-	private final double INITIAL_CAMPAIGN_FACTOR = 50.0;
+	private final double BID_INCREASE_FACTOR = 2000.0; // > 0 as we discovered very slow start. If too high, will be fixed by the learning from the AdnetReport.
+	private final double INITIAL_CAMPAIGN_FACTOR = 1550.0;
 	
 	// Map publisher, market segment, device, ad type and campaign to Instance index
 	private HashMap<InstanceIndexKey, Integer> lastInstancesIndicesMap = new HashMap<InstanceIndexKey, Integer>();
@@ -105,7 +105,7 @@ public class ImpressionClassifier {
 			switch (currentCampaign.getTargetSegment().size()) {
 				case 1: targetSegmentSizeFactor = 1.0; break;
 				case 2: targetSegmentSizeFactor = 2.0; break;
-				case 3: targetSegmentSizeFactor = 3.0; break;
+				case 3: targetSegmentSizeFactor = 6.0; break;
 				default: targetSegmentSizeFactor = 1.0; break;
 			}
 			
