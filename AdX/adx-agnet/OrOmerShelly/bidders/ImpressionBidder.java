@@ -209,7 +209,7 @@ public class ImpressionBidder {
 					log.warning("Failed to get initial bid: " + e + " Stack: " + Arrays.asList(e.getStackTrace()));
 					try {
 						bid = getLastBid(impParams, publisherName);
-						log.warning("Failed to classifiy initial bid. Returning last bid averaged = " + bid);
+						log.warning("Failed to classifiy initial bid. Returning last bid = " + bid);
 					} catch (Exception e2) {
 						log.warning("Failed to get last bid averaged - maybe there's no last bid: " + Arrays.asList(e2.getStackTrace()));
 						throw e2;

@@ -37,7 +37,7 @@ public class ImpressionClassifier {
 	private final static int CAPACITY_OF_INSTANCES = 10000;
 	
 	private final double BID_INCREASE_FACTOR = 12; // > 0 as we discovered very slow start. If too high, will be fixed by the learning from the AdnetReport.
-	private final double INITIAL_CAMPAIGN_FACTOR = 3.0;
+	private final double INITIAL_CAMPAIGN_FACTOR = 8.0;
 	
 	// Map publisher, market segment, device, ad type and campaign to Instance index
 	private HashMap<InstanceIndexKey, Integer> lastInstancesIndicesMap = new HashMap<InstanceIndexKey, Integer>();
