@@ -50,7 +50,7 @@ public class CampaignBidder {
 	
 	
 	/* Optimization parameters - refer to project report */
-	private static final double GAMMA = 3;
+	private static final double GAMMA = 0.5;
 	private static final double BETA = 959; // Optimize where: 0 <= BETA < 1000
 	private static final double ALPHA = (BETA + 9999000) / 10000000; // do NOT change
 	
