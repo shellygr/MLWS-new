@@ -11,16 +11,9 @@ import OrOmerShelly.Coordinator;
 
 public class UCSbidder {
 	/*
-	 * Things to consider:
-	 * 1.  I had to add setters and getters for MyCampaigns.
-	 * 2. I have 5 states representing situations before the bid and 5 after it.
-	 * perhaps we should make a transition from each pre-bid state to only 3 post-bid states (instead of all 5)?
-	 * 3. Obviously - change the range and prices, maybe even alpha and learningRate
-	 * 4. Perhaps we want to pay a bit more wisely on the first 5-6 days? (maybe a strategy we have?)
-	 * 5. Still need to calculate the reinforcements
-	 */
+	*/
 	double amountPaidYesterday;
-	final int stateA = 0;
+	final int stateA = 0; // the machine's states
 	final int stateB = 1;
 	final int stateC = 2;
 	final int stateD = 3;
@@ -41,8 +34,8 @@ public class UCSbidder {
 	final double finalRange1=2;
 	final double finalRange2=3;
 	final double finalRange3=4;
-	final double[] prices={0,0.2,0.4,0.6,0.8};
-	double alpha=0.1;
+	final double[] prices={0,0.1,0.2,0.25,0.3}; //possible prices
+	double alpha=0.1; //Q-learning's parameters
 	double gamma=0.9;
 	int state;
 	int nextstate;
@@ -55,16 +48,14 @@ public class UCSbidder {
 	int[] actionsFromF = new int[] { stateG, stateH, stateI, stateJ, stateK };
 	int[][] actions = new int[][] { actionsFromA, actionsFromB, actionsFromC,
 			actionsFromD, actionsFromE, actionsFromF };
-	double[][] Q = new double[statesCount][possibleActions]; // Q learning
-	//static List<Double> amountpaid; // the ith entry represents the amount paid on the ith day.
-	//static List<Integer> placeReached; // the ith entry represents the UCS place we got on the ith day.
+	double[][] Q = new double[statesCount][possibleActions]; // a matrix that holds the Q-values, which are used in the Q-learning algorithm
 	private static UCSbidder instance = null;
 
 	protected UCSbidder() {
 		// Exists only to defeat instantiation.
 	}
 
-	public static UCSbidder getInstance() {
+	public static UCSbidder getInstance() { // this function initializes the UCSbidder (called once from the coordinator)
 
 		if(instance == null) {
 			instance = new UCSbidder();
@@ -73,56 +64,33 @@ public class UCSbidder {
 		return instance;
 	}
 
-	public double getBid(Coordinator co){
-		int state=findState(co);
+	public double getBid(Coordinator co){ // getting a bid for the UCS based on our current state and previous rewards
+		int state=findState(co); // classify our state based solely on the active campaigns we still have
 		if (state==stateB) {
 			this.action=0;
 			this.state=stateB;
 			this.amountPaidYesterday=0;
 			return 0;
 		}
-		int action=(int) Math.round((maxQ(state))[1]);
+		int action=(int) Math.round((maxQ(state))[1]); // use Q-learning to find out the best possible action (price)
 		if (this.action==0) this.action=1;
 		this.action=action;
 		this.state=state;
 		this.amountPaidYesterday=prices[action];
-		return prices[action];
-	}
-	double bid(Coordinator co) {
-		/*
-         1. Set parameter , and environment reward matrix R 
-         2. Initialize matrix Q as zero matrix 
-         3. For each episode: Select random initial state 
-            Do while not reach goal state o 
-                Select one among all possible actions for the current state o 
-                Using this possible action, consider to go to the next state o 
-                Get maximum Q value of this next state based on all possible actions o 
-                Compute o Set the next state as the current state
-		 */
-
-		// For each episode
-		//for (int i = 0; i < 1000; i++) { // train episodes
-		// Select random initial state
-		//int state = rand.nextInt(statesCount);
-		int state=findState(co);
-		int action=(int) Math.round((maxQ(state))[1]);
-		if (this.action==0) this.action=1;
-		this.action=action;
-		this.state=state;
-		return prices[action];
-
+		return prices[action]; // return the price, based on the Q-learning action (out of a possible 4 prices)
 	}
 
 
-	/*
-	 * A method to update the bidder for every campaign bidding result , in order to 
-	 * store a history.
-	 */
 	double Q(int s, int a) {
+		/*
+		 * Get the Q value for a state s and an action a
+		 */
 		return this.Q[s][a];
 	}
 	public void updateUCS(AdNetworkReport anp, Coordinator co) {
 		/*
+		 * update the UCS based on its performance yesterday.
+		 * 
 		 */
 		if (state==stateB) return;
 		double reinforecement=findReinforcement(anp, co, co.day);
@@ -132,15 +100,19 @@ public class UCSbidder {
 		double q = Q(state, action);
 		double maxQ = maxQ(state)[0];
 		double value = q + alpha * (reinforecement + gamma * maxQ - q);
-		setQ(state, action, value);
+		setQ(state, action, value); // change the state, and update the Q values based on the reinforcement.
 
 	}
 	public  double[] maxQ(int s) {
+		/*
+		 * Find the maxQ (that's used in Q-learning).
+		 * maxQ[0] is the value itself of maxQ and
+		 * maxQ[1] is the action the maximizes maxQ
+		 */
 		double[] result=new double[2];
 		int[] actionsFromState = actions[s];
 		double maxValue = Q[s][0];
 		for (int i = 1; i < actionsFromState.length; i++) {
-			//int nextState = actionsFromState[i];
 			double value = Q[s][i];
 
 			if (value >= maxValue) {
@@ -152,9 +124,13 @@ public class UCSbidder {
 		return result;
 	}
 	int findState(Coordinator co) {
+		/*
+		 * find the state describing how important the UCS is.
+		 * Division found by trial & error
+		 */
 		double accume=0.0;
 		for (Integer i : co.getMyCampaigns().keySet())
-			if (co.getMyCampaigns().get(i).getReachImps()!=0)
+			if (relevantCampaign(co.getMyCampaigns().get(i), co.day))
 				accume+=((double)(co.getMyCampaigns().get(i).impsTogo()))/(co.getMyCampaigns().get(i).getReachImps());
 		if (accume<range0) return 1;
 		if (accume<range1) return 2;
@@ -165,13 +141,15 @@ public class UCSbidder {
 	}
 
 	double findReinforcement(AdNetworkReport anp, Coordinator co, int day) {
+		/*
+		 * find the reinforcement to be given to our agent.
+		 * More details can be found in the project report
+		 */
 		int misses=0, hits=0;
 		boolean hitForCampaign=false;
 		for (AdNetworkKey k : anp.keys()) {
 			hitForCampaign=false;
 			Map<Integer, CampaignData> myCampaigns=co.getMyCampaigns();
-			//CampaignData currentCampaign=myCampaigns.get(k.getCampaignId());
-			//Set<MarketSegment> currentSegment= currentCampaign.getTargetSegment();
 			for (CampaignData cd : myCampaigns.values()) {
 				if (relevantCampaign(cd, day) && matchSegment(cd, k)) {
 					hits+=anp.getEntry(k).getBidCount();
@@ -187,16 +165,28 @@ public class UCSbidder {
 			if (co.getMyCampaigns().get(i).getDayEnd()>=co.day) activeCampagins++;
 		}
 		if (misses!=0)
-			return ((misses+hits)/((((double)(misses))*activeCampagins)*amountPaidYesterday))-0.4;
+			return ((misses+hits)/((((double)(misses))*activeCampagins)*amountPaidYesterday))-0.6;
 		return 1.5*hits;
 	}
 
 	boolean relevantCampaign(CampaignData cd, int day) {
+		/*
+		 * This function determines whether a campaign is relevant or not.
+		 * A campaign is relevant if:
+		 * 1. Its ending day has not elapsed
+		 * 2. The number of impressions reached is lower than 110% impressions needed for the campaign
+		 * (The percentage 110% was reached by running the game with a few agents, with the only difference
+		 * between them being the abovementioned percentage.  
+		 */
 		if (cd.getReachImps()/cd.getStats().getTargetedImps()<=1.1 && cd.getDayEnd()>=day) return true;
 		return false;
 	}
 
 	boolean matchSegment(CampaignData ms, AdNetworkKey k) {
+		/*
+		 * returns true iff the impressions opportunity's audience
+		 * matches the campaign's required audience.
+		 */
 		Set<MarketSegment> s=ms.getTargetSegment();
 		for (MarketSegment m : s) {
 			if (m.name().equals("MALE")) {
@@ -230,6 +220,10 @@ public class UCSbidder {
 	}
 
 	void setQ(int s, int a, double value) {
+		/*
+		 * Change the value of a specific cell in the
+		 * Q values matrix
+		 */
 		this.Q[s][a] = value;
 	}
 
