@@ -34,7 +34,7 @@ public class UCSbidder {
 	final double finalRange1=2;
 	final double finalRange2=3;
 	final double finalRange3=4;
-	final double[] prices={0,0.1,0.2,0.25,0.3}; //possible prices
+	final double[] prices={0.1,0.125,0.15,0.175,0.2}; //possible prices
 	double alpha=0.1; //Q-learning's parameters
 	double gamma=0.9;
 	int state;
@@ -73,11 +73,11 @@ public class UCSbidder {
 			return 0;
 		}
 		int action=(int) Math.round((maxQ(state))[1]); // use Q-learning to find out the best possible action (price)
-		if (this.action==0) this.action=1;
+		//if (this.action==0) this.action=1;
 		this.action=action;
 		this.state=state;
 		this.amountPaidYesterday=prices[action];
-		return prices[action]; // return the price, based on the Q-learning action (out of a possible 4 prices)
+		return prices[action]; // return the price, based on the Q-learning action (out of a possible 5 prices)
 	}
 
 
@@ -129,9 +129,9 @@ public class UCSbidder {
 		 * Division found by trial & error
 		 */
 		double accume=0.0;
-		for (Integer i : co.getMyCampaigns().keySet())
-			if (relevantCampaign(co.getMyCampaigns().get(i), co.day))
-				accume+=((double)(co.getMyCampaigns().get(i).impsTogo()))/(co.getMyCampaigns().get(i).getReachImps());
+		for (CampaignData cd : co.impressionBidder.getMyActiveCampaigns()) {
+			accume=accume+(((double)(cd.impsTogo()))/(cd.getReachImps()));
+		}
 		if (accume<range0) return 1;
 		if (accume<range1) return 2;
 		if (accume<range2) return 3;
@@ -165,7 +165,7 @@ public class UCSbidder {
 			if (co.getMyCampaigns().get(i).getDayEnd()>=co.day) activeCampagins++;
 		}
 		if (misses!=0)
-			return ((misses+hits)/((((double)(misses))*activeCampagins)*amountPaidYesterday))-0.6;
+			return ((misses+hits)/((((double)(misses))*activeCampagins)*amountPaidYesterday))-2.75;
 		return 1.5*hits;
 	}
 
